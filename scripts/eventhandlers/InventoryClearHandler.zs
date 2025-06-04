@@ -98,6 +98,10 @@ class InventoryClearHandler : EventHandler
 		}
 
 		// Ed the Bat's updated weapon stripping
+		
+		//[Pop] BOA Enhanced rips these out, ideally this code should be redone
+		//at a later date, but a simple comment out hack job should work for now
+		
 		if(level.levelnum!=99 || preventClearing)
 			return;
 		DropItem drop=me.GetDropItems();
@@ -105,13 +109,16 @@ class InventoryClearHandler : EventHandler
 		for(int i=0;i<AllActorClasses.Size();i++)
 		{
 			let type=AllActorClasses[i];
+			
 			// First, remove all weapons, except those with the UNDROPPABLE flag
 			if(type is "Weapon")
 			{
 				let weptype=(class<weapon>)(type);
 				let wepitem=weapon(me.FindInventory(weptype));
 				if(wepitem!=null&&!wepitem.bUNDROPPABLE)
-					me.A_TakeInventory(name(weptype));
+				{
+					//me.A_TakeInventory(name(weptype));
+				}
 			}
 			// Remove all ammo, except that with the UNDROPPABLE flag
 			if(type is "Ammo")
@@ -119,7 +126,9 @@ class InventoryClearHandler : EventHandler
 				let ammotype=(class<ammo>)(type);
 				let ammoitem=ammo(me.FindInventory(ammotype));
 				if(ammoitem!=null&&!ammoitem.bUNDROPPABLE)
-					me.A_TakeInventory(name(ammotype));
+				{
+					//me.A_TakeInventory(name(ammotype));
+				}
 			}
 		}
 		//If the player has any weapons in StartItem, set them here
@@ -132,7 +141,7 @@ class InventoryClearHandler : EventHandler
 					continue;
 				let weptype=(class<weapon>)(di.Name);
 				if(weptype!=null)
-					me.A_SetInventory(di.Name,di.Amount);
+					me.A_GiveInventory(di.Name,di.Amount);
 			}
 		}
 		//If the player has any ammo in StartItem, set it here
@@ -144,7 +153,7 @@ class InventoryClearHandler : EventHandler
 					continue;
 				let ammotype=(class<ammo>)(di.Name);
 				if(ammotype!=null)
-					me.A_SetInventory(di.Name,di.Amount);
+					me.A_GiveInventory(di.Name,di.Amount);
 			}
 		}
 	}

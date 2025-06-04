@@ -29,14 +29,14 @@ class Panzerschreck : NaziWeapon
 	//$Title (7) Panzerschreck
 	//$Color 14
 	Weapon.SelectionOrder 10000;
-	Inventory.PickupMessage "$PANZA";
+	Inventory.PickupMessage "$PZSIA";
 	Tag "Panzerschreck";
 	Weapon.AmmoType "PanzerschreckLoaded";
 	Weapon.AmmoUse 1;
 	Weapon.AmmoType2 "PanzerAmmo";
 	Weapon.AmmoGive2 1;
 	Weapon.AmmoUse2 1;
-	Weapon.UpSound "panzer/select";
+	Weapon.UpSound "Panzer/select";
 	Radius 18;
 	Height 12;
 	+WEAPON.NOAUTOFIRE
@@ -46,147 +46,114 @@ class Panzerschreck : NaziWeapon
 	States
 	{
 	Ready:
-		PANZ A 0 A_JumpIfInventory("PanzerschreckLoaded",0,2);
-		PANZ A 0 A_JumpIfInventory("PanzerAmmo",1,2);
-		PANZ A 1 A_WeaponReady;
+		PZSI A 0 A_JumpIfInventory("PanzerschreckLoaded",0,2);
+		PZSI A 0 A_JumpIfInventory("PanzerAmmo",1,2);
+		PZSI A 1 A_WeaponReady;
 		Loop;
-		PANZ A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+		PZSI A 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		Loop;
 	Select:
-		PANZ A 1 A_Raise;
+		PZSI A 1 A_Raise;
 		Loop;
 	Deselect:
-		PANZ A 1 A_Lower;
+		PZSI A 1 A_Lower;
 		Loop;
 	AltFire:
-		PANZ A 1 Offset(6,34);
-		PANZ A 0 Offset(14,36);
-		PANZ A 1 Offset(24,39);
-		PANZ A 0 Offset(28,43);
-		PANZ A 1 Offset(32,48);
-		PANZ A 0 Offset(36,52);
-		PANZ A 1 Offset(40,56);
-		PANZ A 0 Offset(44,60);
-		PANZ A 1 Offset(48,64);
-		PANZ A 0 Offset(52,68);
-		PANZ A 1 Offset(56,72);
-		PANZ A 0 Offset(60,76);
-		PANZ A 1 Offset(64,80);
-		PANZ A 0 Offset(68,84);
-		PANZ A 1 Offset(72,88);
-		PANZ A 0 Offset(76,92);
-		PANZ A 1 Offset(80,96);
-		PANZ A 0 Offset(82,98);
-		PANZ A 1 Offset(84,100);
-		PANZ A 0 Offset(86,102);
+		PZS1 A 2;
+		PZS1 B 2;
+		PZS1 C 2;
+		PZS1 D 2;
+		PZS1 E 2;
+		PZS1 F 2;
+		PZS1 G 2;
+		PZS1 H 2;
 	AltHold:
-		PANZ A 1 Offset(88,104);
-		PANZ A 1 Offset(90,106) A_Refire;
+		PZS1 H 1;
+		PZS1 H 1A_Refire;
 		Goto FireFinish;
 	FireFinish:
-		PANZ A 0 Offset(86,102);
-		PANZ A 1 Offset(84,100);
-		PANZ A 0 Offset(82,98);
-		PANZ A 1 Offset(80,96);
-		PANZ A 0 Offset(76,92);
-		PANZ A 1 Offset(72,88);
-		PANZ A 0 Offset(68,84);
-		PANZ A 1 Offset(64,80);
-		PANZ A 0 Offset(60,76);
-		PANZ A 1 Offset(56,72);
-		PANZ A 0 Offset(52,68);
-		PANZ A 1 Offset(48,64);
-		PANZ A 0 Offset(44,60);
-		PANZ A 1 Offset(40,56);
-		PANZ A 0 Offset(36,52);
-		PANZ A 1 Offset(32,48);
-		PANZ A 0 Offset(28,43);
-		PANZ A 1 Offset(24,39);
-		PANZ A 0 Offset(14,36);
-		PANZ A 1 Offset(6,34) A_WeaponReady;
+		PZS1 H 2;
+		PZS1 G 2;
+		PZS1 F 2;
+		PZS1 E 2;
+		PZS1 D 2;
+		PZS1 C 2;
+		PZS1 B 2;
+		PZS1 A 2;
+		PZSI A 1 A_WeaponReady;
 		Goto Ready;
 	Flash:
-		PANZ A 1 BRIGHT A_Light2;
-		PANZ A 1 BRIGHT;
+		TNT1 A 1 BRIGHT A_Light2;
+		TNT1 A 1 BRIGHT;
 		TNT1 A 2 A_Light1;
 		Goto LightDone;
 	Fire:
-		PANZ A 0 A_JumpIfInventory("PanzerschreckLoaded",1,1);
+		PZSI A 0 A_JumpIfInventory("PanzerschreckLoaded",1,1);
 		Goto Dryfire;
-		PANZ A 0 A_StartSound("panzer/fire", CHAN_WEAPON);
-		PANZ A 0 A_GunFlash;
-		PANZ A 2 BRIGHT A_FireProjectile("PanzerRocket",0,1,12,0);
-		PANZ A 1 Offset(6,34);
-		PANZ A 1 Offset(14,36);
-		PANZ A 1 Offset(24,39);
-		PANZ A 1 Offset(28,43);
-		PANZ A 1 Offset(31,48);
-		PANZ A 1 Offset(27,44);
-		PANZ A 1 Offset(23,40);
-		PANZ A 1 Offset(18,36);
-		PANZ A 1 Offset(12,34);
-		PANZ A 1 Offset(6,32);
-		PANZ A 1 Offset(3,30);
-		PANZ A 1 Offset(1,29);
-		PANZ A 1 Offset(-2,30);
-		PANZ A 1 Offset(-1,32);
+		PZSI A 0 A_StartSound("Panzer/fire", CHAN_WEAPON);
+		PZSI A 0 A_GunFlash;
+		PZSI A 2 BRIGHT A_FireProjectile("PanzerRocket",0,1,12,0);
+		PZSI A 1 Offset(6,34);
+		PZSI A 1 Offset(14,36);
+		PZSI A 1 Offset(24,39);
+		PZSI A 1 Offset(28,43);
+		PZSI A 1 Offset(31,48);
+		PZSI A 1 Offset(27,44);
+		PZSI A 1 Offset(23,40);
+		PZSI A 1 Offset(18,36);
+		PZSI A 1 Offset(12,34);
+		PZSI A 1 Offset(6,32);
+		PZSI A 1 Offset(3,30);
+		PZSI A 1 Offset(1,29);
+		PZSI A 1 Offset(-2,30);
+		PZSI A 1 Offset(-1,32);
 		TNT1 A 0 A_CheckReload;
 		Goto Ready;
 	Reload:
-		PANZ A 1 Offset(1,33) A_StartSound("panzer/load", CHAN_WEAPON);
-		PANZ A 1 Offset(2,34);
-		PANZ A 1 Offset(3,35);
-		PANZ A 1 Offset(4,36);
-		PANZ A 1 Offset(4,43);
-		PANZ A 1 Offset(4,50);
-		PANZ A 1 Offset(5,58);
-		PANZ A 1 Offset(5,67);
-		PANZ A 1 Offset(5,71);
-		PANZ A 1 Offset(5,77);
-		PANZ A 1 Offset(4,83);
-		PANZ A 1 Offset(3,89);
-		PANZ A 1 Offset(3,94);
-		PANZ A 1 Offset(2,100);
-		PANZ A 1 Offset(2,102);
-		PANZ A 1 Offset(1,104);
-		PANZ A 1 Offset(1,106);
-		PANZ A 1 Offset(-1,108);
-		PANZ A 1 Offset(-3,112);
-		PANZ A 1 Offset(-5,116);
-		PANZ A 1 Offset(-7,120);
-		PANZ A 1 Offset(-10,124);
-		PANZ A 1 Offset(-14,126);
-		PANZ A 1 Offset(-18,128);
-		PANZ A 0 A_TakeInventory("PanzerAmmo",1);
-		PANZ A 1 Offset(-21,129) A_GiveInventory("PanzerschreckLoaded");
-		PANZ A 1 Offset(-24,130);
-		PANZ A 1 Offset(-27,131);
-		PANZ A 1 Offset(-28,130);
-		PANZ A 1 Offset(-26,128);
-		PANZ A 1 Offset(-22,124);
-		PANZ A 1 Offset(-21,112);
-		PANZ A 1 Offset(-20,108);
-		PANZ A 1 Offset(-19,98);
-		PANZ A 1 Offset(-18,88);
-		PANZ A 1 Offset(-17,78);
-		PANZ A 1 Offset(-16,68);
-		PANZ A 1 Offset(-15,57);
-		PANZ A 1 Offset(-14,46);
-		PANZ A 1 Offset(-12,42);
-		PANZ A 1 Offset(-11,38);
-		PANZ A 1 Offset(-8,35);
-		PANZ A 1 Offset(-6,32);
-		PANZ A 1 Offset(-2,28);
-		PANZ A 1 Offset(1,27);
-		PANZ A 1 Offset(-1,29);
+		TNT1 A 0 A_StartSound("Panzer/load", CHAN_WEAPON);
+		PZS1 A 2;
+		PZS1 B 2;
+		PZS1 C 2;
+		PZS1 D 2;
+		PZS1 E 2;
+		PZS1 F 2;
+		PZS1 G 2;
+		PZS1 H 2;
+		PZS2 A 2;
+		PZS2 B 2;
+		PZS2 C 2;
+		PZS2 D 2;
+		PZS2 E 2;
+		PZS2 F 2;
+		PZS2 G 2;
+		PZS2 H 2;
+		PZS2 I 2;
+		PZS2 J 2;
+		PZS2 K 2;
+		PZS2 L 2;
+		PZS2 M 2;
+		PZS2 N 2;
+		PZS2 O 2;
+		PZS2 P 2;
+		PZS2 Q 2;
+		PZS2 R 2;
+		PZS2 S 2;
+		PZS2 T 2;		
+		TNT1 A 0 A_TakeInventory("PanzerAmmo",1);
+		TNT1 A 0 A_GiveInventory("PanzerschreckLoaded");
+		PZS3 A 2;
+		PZS3 B 2;
+		PZS3 C 2;
+		PZS3 D 2;
+		PZS3 E 2;
+		PZS3 F 2;
+		PZS3 G 2;
 		Goto Ready;
 	Spawn:
 		PANP A -1;
 		Loop;
 	}
 }
-
-class PanzerZoom : Inventory{}
 
 class PanzerschreckLoaded : Ammo
 {

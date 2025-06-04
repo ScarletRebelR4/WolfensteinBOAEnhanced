@@ -89,6 +89,7 @@ class BoAPlayer : PlayerPawn
 		Species "Player";
 		Player.MaxHealth 100; // Needed for improved vitality serum
 		Player.InvulnerabilityMode "reflective";
+		
 		Player.StartItem "AstroChaingunLoaded",30;
 		Player.StartItem "AstroRocketLauncherLoaded",5;
 		Player.StartItem "AstroShotgunLoaded",8;
@@ -106,6 +107,23 @@ class BoAPlayer : PlayerPawn
 		Player.StartItem "Stamina", 100;
 		Player.StartItem "NullWeapon", 1;
 		Player.StartItem "KnifeSilent";
+		
+		Player.StartItem "WaltherPPKLoaded",8;
+		Player.StartItem "Luger9mmLoaded",8;
+		Player.StartItem "FG42Loaded",20;
+		Player.StartItem "MG42Loaded",50;
+		Player.StartItem "BAR3006Loaded",20;
+		Player.StartItem "MP40Loaded",32;
+		Player.StartItem "STG44Loaded",32;
+		Player.StartItem "Kar98kLoaded",5;
+		Player.StartItem "ThompsonLoaded",30;
+		Player.StartItem "CoachGunLoaded",2;
+		Player.StartItem "GarandLoaded",8;
+		Player.StartItem "Stamina", 100;
+		Player.StartItem "NullWeapon", 1;
+		Player.StartItem "KnifeSilent";
+		
+		
 		Player.SoundClass "player";
 		Player.ViewHeight 56;
 		Player.AttackZOffset 24;

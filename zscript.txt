@@ -152,7 +152,19 @@ version "3.7.2"
 #include "scripts/decorate/weapons/astrostein.zs"
 #include "scripts/decorate/weapons/tesla.zs"
 #include "scripts/decorate/weapons/fakeid.zs"
+
+#include "Scripts/Decorate/Weapons/ppk.zs"
+#include "Scripts/Decorate/Weapons/FG42.zs"
+#include "Scripts/Decorate/Weapons/STG44.zs"
+#include "Scripts/Decorate/Weapons/Thompson.zs"
+#include "Scripts/Decorate/Weapons/Garand.zs"
+#include "Scripts/Decorate/Weapons/BAR.zs"
+#include "Scripts/Decorate/Weapons/M2Flamer.zs"
+#include "Scripts/Decorate/Weapons/MG42.zs"
+#include "Scripts/Decorate/Weapons/Sawnoff.zs"
+
 #include "scripts/decorate/weapons/kicks.zs" 		//AFADoomer
+
 
 //Model Base
 #include "scripts/decorate/models/base.zs"
@@ -188,6 +200,8 @@ version "3.7.2"
 #include "scripts/decorate/items/powerups.zs"
 #include "scripts/decorate/items/treasure.zs"
 #include "scripts/decorate/items/astrostein.zs"		//Secret Operation Episode 2
+
+#include "Scripts/ammo.zs"
 
 //Special Effects
 #include "scripts/decorate/sfx/clouds.zs"

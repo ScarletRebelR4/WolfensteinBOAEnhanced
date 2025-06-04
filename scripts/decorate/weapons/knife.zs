@@ -57,17 +57,23 @@ class KnifeSilent : NaziWeapon
 		KNFG A 1 A_Raise;
 		Loop;
 	Fire:
+	    KNFG ABCDE 1;
+	Fire.BerserkorNot:	
 		KNFG A 0 A_JumpIfInventory("PowerStrength", 1, "Fire.Berserked");
 	Fire.Normal:
-		KNFG A 1 A_StartSound("knife/swing", CHAN_WEAPON);
-		KNFG B 1 A_CustomPunch(10, 1, 0, "KnifePuff", 64);
+	    KNFA ABCD 1;
+		KNFA E 1 A_StartSound("knife/swing", CHAN_WEAPON);
+		KNFA F 1 A_CustomPunch(10, 1, 0, "KnifePuff", 64);
 		Goto Fire.End;
 	Fire.Berserked:
-		KNFG A 1 A_StartSound("knife/swing", CHAN_WEAPON);
-		KNFG B 1 A_CustomPunch(10*5, 1, 0, "KnifePuff", 64); //Quintuple Damage with NaziBerserk, suggested by N00b - ozy81
+	    KNFA ABCD 1;
+		KNFA E 1 A_StartSound("knife/swing", CHAN_WEAPON);
+		KNFA F 1 A_CustomPunch(10*5, 1, 0, "KnifePuff", 64); //Quintuple Damage with NaziBerserk, suggested by N00b - ozy81
 	Fire.End:
-		KNFG CDEFGHJKLMN 1;
-		KNFG A 10;
+		KNFA A 1;
+		TNT1 A 0 A_Refire("Fire.BerserkorNot");
+		KNFG EDCBA 1;
+		KNFG A 2;
 		Goto Ready;
 	}
 }
