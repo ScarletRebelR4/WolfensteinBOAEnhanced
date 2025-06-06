@@ -154,7 +154,7 @@ class Stamina : Inventory
 {
 	Default
 	{
-		Inventory.MaxAmount 100;
+		Inventory.MaxAmount 1000;
 		+Inventory.KEEPDEPLETED;
 	}
 }
