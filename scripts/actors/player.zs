@@ -260,7 +260,8 @@ class BoAPlayer : PlayerPawn
 
 	override void PostBeginPlay()
 	{
-		flinchfactor = 255; // Start out with full flinch amount.
+		flinchfactor = 100; // Start out with full flinch amount.
+		//[Pop] NO. NOT FULL FLINCH. FULL FLINCH IS FUCKING HORRIBLE TO PLAY WITH.
 		dodragging = false;
 		int playerID = PLAYER_TAG_OFFSET + PlayerNumber();
 		Thing_ChangeTID(0, playerID);
