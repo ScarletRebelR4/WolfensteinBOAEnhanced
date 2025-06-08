@@ -75,15 +75,15 @@ Default
 		TNT1 A 0 A_PlaySound("M1GFIR",CHAN_WEAPON);
 		M1GI A 0 A_SpawnItemEx("M1GarandRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		M1GI A 0 A_AlertMonsters;
-		M1GF A 1 BRIGHT A_FireProjectile("M1GarandTracer");
-		M1GF B 1 A_SetPitch(pitch-(3.6*boa_recoilamount));
+		M1FG A 1 BRIGHT A_FireProjectile("M1GarandTracer");
+		M1FG B 1 A_SetPitch(pitch-(3.6*boa_recoilamount));
 		M1GI C 0 A_JumpIf(waterlevel > 0,2);
 		M1GI C 0 A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
-		M1GF B 1 A_JumpIf(CountInv("GarandLoaded") == 0,"ClipEject");
+		M1FG B 1 A_JumpIf(CountInv("GarandLoaded") == 0,"ClipEject");
 	FireFinish:
-		M1GF C 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		M1GF D 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		M1GF E 1 A_WeaponReady(WRF_ALLOWRELOAD);
+		M1FG C 1 A_WeaponReady(WRF_ALLOWRELOAD);
+		M1FG D 1 A_WeaponReady(WRF_ALLOWRELOAD);
+		M1FG E 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		TNT1 A 0 A_CheckReload;
 		Goto Ready;
 	ClipEject:
