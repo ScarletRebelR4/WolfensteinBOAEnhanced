@@ -1,0 +1,26 @@
+weapons/Sten/Raise	"Sounds/Weapons/Sten/StenRaise.wav"
+weapons/Sten/Lower	"Sounds/Weapons/Sten/StenLower.wav"
+weapons/Sten/MagOut	"Sounds/Weapons/Sten/StenMagout.wav"
+weapons/Sten/MagIn	"Sounds/Weapons/Sten/StenMagIn.wav"
+weapons/Sten/MagTap	"Sounds/Weapons/Sten/StenMagTap.wav"
+weapons/Sten/Charge	"Sounds/Weapons/Sten/StenCharge.wav"
+
+$RANDOM weapons/Sten/Fire
+{
+weapons/Sten/Fire1
+weapons/Sten/Fire2
+weapons/Sten/Fire3
+weapons/Sten/Fire4
+weapons/Sten/Fire5
+weapons/Sten/Fire6
+}
+
+weapons/Sten/Fire1	"Sounds/Weapons/Sten/Fire/StenFIre1.wav"
+weapons/Sten/Fire2	"Sounds/Weapons/Sten/Fire/StenFIre2.wav"
+weapons/Sten/Fire3	"Sounds/Weapons/Sten/Fire/StenFIre3.wav"
+weapons/Sten/Fire4	"Sounds/Weapons/Sten/Fire/StenFIre4.wav"
+weapons/Sten/Fire5	"Sounds/Weapons/Sten/Fire/StenFIre5.wav"
+weapons/Sten/Fire6	"Sounds/Weapons/Sten/Fire/StenFIre6.wav"
+
+weapons/Sten/FireMech	"Sounds/Weapons/Sten/Fire/StenMech1.wav"
+weapons/Sten/FireAdd	"Sounds/Weapons/Sten/Fire/StenAdd1.wav"

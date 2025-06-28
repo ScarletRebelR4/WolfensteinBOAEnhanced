@@ -35,7 +35,7 @@ class Sten : NaziWeapon //Rate of fire: ~500 rounds/min - Wikipedia
 	Weapon.AmmoType2 "Ammo9mm";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 32;
-	Weapon.UpSound "sten/select";
+	Weapon.UpSound "weapons/sten/Raise";
 	Tag "STEN Mk II";
 	+WEAPON.NOAUTOFIRE //had to add this to make the altfire non-automatic --N00b
 	}
@@ -49,6 +49,8 @@ class Sten : NaziWeapon //Rate of fire: ~500 rounds/min - Wikipedia
 		STEN A 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		Loop;
 	Deselect:
+		TNT1 A 0 A_StartSound("weapons/sten/Lower", 0, CHANF_OVERLAP);
+	DeselectLoop:
 		STEN A 0 A_Lower;
 		STEN A 1 A_Lower;
 		Loop;
@@ -59,74 +61,81 @@ class Sten : NaziWeapon //Rate of fire: ~500 rounds/min - Wikipedia
 	Fire:
 		STEN A 0 A_JumpIfInventory("StenLoaded",1,1);
 		Goto Dryfire;
-		STEN A 0 A_StartSound("sten/fire", CHAN_WEAPON);
+		STEN A 0
+		{
+			A_StartSound("weapons/sten/fire", 0, CHANF_OVERLAP);
+			A_StartSound("weapons/sten/firemech", 0, CHANF_OVERLAP, 0.9);
+			A_StartSound("weapons/sten/fireadd", 0, CHANF_OVERLAP, 0.7);
+		}
 		STEN A 0 A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		STEN A 0 A_AlertMonsters(384); // buffed a bit --N00b
 		STEN B 1 A_FireProjectile("StenTracer",frandom(-1.5,1.5),1,0,0,0,frandom(-1.0,1.0));
-		STEN B 1 Offset(0,40) A_SetPitch(pitch-(0.5*boa_recoilamount));
+		STEN B 1 Offset(0,34) A_SetPitch(pitch-(0.5*boa_recoilamount));
 		STEN B 0 A_JumpIf(waterlevel > 0,2);
 		STEN B 0 A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
-		STEN A 1 Offset(0,34);
+		STEN A 1 Offset(0,33);
 		TNT1 A 0 A_Refire;
 		Goto Ready;
 	Hold:
 		STEN A 0 A_JumpIfInventory("StenLoaded",1,1);
 		Goto Dryfire;
-		STEN A 0 A_StartSound("sten/fire", CHAN_WEAPON);
+		STEN A 0
+		{
+			A_StartSound("weapons/sten/fire", 0, CHANF_OVERLAP);
+			A_StartSound("weapons/sten/firemech", 0, CHANF_OVERLAP, 0.9);
+			A_StartSound("weapons/sten/fireadd", 0, CHANF_OVERLAP, 0.7);
+		}
 		STEN A 0 A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		STEN A 0 A_AlertMonsters;
-		STEN B 1 Offset(0,36) A_FireProjectile("StenTracer",frandom(-1.5,1.5),1,0,0,0,frandom(-1.0,1.0));
+		STEN B 1 Offset(0,35) A_FireProjectile("StenTracer",frandom(-1.5,1.5),1,0,0,0,frandom(-1.0,1.0));
 		STEN B 0 A_JumpIf(waterlevel > 0,2);
 		STEN B 0 A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
-		STEN B 1 Offset(0,40) A_SetPitch(pitch-(0.5*boa_recoilamount));
-		STEN A 1 Offset(0,34);
+		STEN B 1 Offset(0,34) A_SetPitch(pitch-(0.5*boa_recoilamount));
+		STEN A 1 Offset(0,33);
 		TNT1 A 0 A_Refire;
 		Goto Ready;
 	Altfire: // semi-auto, as it is difficult to fire exactly one shot --N00b
 		STEN A 0 A_JumpIfInventory("StenLoaded",1,1);
 		Goto Dryfire;
-		STEN A 0 A_StartSound("sten/fire", CHAN_WEAPON);
+		STEN A 0
+		{
+			A_StartSound("weapons/sten/fire", 0, CHANF_OVERLAP);
+			A_StartSound("weapons/sten/firemech", 0, CHANF_OVERLAP, 0.9);
+			A_StartSound("weapons/sten/fireadd", 0, CHANF_OVERLAP, 0.7);
+		}
 		STEN A 0 A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		STEN A 0 A_AlertMonsters(384);
 		STEN A 0 A_TakeInventory("StenLoaded",1,TIF_NOTAKEINFINITE); // take the round manually (see ammotypes) --N00b
 		STEN B 1 A_FireProjectile("StenTracer",frandom(-1.5,1.5),0,0,0,0,frandom(-1.0,1.0));
-		STEN B 1 Offset(0,40) A_SetPitch(pitch-(0.5*boa_recoilamount));
+		STEN B 1 Offset(0,34) A_SetPitch(pitch-(0.5*boa_recoilamount));
 		STEN B 0 A_JumpIf(waterlevel > 0,2);
 		STEN B 0 A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
-		STEN A 1 Offset(0,34);
+		STEN A 1 Offset(0,33);
 		STEN A 3; // balance the DPS --N00b
 		Goto Ready;
 	Reload:
-		STEN A 1 Offset(0,38) A_StartSound("sten/reload", CHAN_5);
-		STEN A 1 Offset(0,44);
-		STEN A 1 Offset(0,56);
-		STEN A 1 Offset(-2,60);
-		STEN A 1 Offset(-4,72);
-		STEN A 1 Offset(-7,80);
-		STEN A 1 Offset(-10,82);
-		STEN A 20 Offset(-11,84);
+		S1RN A 5;
+		S1RN BCDEFGHH 1;
+		TNT1 A 0 A_StartSound("weapons/sten/Magout", 0, CHANF_OVERLAP);
+		S1RN IJKLMN 2;
+		TNT1 A 0 A_StartSound("weapons/sten/MagTap", 0, CHANF_OVERLAP);
+		S1RN OPQRST 1;
+		S1RN UV 3;
+		S1RN WXYYZ 2;
+		TNT1 A 0 A_StartSound("weapons/sten/MagIn", 0, CHANF_OVERLAP);
+		S2RN A 3;
 	ReloadLoop:
 		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
 		TNT1 A 0 A_GiveInventory("StenLoaded");
 		TNT1 A 0 A_JumpIfInventory("StenLoaded",0,"ReloadFinish");
 		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
 	ReloadFinish:
-		STEN A 1 Offset(-10,84);
-		STEN A 1 Offset(-10,90);
-		STEN A 1 Offset(-10,98);
-		STEN A 1 Offset(-10,110);
-		STEN A 1 Offset(-10,98);
-		STEN A 1 Offset(-10,88);
-		STEN A 1 Offset(-10,78);
-		STEN A 1 Offset(-10,74);
-		STEN A 1 Offset(-10,70);
-		STEN A 1 Offset(-9,68);
-		STEN A 1 Offset(-8,60);
-		STEN A 1 Offset(-7,54);
-		STEN A 1 Offset(-5,48);
-		STEN A 1 Offset(-3,42);
-		STEN A 1 Offset(-1,36);
-		STEN A 1 Offset(0,32);
+		S2RN BCDE 2;
+		S2RN E 3;
+		TNT1 A 0 A_StartSound("weapons/sten/Charge", 0, CHANF_OVERLAP);
+		S2RN FGHIJKL 1;
+		S2RN MNOPQR 1;
+		STEN A 1;
 		TNT1 A 0 A_Refire; // to compensate the effect of +NOAUTOFIRE --N00b
 		Goto Ready;
 	Spawn:
