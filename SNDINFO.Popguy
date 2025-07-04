@@ -24,3 +24,37 @@ weapons/Sten/Fire6	"Sounds/Weapons/Sten/Fire/StenFIre6.wav"
 
 weapons/Sten/FireMech	"Sounds/Weapons/Sten/Fire/StenMech1.wav"
 weapons/Sten/FireAdd	"Sounds/Weapons/Sten/Fire/StenAdd1.wav"
+
+weapons/Luger/MagIn	"Sounds/Weapons/Luger/LugerMagIn.wav"
+weapons/Luger/MagOut	"Sounds/Weapons/Luger/LugerMagOut.wav"
+weapons/Luger/Charge	"Sounds/Weapons/Luger/LugerCharge.wav"
+
+weapons/Luger/Fire	"Sounds/Weapons/Luger/Fire/LugerFire.ogg"
+
+$RANDOM weapons/Luger/FireAdd
+{
+weapons/Luger/FireAdd1
+weapons/Luger/FireAdd2
+weapons/Luger/FireAdd3
+weapons/Luger/FireAdd4
+}
+
+weapons/Luger/FireAdd1	"Sounds/Weapons/Luger/Fire/LugerFireAdd1.wav"
+weapons/Luger/FireAdd2	"Sounds/Weapons/Luger/Fire/LugerFireAdd2.wav"
+weapons/Luger/FireAdd3	"Sounds/Weapons/Luger/Fire/LugerFireAdd3.wav"
+weapons/Luger/FireAdd4	"Sounds/Weapons/Luger/Fire/LugerFireAdd4.wav"
+
+$RANDOM weapons/Luger/FireMech
+{
+weapons/Luger/FireMech1
+weapons/Luger/FireMech2
+weapons/Luger/FireMech3
+weapons/Luger/FireMech4
+weapons/Luger/FireMech5
+}
+
+weapons/Luger/FireMech1	"Sounds/Weapons/Luger/Fire/LugerFireMech1.wav"
+weapons/Luger/FireMech2	"Sounds/Weapons/Luger/Fire/LugerFireMech2.wav"
+weapons/Luger/FireMech3	"Sounds/Weapons/Luger/Fire/LugerFireMech3.wav"
+weapons/Luger/FireMech4	"Sounds/Weapons/Luger/Fire/LugerFireMech4.wav"
+weapons/Luger/FireMech5	"Sounds/Weapons/Luger/Fire/LugerFireMech5.wav"
