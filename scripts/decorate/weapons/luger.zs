@@ -43,11 +43,17 @@ class Luger9mm : NaziWeapon
 	States
 	{
 	Ready:
-		LUGG A 0 A_JumpIfInventory("Luger9mmLoaded",0,2);
+		LUGG A 0 A_JumpIf(CountInv("Luger9mmLoaded") == 0, "ReadyEmpty");
 		LUGG A 0 A_JumpIfInventory("Ammo9mm",1,2);
 		LUGG A 1 A_WeaponReady;
 		Loop;
 		LUGG A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+		Loop;
+	ReadyEmpty:
+		LUGG G 0 A_JumpIfInventory("Ammo9mm",1,2);
+		LUGG G 1 A_WeaponReady;
+		Loop;
+		LUGG G 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		Loop;
 	Deselect:
 		LUGG A 0 A_Lower;
@@ -72,29 +78,50 @@ class Luger9mm : NaziWeapon
 		}
 		LUGG A 0 A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		LUGG A 0 A_AlertMonsters;
-		LUGG C 1 BRIGHT A_FireProjectile("LugerTracer");
-		LUGG B 1;
-		LUGG B 1 A_SetPitch(pitch-(0.2*boa_recoilamount));
-		LUGG A 1 A_CheckReload;
-		LUGG A 1 A_WeaponReady(WRF_NOBOB);
+		LUGG B 1 BRIGHT A_FireProjectile("LugerTracer");
+		LUGG C 1;
+		LUGG D 1 A_SetPitch(pitch-(0.2*boa_recoilamount));
+		TNT1 A 0 A_JumpIf(CountInv("Luger9mmLoaded") == 0, "FireEndEmpty");
+		LUGG EF 1 A_WeaponReady(WRF_NOBOB);
 		Goto Ready;
+	FireEndEmpty:
+		LUGG HI 1;
+		Goto ReadyEmpty;
+		
 	Reload:
-		L1GR ABCDEF 1;
+		TNT1 A 0 A_JumpIf(CountInv("Luger9mmLoaded") == 0, "Reload2");
+		L2GG ABCDEF 1;
 		TNT1 A 0 A_StartSound("Weapons/Luger/MagOut", CHAN_AUTO);
-		L1GR GHHIJKLMNOOPQR 1;
+		L2GG GHIJKLMNOP 1;
 		TNT1 A 0 A_StartSound("Weapons/Luger/MagIn", CHAN_AUTO);
-		L1GR STUU 1;
+		L2GG QRSTUV 1;
 	ReloadLoop:
 		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
 		TNT1 A 0 A_GiveInventory("Luger9mmLoaded");
 		TNT1 A 0 A_JumpIfInventory("Luger9mmLoaded",0,"ReloadFinish");
 		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
 	ReloadFinish:
-		L1GR VWXYZ 1;
-		L2GR AA 1;
-		TNT1 A 0 A_StartSound("Weapons/Luger/Charge", CHAN_AUTO);
-		L2GR BCDEFGH 1;
+		L2GG WXYZ 1;
+		L3GG A 1;
 		Goto Ready;
+	Reload2:
+		L4GG ABCDEFG 1;
+		TNT1 A 0 A_StartSound("Weapons/Luger/MagOut", CHAN_AUTO);
+		L4GG HIJKLMNOPQR 1;
+		TNT1 A 0 A_StartSound("Weapons/Luger/MagIn", CHAN_AUTO);
+		L4GG STUVWX 1;
+	Reload2Loop:
+		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+		TNT1 A 0 A_GiveInventory("Luger9mmLoaded");
+		TNT1 A 0 A_JumpIfInventory("Luger9mmLoaded",0,"Reload2Finish");
+		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"Reload2Loop");
+	Reload2Finish:
+		L4GG YZ 1;
+		L5GG ABCD 1;
+		TNT1 A 0 A_StartSound("Weapons/Luger/Charge", CHAN_AUTO);
+		L5GG EFGHIJKLMNOPQRSTUV 1;
+		Goto Ready;
+	
 	Flash:
 		TNT1 A 1 A_Light2;
 		TNT1 A 1;
