@@ -58,3 +58,41 @@ weapons/Luger/FireMech2	"Sounds/Weapons/Luger/Fire/LugerFireMech2.wav"
 weapons/Luger/FireMech3	"Sounds/Weapons/Luger/Fire/LugerFireMech3.wav"
 weapons/Luger/FireMech4	"Sounds/Weapons/Luger/Fire/LugerFireMech4.wav"
 weapons/Luger/FireMech5	"Sounds/Weapons/Luger/Fire/LugerFireMech5.wav"
+
+weapons/M1911/Charge	"Sounds/weapons/m1911/M1911Charge.wav"
+weapons/M1911/MagIn	"Sounds/weapons/m1911/M1911MagIn.wav"
+weapons/M1911/MagOut	"Sounds/weapons/m1911/M1911MagOut.wav"
+
+weapons/M1911/Fire	"Sounds/weapons/m1911/Fire/M1911Fire.wav"
+
+$RANDOM weapons/M1911/FireMech
+{
+weapons/M1911/FireMech1
+weapons/M1911/FireMech2
+weapons/M1911/FireMech3
+weapons/M1911/FireMech4
+weapons/M1911/FireMech5
+weapons/M1911/FireMech6
+}
+
+weapons/M1911/FireMech1	"Sounds/weapons/M1911/Fire/M1911Mech1.wav"
+weapons/M1911/FireMech2	"Sounds/weapons/M1911/Fire/M1911Mech2.wav"
+weapons/M1911/FireMech3	"Sounds/weapons/M1911/Fire/M1911Mech3.wav"
+weapons/M1911/FireMech4	"Sounds/weapons/M1911/Fire/M1911Mech4.wav"
+weapons/M1911/FireMech5	"Sounds/weapons/M1911/Fire/M1911Mech5.wav"
+weapons/M1911/FireMech6	"Sounds/weapons/M1911/Fire/M1911Mech6.wav"
+
+$RANDOM weapons/M1911/FireAdd
+{
+weapons/M1911/FireAdd1
+weapons/M1911/FireAdd2
+weapons/M1911/FireAdd3
+weapons/M1911/FireAdd4
+weapons/M1911/FireAdd5
+}
+
+weapons/M1911/FireAdd1	"Sounds/weapons/M1911/Fire/M1911Add1.wav"
+weapons/M1911/FireAdd2	"Sounds/weapons/M1911/Fire/M1911Add2.wav"
+weapons/M1911/FireAdd3	"Sounds/weapons/M1911/Fire/M1911Add3.wav"
+weapons/M1911/FireAdd4	"Sounds/weapons/M1911/Fire/M1911Add4.wav"
+weapons/M1911/FireAdd5	"Sounds/weapons/M1911/Fire/M1911Add5.wav"

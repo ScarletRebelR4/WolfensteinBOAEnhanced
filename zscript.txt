@@ -133,17 +133,25 @@ version "3.7.2"
 #include "scripts/decorate/weapons/ammo.zs"
 #include "scripts/decorate/weapons/shovel.zs"
 #include "scripts/decorate/weapons/knife.zs"
+
 #include "scripts/decorate/weapons/luger.zs"
 #include "scripts/decorate/weapons/p38.zs"
+#include "scripts/decorate/weapons/M1911.zs"
+
 #include "scripts/decorate/weapons/shotgun.zs"
+#include "scripts/decorate/weapons/browning.zs"
+
 #include "scripts/decorate/weapons/g43.zs"
 #include "scripts/decorate/weapons/kar98k.zs"
-#include "scripts/decorate/weapons/browning.zs"
+
 #include "scripts/decorate/weapons/mp40.zs"
+#include "scripts/decorate/weapons/stenmk2.zs"
+
 #include "scripts/decorate/weapons/flamer.zs"
 #include "scripts/decorate/weapons/nebelwerfer.zs"
+
 #include "scripts/decorate/weapons/umg43.zs"
-#include "scripts/decorate/weapons/stenmk2.zs"
+
 #include "scripts/decorate/weapons/truckgun.zs"
 #include "scripts/decorate/weapons/panzerschreck.zs"
 #include "scripts/decorate/weapons/granate.zs"
