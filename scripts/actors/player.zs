@@ -133,7 +133,7 @@ class BoAPlayer : PlayerPawn
 		Player.ForwardMove 1.0, 1.0;
 		Player.ViewBob 0.44;
 		Player.WeaponSlot 1, "KnifeSilent", "Shovel", "Firebrand", "AstrosteinMelee"; //, "FakeID";
-		Player.WeaponSlot 2, "Luger9mm", "Walther9mm", "AstroLuger";
+		Player.WeaponSlot 2, "Luger9mm", "Walther9mm", "AstroLuger", "M191145ACP";
 		Player.WeaponSlot 3, "TrenchShotgun", "Browning5", "AstroShotgun";
 		Player.WeaponSlot 4, "MP40", "Sten", "AstroChaingun";
 		Player.WeaponSlot 5, "Kar98k", "G43";
