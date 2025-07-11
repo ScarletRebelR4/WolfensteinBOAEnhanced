@@ -826,7 +826,7 @@ class StaminaWidget : Widget
 
 		Super.Draw();
 
-		StatusBar.DrawBar("VERTSTMF", "VERTSTME", BoAStatusBar(StatusBar).mStaminaInterpolator.GetValue(), 100, (pos.x, pos.y), 0, StatusBar.SHADER_VERT | StatusBar.SHADER_REVERSE, StatusBar.DI_ITEM_OFFSETS, alpha);
+		StatusBar.DrawBar("VERTSTMF", "VERTSTME", BoAStatusBar(StatusBar).mStaminaInterpolator.GetValue(), 1000, (pos.x, pos.y), 0, StatusBar.SHADER_VERT | StatusBar.SHADER_REVERSE, StatusBar.DI_ITEM_OFFSETS, alpha);
 
 		return size;
 	}

@@ -131,7 +131,7 @@ class BoASprinting : Inventory
 
 		if (!stamina.amount)
 		{
-			cooldown = stamina.maxamount;
+			cooldown = 100;
 			AchievementTracker.CheckAchievement(owner.PlayerNumber(), AchievementTracker.ACH_SPRINT);
 		}
 	}
