@@ -119,7 +119,7 @@ class BoAPlayer : PlayerPawn
 		Player.StartItem "ThompsonLoaded",30;
 		Player.StartItem "CoachGunLoaded",2;
 		Player.StartItem "GarandLoaded",8;
-		Player.StartItem "Stamina", 100;
+		Player.StartItem "Stamina", 1000;
 		Player.StartItem "NullWeapon", 1;
 		Player.StartItem "KnifeSilent";
 		
