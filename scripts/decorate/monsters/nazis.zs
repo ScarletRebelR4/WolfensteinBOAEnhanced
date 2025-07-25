@@ -2987,7 +2987,7 @@ class MGTurretSoldier : MGTurret
 	{
 	//$Category Monsters (BoA)/Turrets
 	//$Title Stationary Turret Soldier (Afrika Korps)
-	Health 100;
+	Health 40;
 	MaxTargetRange 3072;
 	Height 56;
 	Radius 16;

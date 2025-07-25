@@ -69,7 +69,7 @@ class Sten : NaziWeapon //Rate of fire: ~500 rounds/min - Wikipedia
 		}
 		STEN A 0 A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		STEN A 0 A_AlertMonsters(384); // buffed a bit --N00b
-		STEN B 1 A_FireProjectile("StenTracer",frandom(-1.5,1.5),1,0,0,0,frandom(-1.0,1.0));
+		STEN B 1 A_FireProjectile("StenTracer",frandom(-0.5,0.5),1,0,0,0,frandom(-0.25,0.25));
 		STEN B 1 Offset(0,34) A_SetPitch(pitch-(0.5*boa_recoilamount));
 		STEN B 0 A_JumpIf(waterlevel > 0,2);
 		STEN B 0 A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
@@ -87,7 +87,7 @@ class Sten : NaziWeapon //Rate of fire: ~500 rounds/min - Wikipedia
 		}
 		STEN A 0 A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		STEN A 0 A_AlertMonsters;
-		STEN B 1 Offset(0,35) A_FireProjectile("StenTracer",frandom(-1.5,1.5),1,0,0,0,frandom(-1.0,1.0));
+		STEN B 1 Offset(0,35) A_FireProjectile("StenTracer",frandom(-1.0,1.0),1,0,0,0,frandom(-0.5,0.5));
 		STEN B 0 A_JumpIf(waterlevel > 0,2);
 		STEN B 0 A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
 		STEN B 1 Offset(0,34) A_SetPitch(pitch-(0.5*boa_recoilamount));
@@ -106,7 +106,7 @@ class Sten : NaziWeapon //Rate of fire: ~500 rounds/min - Wikipedia
 		STEN A 0 A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		STEN A 0 A_AlertMonsters(384);
 		STEN A 0 A_TakeInventory("StenLoaded",1,TIF_NOTAKEINFINITE); // take the round manually (see ammotypes) --N00b
-		STEN B 1 A_FireProjectile("StenTracer",frandom(-1.5,1.5),0,0,0,0,frandom(-1.0,1.0));
+		STEN B 1 A_FireProjectile("StenTracer",frandom(-0.1,0.1),0,0,0,0,frandom(-0.1,0.1));
 		STEN B 1 Offset(0,34) A_SetPitch(pitch-(0.5*boa_recoilamount));
 		STEN B 0 A_JumpIf(waterlevel > 0,2);
 		STEN B 0 A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
