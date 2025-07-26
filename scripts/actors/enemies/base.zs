@@ -63,7 +63,14 @@
 	  death if they enter (or are caught in) an area that is brighter than their 
 	  light threshold allows them to tolerate
 	- The actor will also spawn small smoke puffs immediately before dying
-
+	
+	
+	Base.CrouchHeightStore
+	- Stores the crouch height and base height of an actor
+	- Will be used to dynamically change actor heights in Tick() rather than
+	  using A_SetSize manually.
+	- Hopefully this fixes the fucking hitbox not going back to normal jank.
+	
 	Nazi.Sneakable
 	- Boolean that controls if the enemy is a sneakable enemy or not.
 	- Can also be set in-editor on a per-actor basis by setting the user_sneakable
@@ -302,7 +309,15 @@ class Base : Actor
 	bool step;
 
 	FlagDef CANSQUISH:flags, 0;
-
+	
+	int crouchHeight;
+	int normalHeight;
+	
+	Property CrouchHeightStore: crouchheight, normalheight;
+	
+	//[Pop] Basically gonna pull these when changing height, rather than doing it all
+	//manually
+	
 	Property AlwaysDrawHealthBar:user_DrawHealthBar;
 	Property BossIcon:BossIcon;
 	Property DodgeAmount:maxdodge; // Max number of times the enemy will dodge
@@ -321,7 +336,13 @@ class Base : Actor
 		Base.DespawnTime -1;
 		Activation THINGSPEC_Default | THINGSPEC_ThingTargets;
 	}
-
+	
+	ClearScope Bool IsInState (Actor Other, StateLabel CheckFor = "Spawn", Bool Exact = False, Bool FromWeapon = False)
+	{
+		If (!Other) Return False;
+		Return (Other.InStateSequence(Other.CurState,Other.FindState (CheckFor,Exact)));
+	}
+	
 	state A_LookThroughDisguise(int flags = 0, float minseedist = 0, float Range = 0, float maxheardist = 0, double fov = 0, statelabel label = "See")
 	{
 		// Try a normal look first!
@@ -1345,6 +1366,7 @@ class Nazi : Base
 		DamageFactor "EnemyFrag", 0; //for mines deploy by enemies
 
 		Base.DodgeAmount 6;
+		Base.CrouchHeightStore 48, 64;
 		Nazi.CrouchChance 4; // Chance of crouching when behind an obstacle, from 0-255
 		Nazi.FrightMultiplier 1.0;
 		Nazi.Healer 0;
@@ -1357,7 +1379,7 @@ class Nazi : Base
 		Nazi.Head "MS_UNKN";
 		Nazi.TotaleGierDrop 1;
 	}
-
+	
 	States
 	{
 		Active:
@@ -1675,15 +1697,12 @@ class Nazi : Base
 			}
 			"####" A 0 { return ResolveState("Dodge.Resume"); }
 		Dodge.Right:
-			"####" A 0 A_SetSize(-1, Default.height / 2);
 			"####" ABCDEA 5;
 			"####" A 0 { return ResolveState("Dodge.End"); }
 		Dodge.Left:
-			"####" A 0 A_SetSize(-1, Default.height / 2);
 			"####" AEDCBA 5;
 			"####" A 0 { return ResolveState("Dodge.End"); }
 		Dodge.Crouch:
-			"####" A 0 A_SetSize(-1, Default.height * 0.75);
 			"####" A 5 A_LookEx(LOF_NOSEESOUND);
 			"####" A 0 {
 				if (crouchtimer < 175 && Random[stand](0, 255) > 4 && (!user_incombat || !InPlayerCrosshair()))
@@ -1700,7 +1719,6 @@ class Nazi : Base
 			"####" A 0 {
 				sprite = defaultsprite;
 				A_Face(target);
-				A_SetSize(-1, Default.height);
 				bNoPain = Default.bNoPain;
 				DamageFactor = Default.DamageFactor;
 				reactiontime = 0;
@@ -3028,6 +3046,14 @@ class Nazi : Base
 		}
 
 		Super.Tick();
+		
+		// Update recognition if crouching
+		if(IsInState(Self,"Dodge.Right") || IsInState(Self,"Dodge.Left"))
+			self.Height = normalheight / 2;
+		else if(IsInState(Self,"Dodge.Crouch"))
+			self.Height = crouchheight;
+		else
+			self.Height = normalheight;
 	}
 
 	static void SpyGive(Actor recipient, String itemname, int rawAmount)
@@ -3701,6 +3727,7 @@ class NaziBoss : Nazi
 		Mass 1000;
 		Scale 0.67;
 		Height 80;
+		Base.CrouchHeightStore 60, 80;
 		MaxTargetRange 0;
 		Base.BossIcon "BOSSICON";
 		DamageFactor "Rocket", 0.07;
@@ -3837,7 +3864,7 @@ class BatBase : Base
 				SpawnRoost();
 			}
 		}
-
+		
 		Super.Tick();
 	}
 
