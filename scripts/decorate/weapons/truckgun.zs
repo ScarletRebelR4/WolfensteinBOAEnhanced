@@ -21,7 +21,7 @@
 **/
 
 // Truck sequence weapon
-class TruckWeapon : UMG43
+class TruckWeapon : VenomGunMK3
 {
 	Default
 	{

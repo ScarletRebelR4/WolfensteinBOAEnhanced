@@ -132,6 +132,11 @@ class BoAPlayer : PlayerPawn
 		Player.SideMove 1.0, 1.0;
 		Player.ForwardMove 1.0, 1.0;
 		Player.ViewBob 0.44;
+		
+		//[Pop] BTW THIS NEEDS TO BE CUT, THIS SHIT IS ARCHAIC OLD DECORATE
+		//BULLSHIT, GET IT THE FUCK OUT OF MY SIGHT AT SOME POINT.
+		//Use Weapon.SlotNumber and Weapon.SlotPriority for the LOVE OF GOD.
+		
 		Player.WeaponSlot 1, "KnifeSilent", "Shovel", "Firebrand", "AstrosteinMelee"; //, "FakeID";
 		Player.WeaponSlot 2, "Luger9mm", "Walther9mm", "AstroLuger", "M191145ACP";
 		Player.WeaponSlot 3, "TrenchShotgun", "Browning5", "AstroShotgun";
@@ -139,8 +144,9 @@ class BoAPlayer : PlayerPawn
 		Player.WeaponSlot 5, "Kar98k", "G43";
 		Player.WeaponSlot 6, "Pyrolight", "Nebelwerfer", "AstroRocketlauncher";
 		Player.WeaponSlot 7, "Panzerschreck";
-		Player.WeaponSlot 8, "TeslaCannon", "UMG43";
+		Player.WeaponSlot 8, "TeslaCannon", "VenomGunMK3";
 		Player.WeaponSlot 0, "NullWeapon";
+		
 		Player.DamageScreenColor "ff 00 00", 0.0;
 		Player.DamageScreenColor "ff ff ff", 1.0, "IceWater";
 		Player.DamageScreenColor "64 00 C8", 0.0, "MutantPoison";

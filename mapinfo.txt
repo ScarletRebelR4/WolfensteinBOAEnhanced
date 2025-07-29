@@ -1364,7 +1364,7 @@ DoomEdNums
 	15013=Panzerschreck
 	15018=TrenchShotgun
 	15021=Sten
-	15022=UMG43
+	15022=VenomGunMK3
 	15097=G43
 	15102=Ammo12Gauge
 	15103=AmmoBox12Gauge

@@ -384,7 +384,7 @@ class AchievementTracker : StaticEventHandler
 		"Nebelwerfer",
 		"Panzerschreck",
 		"TeslaCannon",
-		"UMG43"
+		"VenomGunMK3"
 	};
 
 	enum Achievements
