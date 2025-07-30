@@ -42,6 +42,8 @@ class VenomGunMK3 : NaziWeapon
 	-WEAPON.NOALERT
 	}
 	
+	double LoopVolume;
+	
 	States
 	{
 	Select:
@@ -64,8 +66,18 @@ class VenomGunMK3 : NaziWeapon
 	Fire:
 		TNT1 A 0 A_JumpIfInventory("VGSpin", 1, "Hold");
 		TNT1 A 0 A_StartSound("weapons/VenomGun/WindUp", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-		UMGA AAAACCCCBBBBDDDDAACCBBDDAACCBBDDACBD 1;
-		TNT1 A 0 A_StartSound("Weapons/VenomGun/Loop", CHAN_5, CHANF_LOOPING, 0.2);
+		UMGA AAAACCCCBBBBDDDDAACCBBDD 1;
+		TNT1 A 0
+		{
+			invoker.loopVolume = 0;
+		}
+		UMGA AACCBBDDACBD 1
+		{
+			A_StopSound(CHAN_5);
+			invoker.loopVolume = invoker.loopVolume + 0.01;
+			A_StartSound("Weapons/VenomGun/Loop", CHAN_5, CHANF_LOOPING, invoker.loopVolume);
+		}
+		TNT1 A 0;
 		UMGA D 1 A_Refire;
 	Hold:
 		UMGA A 1 A_StartSound("weapons/VenomGun/Mech", CHAN_AUTO, CHANF_OVERLAP, 1.0);
@@ -78,7 +90,7 @@ class VenomGunMK3 : NaziWeapon
 			A_StartSound("weapons/VenomGun/fire", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			A_StartSound("weapons/VenomGun/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			
-			A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(20,55),SXF_NOCHECKPOSITION);
+			A_SpawnItemEx("Casing9mm",15,0,32,8,random(-2,2),random(0,4),random(20,55),SXF_NOCHECKPOSITION);
 			if(waterlevel > 0.2)
 			{
 				A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
@@ -94,9 +106,11 @@ class VenomGunMK3 : NaziWeapon
 			A_WeaponOffset(random(-2,2),random(33,36), WOF_INTERPOLATE);
 			
 			A_StartSound("weapons/VenomGun/fire", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			A_StartSound("weapons/VenomGun/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			A_StartSound("weapons/VenomGun/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+			A_StartSound("weapons/VenomGun/Mech", CHAN_AUTO, CHANF_OVERLAP, 0.9);
+			A_StartSound("weapons/VenomGun/Bass", CHAN_AUTO, CHANF_OVERLAP, 0.75);
 			
-			A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(20,55),SXF_NOCHECKPOSITION);
+			A_SpawnItemEx("Casing9mm",15,0,32,8,random(-2,2),random(0,4),random(20,55),SXF_NOCHECKPOSITION);
 			if(waterlevel > 0.2)
 			{
 				A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
@@ -108,8 +122,19 @@ class VenomGunMK3 : NaziWeapon
 		Goto FireFinish;
 	FireFinish:
 		TNT1 A 0 A_JumpIfInventory("VGSpin", 1, "Ready2");
-		UMGA D 0 Offset(0,32) A_StartSound("weapons/Venomgun/WindDown", CHAN_5);
-		UMGA ACBCACBDAAABBBCCCCDDDD 1;
+		UMGA D 0 Offset(0,32);
+		TNT1 A 0
+		{
+			invoker.loopVolume = 0.1;
+			A_StartSound("weapons/Venomgun/WindDown", CHAN_AUTO);
+		}
+		UMGA ACBDAACCBBDD 1
+		{
+			A_StopSound(CHAN_5);
+			invoker.loopVolume = invoker.loopVolume - 0.01;
+			A_StartSound("Weapons/VenomGun/Loop", CHAN_5, CHANF_LOOPING, invoker.loopVolume);
+		}
+		UMGA AAABBBCCCCDDDD 1;
 		Goto Ready;
 	
 	AltFire:
@@ -119,8 +144,17 @@ class VenomGunMK3 : NaziWeapon
 			A_GiveInventory("VGSpin", 1);
 		}
 		TNT1 A 0 A_StartSound("weapons/VenomGun/WindUp", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-		UMGA AAAACCCCBBBBDDDDAACCBBDDAACCBBDDACBD 1;
-		TNT1 A 0 A_StartSound("Weapons/VenomGun/Loop", CHAN_5, CHANF_LOOPING, 0.2);
+		UMGA AAAACCCCBBBBDDDDAACCBBDD 1;
+		TNT1 A 0
+		{
+			invoker.loopVolume = 0;
+		}
+		UMGA AACCBBDDACBD 1
+		{
+			A_StopSound(CHAN_5);
+			invoker.loopVolume = invoker.loopVolume + 0.01;
+			A_StartSound("Weapons/VenomGun/Loop", CHAN_5, CHANF_LOOPING, invoker.loopVolume);
+		}
 		
 		Goto Ready2;
 	AltFire2:
@@ -128,8 +162,18 @@ class VenomGunMK3 : NaziWeapon
 		{
 			A_TakeInventory("VGSpin", 1);
 		}
-		UMGA D 0 Offset(0,32) A_StartSound("weapons/Venomgun/WindDown", CHAN_5);
-		UMGA ACBCACBDAAABBBCCCCDDDD 1;
+		UMGA D 0 Offset(0,32);
+		TNT1 A 0
+		{
+			invoker.loopVolume = 0.1;
+			A_StartSound("weapons/Venomgun/WindDown", CHAN_AUTO);
+		}
+		UMGA ACBDAACCBBDD 1
+		{
+			A_StopSound(CHAN_5);
+			invoker.loopVolume = invoker.loopVolume - 0.01;
+			A_StartSound("Weapons/VenomGun/Loop", CHAN_5, CHANF_LOOPING, invoker.loopVolume);
+		}
 		Goto Ready;
 	
 	VGFlash:
