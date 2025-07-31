@@ -72,7 +72,7 @@ class Luger9mm : NaziWeapon
 		LUGG A 0 A_FireProjectile("PistolSmokeSpawner",0,0,0,random(-4,4),0,0);
 		LUGG A 0
 		{
-			A_StartSound("Weapons/Luger/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.25);
+			A_StartSound("Weapons/Luger/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.75);
 			A_StartSound("Weapons/Luger/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			A_StartSound("Weapons/Luger/FireMech", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 		}
@@ -91,7 +91,8 @@ class Luger9mm : NaziWeapon
 	Reload:
 		TNT1 A 0 A_JumpIf(CountInv("Luger9mmLoaded") == 0, "Reload2");
 		L2GG ABCDEF 1;
-		TNT1 A 0 A_StartSound("Weapons/Luger/MagOut", CHAN_AUTO);
+		TNT1 A 0 A_StartSound("Weapons/Luger/MagOut", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+		TNT1 A 0 A_StartSound("Weapons/Luger/MagOutAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
 		L2GG GHIJKLMNOP 1;
 		TNT1 A 0 A_StartSound("Weapons/Luger/MagIn", CHAN_AUTO);
 		L2GG QRSTUV 1;
@@ -106,7 +107,8 @@ class Luger9mm : NaziWeapon
 		Goto Ready;
 	Reload2:
 		L4GG ABCDEFG 1;
-		TNT1 A 0 A_StartSound("Weapons/Luger/MagOut", CHAN_AUTO);
+		TNT1 A 0 A_StartSound("Weapons/Luger/MagOut", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+		TNT1 A 0 A_StartSound("Weapons/Luger/MagOutAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
 		L4GG HIJKLMNOPQR 1;
 		TNT1 A 0 A_StartSound("Weapons/Luger/MagIn", CHAN_AUTO);
 		L4GG STUVWX 1;
@@ -118,7 +120,8 @@ class Luger9mm : NaziWeapon
 	Reload2Finish:
 		L4GG YZ 1;
 		L5GG ABCD 1;
-		TNT1 A 0 A_StartSound("Weapons/Luger/Charge", CHAN_AUTO);
+		TNT1 A 0 A_StartSound("Weapons/Luger/ChargeAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+		TNT1 A 0 A_StartSound("Weapons/Luger/Charge", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 		L5GG EFGHIJKLMNOPQRSTUV 1;
 		Goto Ready;
 	

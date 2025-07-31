@@ -27,9 +27,11 @@ weapons/Sten/FireAdd	"Sounds/Weapons/Sten/Fire/StenAdd1.wav"
 
 weapons/Luger/MagIn	"Sounds/Weapons/Luger/LugerMagIn.wav"
 weapons/Luger/MagOut	"Sounds/Weapons/Luger/LugerMagOut.wav"
+weapons/Luger/MagOutAdd	"Sounds/Weapons/Luger/LugerMagOutAdd.mp3"
 weapons/Luger/Charge	"Sounds/Weapons/Luger/LugerCharge.wav"
+weapons/Luger/ChargeAdd	"Sounds/Weapons/Luger/LugerChargeAdd.mp3"
 
-weapons/Luger/Fire	"Sounds/Weapons/Luger/Fire/LugerFire.ogg"
+weapons/Luger/Fire	"Sounds/Weapons/Luger/Fire/LugerFire2.mp3"
 
 $RANDOM weapons/Luger/FireAdd
 {
@@ -63,7 +65,8 @@ weapons/M1911/Charge	"Sounds/weapons/m1911/M1911Charge.wav"
 weapons/M1911/MagIn	"Sounds/weapons/m1911/M1911MagIn.wav"
 weapons/M1911/MagOut	"Sounds/weapons/m1911/M1911MagOut.wav"
 
-weapons/M1911/Fire	"Sounds/weapons/m1911/Fire/M1911Fire.wav"
+weapons/M1911/Fire	"Sounds/weapons/m1911/Fire/M1911Fire2.ogg"
+weapons/M1911/FireExtra	"Sounds/weapons/m1911/Fire/M1911Fire.wav"
 
 $RANDOM weapons/M1911/FireMech
 {
@@ -134,6 +137,8 @@ weapons/VenomGun/FireAdd3	"sounds/weapons/MGVGMK3/VenomFireAdd3.wav"
 weapons/VenomGun/FireAdd4	"sounds/weapons/MGVGMK3/VenomFireAdd4.wav"
 weapons/VenomGun/FireAdd5	"sounds/weapons/MGVGMK3/VenomFireAdd5.wav"
 weapons/VenomGun/FireAdd6	"sounds/weapons/MGVGMK3/VenomFireAdd6.wav"
+
+weapons/VenomGun/MechAdd "Sounds/Weapons/MGVGMK3/VenomMech.ogg"
 
 $RANDOM weapons/VenomGun/Mech
 {

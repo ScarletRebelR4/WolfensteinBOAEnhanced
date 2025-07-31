@@ -72,7 +72,8 @@ class M191145ACP : NaziWeapon
 		M45A A 0 A_FireProjectile("PistolSmokeSpawner",0,0,0,random(-4,4),0,0);
 		M45A A 0
 		{
-			A_StartSound("Weapons/M1911/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.9);
+			A_StartSound("Weapons/M1911/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.25);
+			A_StartSound("Weapons/M1911/FireExtra", CHAN_AUTO, CHANF_OVERLAP, 0.6);
 			A_StartSound("Weapons/M1911/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			A_StartSound("Weapons/M1911/FireMech", CHAN_AUTO, CHANF_OVERLAP, 0.8);
 		}

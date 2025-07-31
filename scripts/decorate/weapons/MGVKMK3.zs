@@ -88,7 +88,10 @@ class VenomGunMK3 : NaziWeapon
 			A_WeaponOffset(random(-2,2),random(33,36), WOF_INTERPOLATE);
 			
 			A_StartSound("weapons/VenomGun/fire", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			A_StartSound("weapons/VenomGun/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			A_StartSound("weapons/VenomGun/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+			A_StartSound("weapons/VenomGun/Mech", CHAN_AUTO, CHANF_OVERLAP, 0.9);
+			A_StartSound("weapons/VenomGun/MechAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+			A_StartSound("weapons/VenomGun/Bass", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 			
 			A_SpawnItemEx("Casing9mm",15,0,32,8,random(-2,2),random(0,4),random(20,55),SXF_NOCHECKPOSITION);
 			if(waterlevel > 0.2)
@@ -108,7 +111,8 @@ class VenomGunMK3 : NaziWeapon
 			A_StartSound("weapons/VenomGun/fire", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			A_StartSound("weapons/VenomGun/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 			A_StartSound("weapons/VenomGun/Mech", CHAN_AUTO, CHANF_OVERLAP, 0.9);
-			A_StartSound("weapons/VenomGun/Bass", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+			A_StartSound("weapons/VenomGun/MechAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+			A_StartSound("weapons/VenomGun/Bass", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 			
 			A_SpawnItemEx("Casing9mm",15,0,32,8,random(-2,2),random(0,4),random(20,55),SXF_NOCHECKPOSITION);
 			if(waterlevel > 0.2)
