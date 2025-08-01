@@ -37,7 +37,9 @@ class NaziWeapon : Weapon
 
 	Property AmmoInventoryType:ammoitem;
 	FlagDef NORAMPAGE:flags, 0;
-
+	
+	bool firstPickup;
+	
 	Default
 	{
 		+WEAPON.AMMO_CHECKBOTH
@@ -51,6 +53,69 @@ class NaziWeapon : Weapon
 
 	States
 	{
+		Deselect:
+			TNT1 A 0 A_Lower();
+			TNT1 A 1 A_Lower();
+			Loop;
+		Select:
+			TNT1 A 0 A_Raise();
+			TNT1 A 1 A_Raise();
+			Loop;
+		FirstSelect:
+			TNT1 A 0; //Check First Time Select
+			TNT1 A 0 A_Raise();
+			TNT1 A 1 A_Raise();
+			Loop;
+		FirstReady: //First Time Select
+			TNT1 A 0 ;
+		Ready:
+			TNT1 A 0; //Check First Time Ready
+			TNT1 A 0; //Check loaded ammo
+			TNT1 A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Ready2: //Empty State
+			TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Fire:
+			TNT1 A 1; //Check Ammo
+			TNT1 A 1
+			{
+				//A_GunFlash();
+				//A_AlertMonsters();
+				
+				if(waterlevel > 0.2)
+				{
+					//[Pop] Refactor later with new smoke system
+					 A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
+				}
+				A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+				//Take Ammo
+				
+				//Play Sounds
+				//Fire Projectile
+				//THEN change pitch
+			}
+			TNT1 A 1;
+			TNT1 A 0; //If needed, check for ammo for last shot empty state
+			TNT1 A 1;
+			Goto Ready;
+		FireEnd: //Last shot empty
+			TNT1 A 1;
+			TNT1 A 1;
+			Goto Ready2;
+		AltFire:
+			TNT1 A 0;
+			TNT1 A 0;
+			Goto Ready;
+		Reload:
+			TNT1 A 1;
+		ReloadLoop: //[Pop] This will get replaced later hopefully with just a function
+			TNT1 A 1;
+			TNT1 A 0;
+		ReloadEnd:
+			TNT1 A 1;
+			Goto Ready;
+		
 		Dryfire:
 			"####" "#" 1 A_JumpIf(CVar.FindCVar("boa_autoreload").GetInt() == 1,"Reload");
 			"####" "#" 1 Offset(0,35) A_StartSound("weapon/dryfire", CHAN_WEAPON);

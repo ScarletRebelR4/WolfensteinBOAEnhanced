@@ -34,7 +34,7 @@ class Luger9mm : NaziWeapon
 	Weapon.AmmoType2 "Ammo9mm";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
-	Weapon.UpSound "P08COK";
+	Weapon.UpSound "Select/pistol";
 	Tag "Luger P08";
 	Inventory.PickupMessage "$P08LUG";
 	+WEAPON.NOAUTOFIRE
@@ -42,7 +42,30 @@ class Luger9mm : NaziWeapon
 	}
 	States
 	{
+	Deselect:
+		LUGG A 0 A_Lower;
+		LUGG A 1 A_Lower;
+		Loop;
+	Select:
+		TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstSelect");
+		LUGG A 0 A_Raise;
+		LUGG A 1 A_Raise;
+		Loop;
+	FirstSelect:
+		TNT1 AAA 0 A_Raise;
+		TNT1 A 1 A_Raise;
+		Loop;
+	FirstReady:
+		L1GG ABCDEFG 1;
+		TNT1 A 0 
+		{
+			A_StartSound("Weapons/Luger/ChargeAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+			A_StartSound("Weapons/Luger/Charge", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			invoker.firstPickup = true;
+		}
+		L1GG HIJKLMNOPQRSTUV 1;
 	Ready:
+		TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
 		LUGG A 0 A_JumpIf(CountInv("Luger9mmLoaded") == 0, "ReadyEmpty");
 		LUGG A 0 A_JumpIfInventory("Ammo9mm",1,2);
 		LUGG A 1 A_WeaponReady;
@@ -54,14 +77,6 @@ class Luger9mm : NaziWeapon
 		LUGG G 1 A_WeaponReady;
 		Loop;
 		LUGG G 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	Deselect:
-		LUGG A 0 A_Lower;
-		LUGG A 1 A_Lower;
-		Loop;
-	Select:
-		LUGG A 0 A_Raise;
-		LUGG A 1 A_Raise;
 		Loop;
 	Fire:
 		LUGG A 0 A_JumpIfInventory("Luger9mmLoaded",1,1);
@@ -99,7 +114,7 @@ class Luger9mm : NaziWeapon
 	ReloadLoop:
 		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
 		TNT1 A 0 A_GiveInventory("Luger9mmLoaded");
-		TNT1 A 0 A_JumpIfInventory("Luger9mmLoaded",0,"ReloadFinish");
+		TNT1 A 0 A_JumpIfInventory("Luger9mmLoaded",9,"ReloadFinish");
 		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
 	ReloadFinish:
 		L2GG WXYZ 1;
@@ -115,7 +130,7 @@ class Luger9mm : NaziWeapon
 	Reload2Loop:
 		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
 		TNT1 A 0 A_GiveInventory("Luger9mmLoaded");
-		TNT1 A 0 A_JumpIfInventory("Luger9mmLoaded",0,"Reload2Finish");
+		TNT1 A 0 A_JumpIfInventory("Luger9mmLoaded",8,"Reload2Finish");
 		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"Reload2Loop");
 	Reload2Finish:
 		L4GG YZ 1;
@@ -142,7 +157,7 @@ class Luger9mmLoaded : Ammo
 	{
 	Tag "9x19mm";
 	+INVENTORY.IGNORESKILL
-	Inventory.MaxAmount 8;
+	Inventory.MaxAmount 9;
 	Inventory.Icon "WALT01";
 	}
 }

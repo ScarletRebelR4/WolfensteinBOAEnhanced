@@ -34,15 +34,38 @@ class M191145ACP : NaziWeapon
 	Weapon.AmmoType2 "Ammo9mm";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
-	Weapon.UpSound "P08COK";
+	Weapon.UpSound "Select/pistol";
 	Tag "M1911";
 	Inventory.PickupMessage "$P08LUG";
 	+WEAPON.NOAUTOFIRE
 	+NaziWeapon.NORAMPAGE
 	}
+	
 	States
 	{
+	Deselect:
+		M45A A 0 A_Lower;
+		M45A A 1 A_Lower;
+		Loop;
+	Select:
+		TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstSelect");
+		M45A A 0 A_Raise;
+		M45A A 1 A_Raise;
+		Loop;
+	FirstSelect:
+		TNT1 AAA 0 A_Raise;
+		TNT1 A 1 A_Raise;
+		Loop;
+	FirstReady:
+		M451 ABCDEFGHI 1;
+		TNT1 A 0 
+		{
+			A_StartSound("Weapons/M1911/Charge", CHAN_AUTO);
+			invoker.firstPickup = true;
+		}
+		M451 JKLMNOPQRSTUVWXYZ 1;
 	Ready:
+		TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
 		M45A A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 0, "ReadyEmpty");
 		M45A A 0 A_JumpIfInventory("Ammo9mm",1,2);
 		M45A A 1 A_WeaponReady;
@@ -54,14 +77,6 @@ class M191145ACP : NaziWeapon
 		M45A I 1 A_WeaponReady;
 		Loop;
 		M45A I 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	Deselect:
-		M45A A 0 A_Lower;
-		M45A A 1 A_Lower;
-		Loop;
-	Select:
-		M45A A 0 A_Raise;
-		M45A A 1 A_Raise;
 		Loop;
 	Fire:
 		M45A A 0 A_JumpIfInventory("M191145ACPLoaded",1,1);
@@ -99,7 +114,7 @@ class M191145ACP : NaziWeapon
 	ReloadLoop:
 		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
 		TNT1 A 0 A_GiveInventory("M191145ACPLoaded");
-		TNT1 A 0 A_JumpIfInventory("M191145ACPLoaded",0,"ReloadFinish");
+		TNT1 A 0 A_JumpIfInventory("M191145ACPLoaded",8,"ReloadFinish");
 		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
 	ReloadFinish:
 		M452 STUVWXYZ 1;
@@ -115,7 +130,7 @@ class M191145ACP : NaziWeapon
 	Reload2Loop:
 		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
 		TNT1 A 0 A_GiveInventory("M191145ACPLoaded");
-		TNT1 A 0 A_JumpIfInventory("M191145ACPLoaded",0,"Reload2Finish");
+		TNT1 A 0 A_JumpIfInventory("M191145ACPLoaded",7,"Reload2Finish");
 		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"Reload2Loop");
 	Reload2Finish:
 		M454 STUVW 1;
@@ -141,7 +156,7 @@ class M191145ACPLoaded : Ammo
 	{
 	Tag "45ACP";
 	+INVENTORY.IGNORESKILL
-	Inventory.MaxAmount 7;
+	Inventory.MaxAmount 8;
 	Inventory.Icon "WALT01";
 	}
 }
