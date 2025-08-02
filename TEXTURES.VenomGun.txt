@@ -1,0 +1,4 @@
+//[Pop] The Venom Gun (MG-VG MK3) will have all of its sprites made at runtime
+//This is so that its easier for the design to be tweaked on the fly, mainly
+//because its an important gun that we want to look unique, to stand out
+//against the rest of the roster, and against other wolfenstein based mods.
