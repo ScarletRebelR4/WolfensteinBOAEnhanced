@@ -112,6 +112,17 @@ class ThompsonTracer : PlayerTracer
 	}
 }
 
+//Muzzle velocity: 1600 ft/s (488 m/s) - Wikipedia
+class PPSH41Tracer : PlayerTracer
+{
+	Default
+	{
+	ProjectileKickback 100;
+	DamageFunction (random(7,16));
+	Speed 105;
+	}
+}
+
 //Muzzle velocity: 2,822 ft/s (860 m/s) - Wikipedia
 class Kar98kTracer : PlayerTracer
 {

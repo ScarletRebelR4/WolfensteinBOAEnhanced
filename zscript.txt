@@ -146,6 +146,7 @@ version "3.7.2"
 
 #include "scripts/decorate/weapons/mp40.zs"
 #include "scripts/decorate/weapons/stenmk2.zs"
+#include "scripts/decorate/weapons/PPSH.zs"
 
 #include "scripts/decorate/weapons/flamer.zs"
 #include "scripts/decorate/weapons/nebelwerfer.zs"

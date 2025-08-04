@@ -105,7 +105,7 @@ class NaziWeapon : Weapon
 			Goto Ready2;
 		AltFire:
 			TNT1 A 0;
-			TNT1 A 0;
+			TNT1 A 0 A_Jump(256, "Ready"); //Here to prevent a weird state bug
 			Goto Ready;
 		Reload:
 			TNT1 A 1;
