@@ -87,7 +87,7 @@ class Luger9mm : NaziWeapon
 		LUGG A 0 A_FireProjectile("PistolSmokeSpawner",0,0,0,random(-4,4),0,0);
 		LUGG A 0
 		{
-			A_StartSound("Weapons/Luger/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+			A_StartSound("Weapons/Luger/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 			A_StartSound("Weapons/Luger/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			A_StartSound("Weapons/Luger/FireMech", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 		}
