@@ -60,7 +60,7 @@ class LugerTracer : PlayerTracer
 	Default
 	{
 	ProjectileKickback 60;
-	Speed 100;
+	Speed 80;
 	BulletTracer.BaseDamage 10;
 	}
 }
@@ -71,7 +71,7 @@ class WaltherTracer : LugerTracer
 	Default
 	{
 	DamageFunction (random(6,18));
-	Speed 90;
+	Speed 80;
 	BulletTracer.BaseDamage 10;
 	}
 }
@@ -80,6 +80,7 @@ class ShotgunTracer : PlayerTracer
 {
 	Default
 	{
+	Speed 76;
 	Scale 0.3;
 	BulletTracer.BaseDamage 7;
 	DamageType "Pellet";
@@ -108,7 +109,7 @@ class ThompsonTracer : PlayerTracer
 	Default
 	{
 	ProjectileKickback 100;
-	Speed 120;
+	Speed 65;
 	BulletTracer.BaseDamage 16;
 	}
 }
@@ -120,7 +121,7 @@ class PPSH41Tracer : PlayerTracer
 	{
 	ProjectileKickback 100;
 	BulletTracer.BaseDamage 15;
-	Speed 105;
+	Speed 111;
 	}
 }
 
@@ -131,7 +132,7 @@ class Kar98kTracer : PlayerTracer
 	{
 	ProjectileKickback 100;
 	BulletTracer.BaseDamage 65;
-	Speed 180;
+	Speed 196;
 	Obituary "$OBMAUSER";
 	DamageType "Rifle";
 	}
@@ -145,7 +146,7 @@ class G43Tracer : Kar98kTracer
 	Default
 	{
 	BulletTracer.BaseDamage 55;
-	Speed 150;
+	Speed 170;
 	Obituary "$OBG43";
 	DamageType "Rifle";
 	}
@@ -156,7 +157,7 @@ class ChaingunTracer : PlayerTracer
 	Default
 	{
 	BulletTracer.BaseDamage 15;
-	Speed 90;
+	Speed 169;
 	DamageType "Rifle";
 	}
 }
