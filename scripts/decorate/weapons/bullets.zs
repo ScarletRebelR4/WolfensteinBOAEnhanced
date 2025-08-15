@@ -162,6 +162,17 @@ class ChaingunTracer : PlayerTracer
 	}
 }
 
+//well use Minigun muzzle velocity for this of roughly 854
+class UberKurzTracer : PlayerTracer
+{
+	Default
+	{
+	BulletTracer.BaseDamage 18;
+	Speed 195;
+	DamageType "Rifle";
+	}
+}
+
 //////////////////////////////////////////////////////////////////
 //////////////// SHELLS & CASINGS ////////////////////////////////
 //////////////////////////////////////////////////////////////////

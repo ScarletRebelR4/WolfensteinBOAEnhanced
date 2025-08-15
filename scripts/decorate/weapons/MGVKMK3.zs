@@ -99,7 +99,7 @@ class VenomGunMK3 : NaziWeapon
 				A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
 			}
 			
-			A_FireProjectile("ChaingunTracer",frandom(-1.4,1.4),1,0,0,0,frandom(-0.7,0.7));
+			A_FireProjectile("UberKurzTracer",frandom(-1.4,1.4),1,0,0,0,frandom(-0.7,0.7));
 		}
 		UMGA B 1 A_StartSound("weapons/VenomGun/Mech", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 		UMGA D 1
@@ -120,7 +120,7 @@ class VenomGunMK3 : NaziWeapon
 				A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
 			}
 			
-			A_FireProjectile("ChaingunTracer",frandom(-1.4,1.4),1,0,0,0,frandom(-0.7,0.7));
+			A_FireProjectile("UberKurzTracer",frandom(-1.4,1.4),1,0,0,0,frandom(-0.7,0.7));
 		}
 		UMGA E 1 A_Refire;
 		Goto FireFinish;
