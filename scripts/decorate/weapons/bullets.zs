@@ -60,8 +60,8 @@ class LugerTracer : PlayerTracer
 	Default
 	{
 	ProjectileKickback 60;
-	DamageFunction (random(3,17));
-	Speed 100;
+	Speed 80;
+	BulletTracer.BaseDamage 10;
 	}
 }
 
@@ -71,7 +71,8 @@ class WaltherTracer : LugerTracer
 	Default
 	{
 	DamageFunction (random(6,18));
-	Speed 90;
+	Speed 80;
+	BulletTracer.BaseDamage 10;
 	}
 }
 
@@ -79,8 +80,9 @@ class ShotgunTracer : PlayerTracer
 {
 	Default
 	{
-	Scale .3;
-	DamageFunction (random(5,15));
+	Speed 76;
+	Scale 0.3;
+	BulletTracer.BaseDamage 7;
 	DamageType "Pellet";
 	+BULLETTRACER.NORICOCHET
 	}
@@ -93,13 +95,13 @@ class MP40Tracer : PlayerTracer
 {
 	Default
 	{
-	DamageFunction (random(9,14));
 	Speed 90;
+	BulletTracer.BaseDamage 12;
 	}
 }
 
 //Muzzle velocity: 1,001 ft/s (305 m/s) - Wikipedia
-class StenTracer : PlayerTracer { Default { DamageFunction (random(9,14)); } }
+class StenTracer : PlayerTracer { Default { BulletTracer.BaseDamage 7; } }
 
 //Muzzle velocity: 935 ft/s (285 m/s) - Wikipedia
 class ThompsonTracer : PlayerTracer
@@ -107,8 +109,8 @@ class ThompsonTracer : PlayerTracer
 	Default
 	{
 	ProjectileKickback 100;
-	DamageFunction (random(14,18));
-	Speed 120;
+	Speed 65;
+	BulletTracer.BaseDamage 16;
 	}
 }
 
@@ -118,8 +120,8 @@ class PPSH41Tracer : PlayerTracer
 	Default
 	{
 	ProjectileKickback 100;
-	DamageFunction (random(7,16));
-	Speed 105;
+	BulletTracer.BaseDamage 15;
+	Speed 111;
 	}
 }
 
@@ -129,8 +131,8 @@ class Kar98kTracer : PlayerTracer
 	Default
 	{
 	ProjectileKickback 100;
-	DamageFunction (random(40,65));
-	Speed 180;
+	BulletTracer.BaseDamage 65;
+	Speed 196;
 	Obituary "$OBMAUSER";
 	DamageType "Rifle";
 	}
@@ -143,8 +145,8 @@ class G43Tracer : Kar98kTracer
 {
 	Default
 	{
-	DamageFunction (random(26,55));
-	Speed 150;
+	BulletTracer.BaseDamage 55;
+	Speed 170;
 	Obituary "$OBG43";
 	DamageType "Rifle";
 	}
@@ -154,8 +156,19 @@ class ChaingunTracer : PlayerTracer
 {
 	Default
 	{
-	DamageFunction (random(11,15));
-	Speed 90;
+	BulletTracer.BaseDamage 15;
+	Speed 169;
+	DamageType "Rifle";
+	}
+}
+
+//well use Minigun muzzle velocity for this of roughly 854
+class UberKurzTracer : PlayerTracer
+{
+	Default
+	{
+	BulletTracer.BaseDamage 18;
+	Speed 195;
 	DamageType "Rifle";
 	}
 }

@@ -33,7 +33,31 @@ class BulletTracer : FastProjectile
 	flagdef PortalAware: flags, 2;
 
 	Property Trail:trail;
-
+	
+	double ExtraDamageFactor;
+	protected Actor LastActor;
+	
+	bool MustExplode;
+	Array<Actor> act_hits;
+	Actor hitactor;
+	int ripamount;
+	Property RipperCount : ripamount;
+	
+	double truedamage;
+	Property BaseDamage : truedamage;
+	
+	private int BehaviourFlags;
+	flagdef NoCriticals: BehaviourFlags, 0;
+	flagdef Omnidirectional: BehaviourFlags, 1;
+	flagdef InvisiblePuff: BehaviourFlags, 2;
+	
+	enum ExplosionType
+	{
+		EType_Geometry,
+		EType_Actor,
+		EType_BleedingActor
+	}
+	
 	Default
 	{
 		+BLOODSPLATTER
@@ -42,6 +66,12 @@ class BulletTracer : FastProjectile
 		+THRUGHOST
 		+HITTRACER
 		-NOGRAVITY
+		+GETOWNER
+		+NODAMAGETHRUST
+		+FORCERADIUSDMG
+		+BLOODSPLATTER
+		+NOBOSSRIP
+		+RIPPER
 		Gravity 15.0;
 		Radius 2;
 		Height 2;
@@ -50,15 +80,117 @@ class BulletTracer : FastProjectile
 		Decal "BulletChip";
 		BulletTracer.Trail "TracerTrail";
 		DamageType "Bullet";
+		BulletTracer.RipperCount 1;
+		BulletTracer.BaseDamage 5;
 	}
+	
+	virtual int Handle_MissileHit(Actor victim)
+	{
+		double scaled_damage = truedamage;
+		Name dmgType = DamageType;
 
+		double ang = AbsAngle(victim.Angle, AngleTo(target));
+		if (!bNOCRITICALS && (ang < 30 || ang > 150) && Pos.Z > victim.Pos.Z + victim.Height * 0.55)
+		{
+			//Console.Printf("Critical");
+			scaled_damage = scaled_damage * 1.25;
+			dmgtype = "TorsoHitbox";
+			if (Pos.Z > victim.Pos.Z + victim.Height * 0.70)
+			{
+				//Console.Printf("Headshot");
+				dmgtype = "HeadHitbox";
+				//A_StartSound("headshotmarker", CHAN_AUTO, CHAN_UI);
+				scaled_damage = scaled_damage * 1.5;
+			}
+			else
+			{
+				A_StartSound("torsshotmarker", CHAN_AUTO, CHAN_UI);
+			}
+		}
+		else if (Pos.Z < victim.Pos.Z + victim.Height * 0.35)
+		{
+			//Console.Printf("Legshot");
+			//A_StartSound("apenshotmarker", CHAN_AUTO, CHAN_UI);
+			dmgtype = "LegHitbox";
+			scaled_damage = scaled_damage * 0.75;
+		}
+		else if (!bOMNIDIRECTIONAL && ang > 50 && ang < 130)
+		{
+			//Console.Printf("Armshot");
+			//A_StartSound("apenshotmarker", CHAN_AUTO, CHAN_UI);
+			dmgtype = "ArmHitbox";
+			scaled_damage = scaled_damage * 0.9;
+		}
+		else
+		{
+			//A_StartSound("bodyshotmarker", CHAN_AUTO, CHAN_UI);
+			scaled_damage = scaled_damage * 1;
+		}
+		
+		scaled_damage = victim.GetModifiedDamage(dmgType, scaled_damage, false, self, target);
+		
+		victim.DamageMobJ(self, target, ceil(scaled_damage), dmgType, 0, angle);
+		
+		if( victim.bISMONSTER && !victim.bNOBLOOD ) 
+			victim.SpawnBlood( pos, angle, ceil(scaled_damage) );
+		
+		if (bRIPPER && target.bBOSS && bNOBOSSRIP)
+		{
+			MustExplode = true;
+		}
+		
+		return -1;
+	}
+	
+	override int SpecialMissileHit(Actor victim)
+	{
+		if (victim == Target)
+		{
+			return 1;
+		}
+		
+		if (bRIPPER)
+		{
+			if (ripAmount < 0)
+			{
+				return 0;
+			}
+
+			if (LastActor != victim)
+			{
+				ripAmount = ripAmount - 1;
+				Handle_MissileHit(victim);
+				LastActor = victim;
+			}
+			else
+			{
+				return 1;
+			}
+		}
+
+		return -1;
+	}
+	
+	// [Ace] Override these if you want to do stuff when something happens.
+	protected virtual void OnHitActor(Actor target) {}
+	protected virtual void OnExplode(int type) {}
+	
 	States
 	{
 		Spawn:
 			TNT1 A 1 BRIGHT;
 			Loop;
-		Death:
-		Crash:
+		Death: // [Ace] Wall.
+			TNT1 A 0
+			{
+				OnExplode(EType_Geometry);
+				int ricochance;
+				ricochance = random(1,100);
+				if(ricochance <= 25)
+				{
+					//A_StartSound("ricoshotmarker", CHAN_AUTO);
+				}
+			}
 			TNT1 AAA 0 {
 				if (trailactor) { trailactor.Destroy(); }
 				A_SpawnItemEx("TracerSpark", 0, 0, 0, random(-2,2), random(-2,2), random(-2,2), random(0,359)); //T667 improvements
@@ -75,7 +207,32 @@ class BulletTracer : FastProjectile
 			}
 			PUFF CD 3 BRIGHT LIGHT("BPUFF1");
 			Stop;
-		XDeath:
+		Crash: // [Ace] Dormant/NoBlood enemies.
+			TNT1 A 0
+			{
+				OnExplode(EType_Actor);
+			}
+			TNT1 AAA 0 {
+				if (trailactor) { trailactor.Destroy(); }
+				A_SpawnItemEx("TracerSpark", 0, 0, 0, random(-2,2), random(-2,2), random(-2,2), random(0,359)); //T667 improvements
+				bWindThrust = false;
+			}
+			PUFF B 3 BRIGHT LIGHT("BPUFF1") {
+				// If a non-bleeding actor was hit, count the shot as successful
+				if (BoAPlayer(target) && BoAPlayer(target).tracker && tracer && tracer.bIsMonster && tracer.bNoBlood) { BoAPlayer(target).tracker.shots[target.PlayerNumber()][0]++; }
+				if (!bNoRicochet)
+				{
+					A_StartSound("ricochet");
+				}
+				A_SpawnItemEx("ZBulletChip");
+			}
+			PUFF CD 3 BRIGHT LIGHT("BPUFF1");
+			Stop;
+		XDeath: // [Ace] Bleeding enemies.
+			TNT1 A 0
+			{
+				OnExplode(EType_BleedingActor);
+			}
 			TNT1 A 1 {
 				// If a bleeding actor was hit, count the shot as successful
 				if (BoAPlayer(target) && BoAPlayer(target).tracker) { BoAPlayer(target).tracker.shots[target.PlayerNumber()][0]++; }
@@ -93,7 +250,13 @@ class BulletTracer : FastProjectile
 		{
 			vel += target.vel;
 		}
-
+		
+		if (MustExplode)
+		{
+			ExplodeMissile(BlockingLine, BlockingMobj);
+			return;
+		}
+		
 		// Spawn the visible tracer *once* at spawn
 		trailactor = Spawn(trail, pos);
 		if (trailactor)
