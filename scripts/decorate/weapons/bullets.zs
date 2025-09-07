@@ -76,6 +76,17 @@ class WaltherTracer : LugerTracer
 	}
 }
 
+//Muzzle velocity: 1000 ft/s (305 m/s)
+class PPKTracer : LugerTracer
+{
+	Default
+	{
+	DamageFunction (random(7,14));
+	Speed 69;
+	BulletTracer.BaseDamage 10;
+	}
+}
+
 class ShotgunTracer : PlayerTracer
 {
 	Default

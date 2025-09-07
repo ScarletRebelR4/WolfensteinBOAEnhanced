@@ -52,9 +52,8 @@ class Luger9mm : NaziWeapon
 		LUGG A 1 A_Raise;
 		Loop;
 	FirstSelect:
-		TNT1 AAA 0 A_Raise;
-		TNT1 A 1 A_Raise;
-		Loop;
+		TNT1 A 0 A_Raise;
+		Wait;
 	FirstReady:
 		L1GG ABCDEFG 1;
 		TNT1 A 0 

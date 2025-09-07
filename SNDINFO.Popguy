@@ -100,6 +100,51 @@ weapons/Luger/FireMech3	"Sounds/Weapons/Luger/Fire/LugerFireMech3.wav"
 weapons/Luger/FireMech4	"Sounds/Weapons/Luger/Fire/LugerFireMech4.wav"
 weapons/Luger/FireMech5	"Sounds/Weapons/Luger/Fire/LugerFireMech5.wav"
 
+
+
+Weapons/PPK/Raise	"Sounds/weapons/ppk/PPKRaise.wav"
+Weapons/PPK/Drop	"Sounds/weapons/ppk/PPKDrop.wav"
+Weapons/PPK/Charge	"Sounds/weapons/ppk/PPKCharge.wav"
+Weapons/PPK/MagOut	"Sounds/weapons/ppk/PPKMagOut.wav"
+Weapons/PPK/MagIn	"Sounds/weapons/ppk/PPKMagIn.wav"
+Weapons/PPK/MagRelease	"Sounds/weapons/ppk/PPKMagRelease.wav"
+
+Weapons/PPK/Fire	"Sounds/weapons/ppk/Fire/PPKFire.wav"
+
+$RANDOM Weapons/PPK/FireAdd
+{
+Weapons/PPK/FireAdd1
+Weapons/PPK/FireAdd2
+Weapons/PPK/FireAdd3
+Weapons/PPK/FireAdd4
+Weapons/PPK/FireAdd5
+Weapons/PPK/FireAdd6
+}
+
+Weapons/PPK/FireAdd1	"Sounds/Weapons/ppk/Fire/PPKFireAdd1.wav"
+Weapons/PPK/FireAdd2	"Sounds/Weapons/ppk/Fire/PPKFireAdd2.wav"
+Weapons/PPK/FireAdd3	"Sounds/Weapons/ppk/Fire/PPKFireAdd3.wav"
+Weapons/PPK/FireAdd4	"Sounds/Weapons/ppk/Fire/PPKFireAdd4.wav"
+Weapons/PPK/FireAdd5	"Sounds/Weapons/ppk/Fire/PPKFireAdd5.wav"
+Weapons/PPK/FireAdd6	"Sounds/Weapons/ppk/Fire/PPKFireAdd6.wav"
+
+$RANDOM Weapons/PPK/FireMech
+{
+Weapons/PPK/FireMech1
+Weapons/PPK/FireMech2
+Weapons/PPK/FireMech3
+Weapons/PPK/FireMech4
+Weapons/PPK/FireMech5
+Weapons/PPK/FireMech6
+}
+
+Weapons/PPK/FireMech1	"Sounds/Weapons/ppk/Fire/PPKFireMech1.wav"
+Weapons/PPK/FireMech2	"Sounds/Weapons/ppk/Fire/PPKFireMech2.wav"
+Weapons/PPK/FireMech3	"Sounds/Weapons/ppk/Fire/PPKFireMech3.wav"
+Weapons/PPK/FireMech4	"Sounds/Weapons/ppk/Fire/PPKFiremech4.wav"
+Weapons/PPK/FireMech5	"Sounds/Weapons/ppk/Fire/PPKFiremech5.wav"
+Weapons/PPK/FireMech6	"Sounds/Weapons/ppk/Fire/PPKFireMech6.wav"
+
 weapons/VenomGun/WindUp "sounds/weapons/MGVGMK3/VenomWindUp.wav"
 weapons/VenomGun/Loop "sounds/weapons/MGVGMK3/VenomLoop.wav"
 weapons/VenomGun/WindDown "sounds/weapons/MGVGMK3/VenomWindDown.wav"
