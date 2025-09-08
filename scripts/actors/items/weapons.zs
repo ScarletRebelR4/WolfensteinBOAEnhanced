@@ -49,6 +49,7 @@ class NaziWeapon : Weapon
 		Weapon.BobSpeed 2.2;
 		Weapon.BobRangeY 1.0;
 		Weapon.BobRangeX 1.25;
+		Weapon.WeaponScaleX 1.2;
 	}
 
 	States
