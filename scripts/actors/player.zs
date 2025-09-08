@@ -138,7 +138,7 @@ class BoAPlayer : PlayerPawn
 		//Use Weapon.SlotNumber and Weapon.SlotPriority for the LOVE OF GOD.
 		
 		Player.WeaponSlot 1, "KnifeSilent", "Shovel", "Firebrand", "AstrosteinMelee"; //, "FakeID";
-		Player.WeaponSlot 2, "Luger9mm", "Walther9mm", "WaltherPPK", "AstroLuger", "M191145ACP";
+		Player.WeaponSlot 2, "Luger9mm", "Walther9mm", "WaltherPPK", "AstroLuger", "M191145ACP", "C96";
 		Player.WeaponSlot 3, "TrenchShotgun", "Browning5", "AstroShotgun";
 		Player.WeaponSlot 4, "MP40", "Sten", "PPSH41", "AstroChaingun";
 		Player.WeaponSlot 5, "Kar98k", "G43";

@@ -70,7 +70,6 @@ class WaltherTracer : LugerTracer
 {
 	Default
 	{
-	DamageFunction (random(6,18));
 	Speed 80;
 	BulletTracer.BaseDamage 10;
 	}
@@ -81,9 +80,17 @@ class PPKTracer : LugerTracer
 {
 	Default
 	{
-	DamageFunction (random(7,14));
 	Speed 69;
-	BulletTracer.BaseDamage 10;
+	BulletTracer.BaseDamage 8;
+	}
+}
+
+class C96Tracer : LugerTracer
+{
+	Default
+	{
+	Speed 69;
+	BulletTracer.BaseDamage 16;
 	}
 }
 

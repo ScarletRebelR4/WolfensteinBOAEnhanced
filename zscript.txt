@@ -138,6 +138,7 @@ version "3.7.2"
 #include "scripts/decorate/weapons/p38.zs"
 #include "scripts/decorate/weapons/M1911.zs"
 #include "scripts/decorate/weapons/PPK.zs"
+#include "scripts/decorate/weapons/C96.zs"
 
 #include "scripts/decorate/weapons/shotgun.zs"
 #include "scripts/decorate/weapons/browning.zs"
