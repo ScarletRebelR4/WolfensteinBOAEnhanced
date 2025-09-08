@@ -96,8 +96,9 @@ class C96 : NaziWeapon
 				//Take Ammo
 				
 				A_StartSound("Weapons/C96/Fire", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-				A_StartSound("Weapons/C96/FireMech", CHAN_AUTO, CHANF_OVERLAP, 0.9);
-				A_StartSound("Weapons/C96/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
+				A_StartSound("Weapons/C96/FireExtra", CHAN_AUTO, CHANF_OVERLAP, 0.8);
+				A_StartSound("Weapons/C96/FireMech", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+				A_StartSound("Weapons/C96/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.5);
 				A_FireProjectile("C96Tracer");
 				A_SetPitch(pitch-(0.2*boa_recoilamount));
 			}
@@ -112,9 +113,9 @@ class C96 : NaziWeapon
 		Reload:
 			TNT1 A 0 A_JumpIf(CountInv("C96Loaded") == 10, "Ready1");
 			TNT1 A 0 A_JumpIf(CountInv("C96Loaded") == 0, "Reload2"); //Clip Load
-			C96E ABCD 1;
 			TNT1 A 0 A_StartSound("Weapons/C96/ArmSwish", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			C96E EFGHIJ 1;
+			C96A A 2;
+			C96E ABCDEFGHIJ 1;
 			TNT1 A 0 A_StartSound("Weapons/C96/BulletCatch", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			C96E KLMNOP 1;
 			TNT1 A 0 A_StartSound("Weapons/C96/ClipBump", CHAN_AUTO, CHANF_OVERLAP, 1.0);
@@ -142,24 +143,25 @@ class C96 : NaziWeapon
 		
 		Reload2:
 			C96A E 1;
-			C96C ABCDEFGHIJK 1;
+			C96C ABCDEF 1;
+			C96C G 10;
+			C96C HIJKL 1;
 			TNT1 A 0 A_StartSound("Weapons/C96/ClipBump", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			C96C LM 1;
+			C96C MN 1;
 			TNT1 A 0 A_StartSound("Weapons/C96/ClipIn", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			C96C NOPQRSTUVWX 1;
+			C96C OPQRSTUVWXYZ 1;
 		Reload2Loop:
 			TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
 			TNT1 A 0 A_GiveInventory("C96Loaded");
 			TNT1 A 0 A_JumpIfInventory("C96Loaded",10,"Reload2Finish");
 			TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"Reload2Loop");
 		Reload2Finish:
-			C96C Y 1;
-			C96C Z 10;
-			C96D ABC 2;
-			//Clip Toss
-			C96D D 1;
+			C96D A 10;
+			C96D ABCDE 2;
+			TNT1 A 0 A_StartSound("Weapons/C96/ClipPing", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96D F 1;
 			TNT1 A 0 A_StartSound("Weapons/C96/BoltClose", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			C96D EFGHIJKLMNO 1;
+			C96D GHIJKLMNO 1;
 			Goto Ready1;
 		
 		Flash:

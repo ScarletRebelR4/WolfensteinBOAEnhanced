@@ -85,11 +85,12 @@ class PPKTracer : LugerTracer
 	}
 }
 
+//Muzzle velocity: 1394 ft/s (425 m/s)
 class C96Tracer : LugerTracer
 {
 	Default
 	{
-	Speed 69;
+	Speed 97;
 	BulletTracer.BaseDamage 16;
 	}
 }

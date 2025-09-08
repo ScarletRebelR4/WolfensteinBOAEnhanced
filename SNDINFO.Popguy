@@ -152,7 +152,8 @@ Weapons/C96/BoltBack	"Sounds/weapons/C96/C96BoltBack.wav"
 Weapons/C96/BoltClose	"Sounds/weapons/C96/C96BoltClose.wav"
 
 Weapons/C96/ClipBump	"Sounds/weapons/C96/C96ClipBump.wav"
-Weapons/C96/ClipIn	"Sounds/weapons/C96/C96ClipIn2.wav"
+Weapons/C96/ClipIn	"Sounds/weapons/C96/C96ClipIn.wav"
+Weapons/C96/ClipPing	"Sounds/weapons/C96/C96ClipPing.ogg"
 
 Weapons/C96/ArmSwish	"Sounds/weapons/C96/C96ArmSwish.wav"
 Weapons/C96/BulletCatch	"Sounds/weapons/C96/C96BulletCatch.wav"
@@ -175,6 +176,8 @@ weapons/C96/Bullet4	"Sounds/weapons/C96/C96BulletSingle4.wav"
 weapons/C96/Bullet5	"Sounds/weapons/C96/C96BulletSingle5.wav"
 weapons/C96/Bullet6	"Sounds/weapons/C96/C96BulletSingle6.wav"
 weapons/C96/Bullet7	"Sounds/weapons/C96/C96BulletSingle7.wav"
+
+Weapons/C96/FireExtra	"Sounds/weapons/C96/Fire/C96FireExtra.wav"
 
 $RANDOM Weapons/C96/Fire
 {
