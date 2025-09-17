@@ -98,7 +98,7 @@ class C96 : NaziWeapon
 				A_StartSound("Weapons/C96/Fire", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 				A_StartSound("Weapons/C96/FireExtra", CHAN_AUTO, CHANF_OVERLAP, 0.8);
 				A_StartSound("Weapons/C96/FireMech", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-				A_StartSound("Weapons/C96/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+				A_StartSound("Weapons/C96/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.7);
 				A_FireProjectile("C96Tracer");
 				A_SetPitch(pitch-(0.2*boa_recoilamount));
 			}
