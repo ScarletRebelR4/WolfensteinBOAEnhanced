@@ -49,6 +49,7 @@ class NaziWeapon : Weapon
 		Weapon.BobSpeed 2.2;
 		Weapon.BobRangeY 1.0;
 		Weapon.BobRangeX 1.25;
+		Weapon.WeaponScaleX 1.2;
 	}
 
 	States
@@ -58,14 +59,13 @@ class NaziWeapon : Weapon
 			TNT1 A 1 A_Lower();
 			Loop;
 		Select:
-			TNT1 A 0 A_Raise();
-			TNT1 A 1 A_Raise();
-			Loop;
-		FirstSelect:
 			TNT1 A 0; //Check First Time Select
 			TNT1 A 0 A_Raise();
 			TNT1 A 1 A_Raise();
 			Loop;
+		FirstSelect:
+			TNT1 A 0 A_Raise();
+			Wait;
 		FirstReady: //First Time Select
 			TNT1 A 0 ;
 		Ready:

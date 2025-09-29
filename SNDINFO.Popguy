@@ -100,6 +100,129 @@ weapons/Luger/FireMech3	"Sounds/Weapons/Luger/Fire/LugerFireMech3.wav"
 weapons/Luger/FireMech4	"Sounds/Weapons/Luger/Fire/LugerFireMech4.wav"
 weapons/Luger/FireMech5	"Sounds/Weapons/Luger/Fire/LugerFireMech5.wav"
 
+
+
+Weapons/PPK/Raise	"Sounds/weapons/ppk/PPKRaise.wav"
+Weapons/PPK/Drop	"Sounds/weapons/ppk/PPKDrop.wav"
+Weapons/PPK/Charge	"Sounds/weapons/ppk/PPKCharge.wav"
+Weapons/PPK/MagOut	"Sounds/weapons/ppk/PPKMagOut.wav"
+Weapons/PPK/MagIn	"Sounds/weapons/ppk/PPKMagIn.wav"
+Weapons/PPK/MagRelease	"Sounds/weapons/ppk/PPKMagRelease.wav"
+
+Weapons/PPK/Fire	"Sounds/weapons/ppk/Fire/PPKFire.wav"
+
+$RANDOM Weapons/PPK/FireAdd
+{
+Weapons/PPK/FireAdd1
+Weapons/PPK/FireAdd2
+Weapons/PPK/FireAdd3
+Weapons/PPK/FireAdd4
+Weapons/PPK/FireAdd5
+Weapons/PPK/FireAdd6
+}
+
+Weapons/PPK/FireAdd1	"Sounds/Weapons/ppk/Fire/PPKFireAdd1.wav"
+Weapons/PPK/FireAdd2	"Sounds/Weapons/ppk/Fire/PPKFireAdd2.wav"
+Weapons/PPK/FireAdd3	"Sounds/Weapons/ppk/Fire/PPKFireAdd3.wav"
+Weapons/PPK/FireAdd4	"Sounds/Weapons/ppk/Fire/PPKFireAdd4.wav"
+Weapons/PPK/FireAdd5	"Sounds/Weapons/ppk/Fire/PPKFireAdd5.wav"
+Weapons/PPK/FireAdd6	"Sounds/Weapons/ppk/Fire/PPKFireAdd6.wav"
+
+$RANDOM Weapons/PPK/FireMech
+{
+Weapons/PPK/FireMech1
+Weapons/PPK/FireMech2
+Weapons/PPK/FireMech3
+Weapons/PPK/FireMech4
+Weapons/PPK/FireMech5
+Weapons/PPK/FireMech6
+}
+
+Weapons/PPK/FireMech1	"Sounds/Weapons/ppk/Fire/PPKFireMech1.wav"
+Weapons/PPK/FireMech2	"Sounds/Weapons/ppk/Fire/PPKFireMech2.wav"
+Weapons/PPK/FireMech3	"Sounds/Weapons/ppk/Fire/PPKFireMech3.wav"
+Weapons/PPK/FireMech4	"Sounds/Weapons/ppk/Fire/PPKFiremech4.wav"
+Weapons/PPK/FireMech5	"Sounds/Weapons/ppk/Fire/PPKFiremech5.wav"
+Weapons/PPK/FireMech6	"Sounds/Weapons/ppk/Fire/PPKFireMech6.wav"
+
+Weapons/C96/Raise	"Sounds/weapons/C96/C96Raise.wav"
+Weapons/C96/Lower	"Sounds/weapons/C96/C96Lower.wav"
+
+Weapons/C96/BoltBack	"Sounds/weapons/C96/C96BoltBack.wav"
+Weapons/C96/BoltClose	"Sounds/weapons/C96/C96BoltClose.wav"
+
+Weapons/C96/ClipBump	"Sounds/weapons/C96/C96ClipBump.wav"
+Weapons/C96/ClipIn	"Sounds/weapons/C96/C96ClipIn.wav"
+Weapons/C96/ClipPing	"Sounds/weapons/C96/C96ClipPing.ogg"
+
+Weapons/C96/ArmSwish	"Sounds/weapons/C96/C96ArmSwish.wav"
+Weapons/C96/BulletCatch	"Sounds/weapons/C96/C96BulletCatch.wav"
+Weapons/C96/Slap	"Sounds/weapons/C96/C96Slap.wav"
+
+$RANDOM weapons/C96/Bullet
+{
+weapons/C96/Bullet1
+weapons/C96/Bullet2
+weapons/C96/Bullet3
+weapons/C96/Bullet4
+weapons/C96/Bullet5
+weapons/C96/Bullet6
+weapons/C96/Bullet7
+}
+weapons/C96/Bullet1	"Sounds/weapons/C96/C96BulletSingle1.wav"
+weapons/C96/Bullet2	"Sounds/weapons/C96/C96BulletSingle2.wav"
+weapons/C96/Bullet3	"Sounds/weapons/C96/C96BulletSingle3.wav"
+weapons/C96/Bullet4	"Sounds/weapons/C96/C96BulletSingle4.wav"
+weapons/C96/Bullet5	"Sounds/weapons/C96/C96BulletSingle5.wav"
+weapons/C96/Bullet6	"Sounds/weapons/C96/C96BulletSingle6.wav"
+weapons/C96/Bullet7	"Sounds/weapons/C96/C96BulletSingle7.wav"
+
+Weapons/C96/FireExtra	"Sounds/weapons/C96/Fire/C96FireExtra.wav"
+
+$RANDOM Weapons/C96/Fire
+{
+Weapons/C96/Fire1
+Weapons/C96/Fire2
+Weapons/C96/Fire3
+Weapons/C96/Fire4
+Weapons/C96/Fire5
+Weapons/C96/Fire6
+}
+Weapons/C96/Fire1	"Sounds/weapons/C96/Fire/C96Fire1.wav"
+Weapons/C96/Fire2	"Sounds/weapons/C96/Fire/C96Fire2.wav"
+Weapons/C96/Fire3	"Sounds/weapons/C96/Fire/C96Fire3.wav"
+Weapons/C96/Fire4	"Sounds/weapons/C96/Fire/C96Fire4.wav"
+Weapons/C96/Fire5	"Sounds/weapons/C96/Fire/C96Fire5.wav"
+Weapons/C96/Fire6	"Sounds/weapons/C96/Fire/C96Fire6.wav"
+
+$RANDOM Weapons/C96/Mech
+{
+Weapons/C96/Mech1
+Weapons/C96/Mech2
+}
+Weapons/C96/Mech1	"Sounds/weapons/C96/Fire/C96Mech1.wav"
+Weapons/C96/Mech2	"Sounds/weapons/C96/Fire/C96Mech2.wav"
+
+$RANDOM Weapons/C96/FireAdd
+{
+Weapons/C96/FireAdd1
+Weapons/C96/FireAdd2
+Weapons/C96/FireAdd3
+Weapons/C96/FireAdd4
+Weapons/C96/FireAdd5
+Weapons/C96/FireAdd6
+Weapons/C96/FireAdd7
+Weapons/C96/FireAdd8
+}
+Weapons/C96/FireAdd1	"Sounds/weapons/C96/Fire/C96FireAdd1.wav"
+Weapons/C96/FireAdd2	"Sounds/weapons/C96/Fire/C96FireAdd2.wav"
+Weapons/C96/FireAdd3	"Sounds/weapons/C96/Fire/C96FireAdd3.wav"
+Weapons/C96/FireAdd4	"Sounds/weapons/C96/Fire/C96FireAdd4.wav"
+Weapons/C96/FireAdd5	"Sounds/weapons/C96/Fire/C96FireAdd5.wav"
+Weapons/C96/FireAdd6	"Sounds/weapons/C96/Fire/C96FireAdd6.wav"
+Weapons/C96/FireAdd7	"Sounds/weapons/C96/Fire/C96FireAdd7.wav"
+Weapons/C96/FireAdd8	"Sounds/weapons/C96/Fire/C96FireAdd8.wav"
+
 weapons/VenomGun/WindUp "sounds/weapons/MGVGMK3/VenomWindUp.wav"
 weapons/VenomGun/Loop "sounds/weapons/MGVGMK3/VenomLoop.wav"
 weapons/VenomGun/WindDown "sounds/weapons/MGVGMK3/VenomWindDown.wav"

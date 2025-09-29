@@ -20,7 +20,7 @@
  * SOFTWARE.
 **/
 
-class WaltherPPK : NaziWeapon replaces Walther9mm
+class WaltherPPK : NaziWeapon
 {
 	Default
 	{
@@ -38,86 +38,121 @@ class WaltherPPK : NaziWeapon replaces Walther9mm
 	Weapon.UpSound "PPKCOK";
 	Tag "Walther PPK";
 	Inventory.PickupMessage "You got the Walther PPK!";
+	+WEAPON.NOAUTOFIRE;
 	}
 	States
 	{
-	Ready:
-		PPKI A 0 A_JumpIfInventory("WaltherPPKLoaded",0,2);
-		PPKI A 0 A_JumpIfInventory("Ammo9mm",1,2);
-		PPKI A 1 A_WeaponReady;
-		Loop;
-		PPKI A 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	Deselect:
-		PPKI A 0 A_Lower;
-		PPKI A 1 A_Lower;
-		Loop;
-	Select:
-		PPKI A 0 A_Raise;
-		PPKI A 1 A_Raise;
-		Loop;
-	Fire:
-		PPKI A 0 A_JumpIfInventory("WaltherPPKLoaded",1,1);
-		Goto Dryfire;
-		PPKI A 0 A_GunFlash;
-		PPKI A 0 A_SetPitch(pitch-(0.2*boa_recoilamount));
-		PPKI A 0 A_JumpIf(waterlevel > 0,2);
-		PPKI A 0 A_FireProjectile("PistolSmokeSpawner",0,0,0,random(-4,4),0,0);
-		PPKI A 0 A_StartSound("PPKFIR", CHAN_WEAPON);
-		PPKI A 0 A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
-		PPKI A 1 BRIGHT A_FireProjectile("PPKTracer");
-		PPKF A 1;
-		PPKF B 1 A_SetPitch(pitch-(0.2*boa_recoilamount));
-		PPKF C 1 A_WeaponOffset(0,38, WOF_INTERPOLATE);
-		PPKF D 1 A_WeaponReady();
-		PPKI A 1 A_WeaponReady(); 
-		TNT1 A 0 A_CheckReload;
-		PPKI A 1 A_Jump(128,"Ready");
-		Goto Ready;
-	Reload:
-		PPKR A 2;
-		PPKR B 2;
-		PPKR C 2;
-		TNT1 A 0 A_StartSound("PPKOUT", CHAN_5);
-		PPKR D 2;
-		PPKR E 2;
-		PPKR F 2;
-		PPKR G 2;
-		PPKR H 2;
-	ReloadLoop:
-		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
-		TNT1 A 0 A_GiveInventory("WaltherPPKLoaded");
-		TNT1 A 0 A_JumpIfInventory("WaltherPPKLoaded",0,"ReloadFinish");
-		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
-	ReloadFinish:
-		PPKR I 2;
-		PPKR J 2;
-		PPKR K 2;
-		TNT1 A 0 A_StartSound("PPKIN", CHAN_5);
-		PPKR L 2;
-		PPKR M 2;
-		PPKR M 2;
-		PPKR O 2;
-		PPKR P 2;
-		PPKR Q 2;
-		PPKR R 2;
-		TNT1 A 0 A_StartSound("PPKCOK", CHAN_5);
-		PPKR S 2;
-		PPKR T 2;
-		PPKR U 2;
-		PPKR V 2;
-		PPKR W 2;
-		PPKR X 2;
-		PPKR Y 2;
-		Goto Ready;
-	Flash:
-		TNT1 A 1 A_Light2;
-		TNT1 A 1;
-		TNT1 A 2 A_Light1;
-		Goto LightDone;
-	Spawn:
-		PPKP A -1;
-		Stop;
+		Deselect:
+			TNT1 A 0 A_StartSound("Weapons/PPK/Drop", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PPKB FEDCBA 1;
+			TNT1 A 0 A_Lower();
+			Wait;
+		Select:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstSelect");
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstSelect:
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstReady: //First Time Select
+			TNT1 A 0 A_StartSound("Weapons/PPK/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PPKC ABCDEFGHIJ 1;
+			TNT1 A 0 A_StartSound("Weapons/PPK/Charge", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PPKC KLMN 1;
+			TNT1 A 0
+			{
+				invoker.firstPickup = true;
+			}
+			PPKC OPQRSTUVW 1;
+			Goto Ready1;
+		Ready:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
+			TNT1 A 0 A_StartSound("Weapons/PPK/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PPKB ABCDEF 1;
+		Ready1:
+			LUGG A 0 A_JumpIf(CountInv("WaltherPPKLoaded") == 0, "ReadyEmpty");
+			PPKA A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Ready2:
+			PPKA D 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		
+		Fire:
+			PPKA A 0 A_JumpIf(CountInv("WaltherPPKLoaded") == 0,"DryFire");
+			PPKA B 1
+			{
+				A_GunFlash();
+				//A_AlertMonsters(); silent weapon
+				
+				if(waterlevel > 0.2)
+				{
+					//[Pop] Refactor later with new smoke system
+					 A_FireProjectile("PistolSmokeSpawner",0,0,0,random(-4,4),0,0);
+				}
+				A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+				//Take Ammo
+				
+				A_StartSound("Weapons/PPK/Fire", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+				A_StartSound("Weapons/PPK/FireMech", CHAN_AUTO, CHANF_OVERLAP, 0.8);
+				A_StartSound("Weapons/PPK/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.9);
+				A_FireProjectile("PPKTracer");
+				A_SetPitch(pitch-(0.2*boa_recoilamount));
+			}
+			PPKA CD 1;
+			TNT1 A 0 A_JumpIfInventory("WaltherPPKLoaded",0,"FireEnd");
+			PPKA A 1 A_WeaponReady();
+			Goto Ready1;
+		FireEnd: //Last shot empty
+			PPKA DC 1;
+			Goto Ready2;
+		Reload:
+			TNT1 A 0 A_JumpIf(CountInv("WaltherPPKLoaded") == 8, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("WaltherPPKLoaded") == 0, "Reload2");
+			PPKA A 1;
+			PPKD ABCDEFGHII 1;
+			TNT1 A 0 A_StartSound("Weapons/PPK/MagRelease", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PPKD JKLMNOPPQ 1;
+			TNT1 A 0 A_StartSound("Weapons/PPK/MagOut", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PPKD RSTTTUVWXYXYZ 1;
+			PPKE ABCDEEFGHHI 1;
+			TNT1 A 0 A_StartSound("Weapons/PPK/MagIn", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PPKE JKLMMMN 1;
+		ReloadLoop:
+			TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_GiveInventory("WaltherPPKLoaded");
+			TNT1 A 0 A_JumpIfInventory("WaltherPPKLoaded",8,"ReloadFinish");
+			TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
+		ReloadFinish:
+			PPKE OPQRSTU 1;
+			Goto Ready1;
+		Reload2:
+			PPKA A 1;
+			PPKF ABCDEFG 1;
+			TNT1 A 0 A_StartSound("Weapons/PPK/MagOut", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PPKF HIIJKLMNOPQRSSTTUVWXYZ 1;
+			PPKG ABCDEFG 1;
+			TNT1 A 0 A_StartSound("Weapons/PPK/MagIn", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PPKG HIIJKLMMM 1;
+		Reload2Loop:
+			TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_GiveInventory("WaltherPPKLoaded");
+			TNT1 A 0 A_JumpIfInventory("WaltherPPKLoaded",7,"Reload2Finish");
+			TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"Reload2Loop");
+		Reload2Finish:
+			PPKG NOPQQR 1;
+			TNT1 A 0 A_StartSound("Weapons/PPK/Charge", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PPKG STUUUVWXYZ 1;
+			PPKH ABCD 1;
+			Goto Ready1;
+		
+		Flash:
+			TNT1 A 1 A_Light2;
+			TNT1 A 1;
+			TNT1 A 2 A_Light1;
+			Goto LightDone;
+		Spawn:
+			PPKA E -1;
+			Stop;
 	}
 }
 
@@ -125,18 +160,9 @@ class WaltherPPKLoaded : Ammo
 {
 	Default
 	{
-	Tag "9x19mm";
+	Tag ".380 ACP";
 	+INVENTORY.IGNORESKILL
 	Inventory.MaxAmount 8;
 	Inventory.Icon "WALT01";
-	}
-}
-
-class PPKTracer : LugerTracer
-{
-	Default
-	{
-	DamageFunction 12;
-	Speed 90;
 	}
 }
