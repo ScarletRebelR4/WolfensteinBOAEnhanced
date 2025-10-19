@@ -39,7 +39,7 @@ class Ammo9mm : Ammo
 	States
 	{
 	Spawn:
-		MCLP A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
+		9MMA A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
 		Stop;
 	}
 
@@ -49,6 +49,25 @@ class Ammo9mm : Ammo
 		msg.Replace("%a", String.Format("%i", amount));
 
 		return msg;
+	}
+}
+
+class Ammo9mm_MP40 : Ammo
+{
+	Default {
+	//$Category Ammo (BoA)
+	//$Title MP40Mag (x32 clips)
+	//$Color 6
+	Scale 0.20;
+	Inventory.Amount 32;
+	Inventory.PickupMessage "$9MMAMMO";
+	Inventory.Icon "WALT01";
+	}
+	States
+	{
+	Spawn:
+		9MMA B -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
+		Stop;
 	}
 }
 
@@ -65,7 +84,7 @@ class AmmoBox9mm : Ammo9mm
 	States
 	{
 	Spawn:
-		MCLP B -1;
+		9MMA C -1;
 		Stop;
 	}
 }
@@ -88,7 +107,7 @@ class Ammo12Gauge : Ammo
 	States
 	{
 	Spawn:
-		SHEL A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
+		12GA A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
 		Stop;
 	}
 
@@ -101,20 +120,38 @@ class Ammo12Gauge : Ammo
 	}
 }
 
-class AmmoBox12Gauge : Ammo12Gauge
+class Ammo12Gauge_Drum : Ammo12Gauge
 {
 	Default {
 	//$Category Ammo (BoA)
-	//$Title Shellbox (x16 shells)
+	//$Title Autohammer-12 Drum(x12 shells)
 	//$Color 6
 	Scale 0.25;
-	Inventory.Amount 16;
+	Inventory.Amount 12;
 	Inventory.PickupMessage "$GAUGBOX";
 	}
 	States
 	{
 	Spawn:
-		SBOX A -1;
+		12GA B -1;
+		Stop;
+	}
+}
+
+class AmmoBox12Gauge : Ammo12Gauge
+{
+	Default {
+	//$Category Ammo (BoA)
+	//$Title Shellbox (x20 shells)
+	//$Color 6
+	Scale 0.25;
+	Inventory.Amount 20;
+	Inventory.PickupMessage "$GAUGBOX";
+	}
+	States
+	{
+	Spawn:
+		12GA C -1;
 		Stop;
 	}
 }
@@ -139,7 +176,7 @@ class MauserAmmo : Ammo
 	States
 	{
 	Spawn:
-		792A A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
+		792M A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
 		Stop;
 	}
 
@@ -149,6 +186,25 @@ class MauserAmmo : Ammo
 		msg.Replace("%a", String.Format("%i", amount));
 
 		return msg;
+	}
+}
+
+class MauserAmmo_G43 : MauserAmmo
+{
+	Default
+	{
+	//$Category Ammo (BoA)
+	//$Title G43 Mag (x10 clips)
+	//$Color 6
+	Scale 0.5;
+	Inventory.Amount 20;
+	Inventory.PickupMessage "$MAUSBOX";
+	}
+	States
+	{
+	Spawn:
+		792A B -1;
+		Stop;
 	}
 }
 
@@ -166,7 +222,7 @@ class MauserAmmoBox : MauserAmmo
 	States
 	{
 	Spawn:
-		792A B -1;
+		792A C -1;
 		Stop;
 	}
 }
@@ -184,7 +240,7 @@ class FlameAmmo : Ammo
 	Inventory.MaxAmount 175;
 	Ammo.BackpackAmount 25;
 	Ammo.BackpackMaxAmount 350;
-	Scale .5;
+	Scale 0.5;
 	Inventory.Icon "FLAM01";
 	}
 	States
