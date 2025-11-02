@@ -516,6 +516,76 @@ class MauserAmmoBox : MauserAmmo
 	}
 }
 
+class Ammo3006 : Ammo
+{
+	Default
+	{
+	//$Category Ammo (BoA)
+	//$Title Clip (x5 clips)
+	//$Color 6
+	Scale 0.3;
+	Tag ".30-06 Springfield";
+	Inventory.Amount 8;
+	Inventory.MaxAmount 100;
+	Ammo.BackpackAmount 8;
+	Ammo.BackpackMaxAmount 200;
+	Inventory.PickupMessage "$MAUSAMMO";
+	Inventory.Icon "MAUS02";
+	}
+	States
+	{
+	Spawn:
+		3006 A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
+		Stop;
+	}
+
+	override String PickupMessage()
+	{
+		String msg = StringTable.Localize(Super.PickupMessage());
+		msg.Replace("%a", String.Format("%i", amount));
+
+		return msg;
+	}
+}
+
+class Ammo3006_BAR : Ammo3006
+{
+	Default
+	{
+	//$Category Ammo (BoA)
+	//$Title G43 Mag (x10 clips)
+	//$Color 6
+	Scale 0.5;
+	Inventory.Amount 20;
+	Inventory.PickupMessage "$MAUSBOX";
+	}
+	States
+	{
+	Spawn:
+		3006 B -1;
+		Stop;
+	}
+}
+
+class AmmoBox3006 : Ammo3006
+{
+	Default
+	{
+	//$Category Ammo (BoA)
+	//$Title G43 Mag (x10 clips)
+	//$Color 6
+	Scale 0.5;
+	Inventory.Amount 60;
+	Inventory.PickupMessage "$MAUSBOX";
+	}
+	States
+	{
+	Spawn:
+		3006 C -1;
+		Stop;
+	}
+}
+
 class Ammo842Thalberg : Ammo
 {
 	Default
