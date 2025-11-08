@@ -237,7 +237,7 @@ class ZombieOfficer : ZombieBrain
 	Speed 3;
 	-QUICKTORETALIATE
 	DropItem "MP40", 192;
-	DropItem "Ammo9mm", 32;
+	DropItem "Ammo9mm_mp40", 32;
 	DropItem "Soul";
 	}
 	States
@@ -285,7 +285,7 @@ class ZombieOfficer : ZombieBrain
 		"####" G 4 A_SpawnProjectile("EnemySMGTracer",30,10,50);
 		"####" G 0 A_SpawnItemEx("Casing9mm", 8,0,40, random(3,4), random(-1,1), random(2,4), random(-55,-80),SXF_NOCHECKPOSITION);
 		"####" G 0 {user_count++; if(user_count > 39) {user_count = 0; return ResolveState("Reload");} return ResolveState(null);}
-		"####" G 0 A_StartSound("nazi/mp40", CHAN_WEAPON, 0, frandom (0.6,0.9), ATTN_NORM);
+		"####" G 0 A_StartSound("nazi/Ammo763Mauser", CHAN_WEAPON, 0, frandom (0.6,0.9), ATTN_NORM);
 		"####" G 4 A_SpawnProjectile("EnemySMGTracer",30,8,40);
 		"####" G 0 A_SpawnItemEx("Casing9mm", 8,0,40, random(3,4), random(-1,1), random(2,4), random(-55,-80),SXF_NOCHECKPOSITION);
 		"####" G 0 {user_count++; if(user_count > 39) {user_count = 0; return ResolveState("Reload");} return ResolveState(null);}

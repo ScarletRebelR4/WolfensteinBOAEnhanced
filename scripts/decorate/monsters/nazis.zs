@@ -335,7 +335,7 @@ class MP40Guard : Guard
 	SeeSound "Nazi2/Sighted";
 	PainSound "Nazi2/Pain";
 	DeathSound "Nazi2/Death";
-	DropItem "Ammo9mm", 192;
+	DropItem "Ammo9mm_mp40", 192;
 	DropItem "GrenadePickup", 16;
 	DropItem "MP40", 96;
 	Nazi.NoAltDeath 1;
@@ -482,7 +482,7 @@ class SSMP40Guard : SSGuard
 	SeeSound "Nazi2/Sighted";
 	PainSound "Nazi2/Pain";
 	DeathSound "Nazi2/Death";
-	DropItem "Ammo9mm", 192;
+	DropItem "Ammo9mm_mp40", 192;
 	DropItem "GrenadePickup", 16;
 	DropItem "MP40", 96;
 	Obituary "$SSMPGURD";
@@ -1146,7 +1146,7 @@ class RifleGuard : MP40Guard
 	Obituary "$RIFLSOLD";
 	SeeSound "Nazi3/Sighted";
 	DropItem "G43", 96;
-	DropItem "MauserAmmo", 192, 5;
+	DropItem "MauserAmmo_G43", 192, 5;
 	MaxTargetRange 768;
 	}
 	States
@@ -1419,7 +1419,7 @@ class WaffenSS : SSMP40Guard
 	Health 80;
 	Obituary "$SSWAFFEN";
 	SeeSound "Nazi3/Sighted";
-	DropItem "Ammo9mm", 192;
+	DropItem "Ammo9mm_mp40", 192;
 	DropItem "GrenadePickup", 32;
 	DropItem "MP40", 96;
 	Nazi.FrightMultiplier 0.9;
@@ -1478,7 +1478,7 @@ class ArcticWaffen : WaffenSS
 	//$Title Waffen Arctic
 	Health 90;
 	Obituary "$ARWAFFEN";
-	DropItem "Ammo9mm", 192;
+	DropItem "Ammo9mm_mp40", 192;
 	DropItem "GrenadePickup", 8;
 	DropItem "MP40", 96;
 	}
@@ -1534,7 +1534,7 @@ class Paratrooper : WaffenSS
 	Health 90;
 	Scale 0.64;
 	Obituary "$PARATROP";
-	DropItem "Ammo9mm", 192;
+	DropItem "Ammo9mm_mp40", 192;
 	DropItem "MP40", 96;
 	}
 	States
@@ -3218,7 +3218,7 @@ class EliteAssaulter : BasicGuard
 	SeeSound "eliteassaulter/sight";
 	PainSound "eliteassaulter/pain";
 	DeathSound "eliteassaulter/death";
-	DropItem "Ammo9mm", 192;
+	DropItem "Ammo9mm_mp40", 192;
 	DropItem "GrenadePickup", 16;
 	DropItem "MP40", 96;
 	Base.NoMedicHeal;
@@ -3345,7 +3345,7 @@ class EliteSoldatRifler : BasicGuard
 	DeathSound "eliterifler/death";
 	DropItem "G43", 96;
 	DropItem "GrenadePickup", 16;
-	DropItem "MauserAmmo", 192, 5;
+	DropItem "MauserAmmo_G43", 192, 5;
 	Base.NoMedicHeal;
 	Nazi.FrightMultiplier 0.25;
 	Nazi.NoAltDeath 1;

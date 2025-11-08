@@ -154,7 +154,7 @@ class WereWaffenSS : WaffenSS
 	PainSound "wolfman/pain";
 	DeathSound "wolfman/death";
 	Obituary "$WEREWAFF";
-	DropItem "AmmoBox9mm", 128;
+	DropItem "AmmoBox9mm_mp40", 128;
 	DropItem "GrenadePickup", 32;
 	DropItem "MP40", 128;
 	}
