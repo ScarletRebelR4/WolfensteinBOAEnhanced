@@ -19,7 +19,7 @@ class STG44 : NaziWeapon
 	inventory.pickupmessage "You got the Sturmgewehr 44!";
 	Weapon.AmmoType "STG44Loaded";
 	Weapon.AmmoUse 1;
-	weapon.ammotype2 "KurzAmmo";
+	weapon.ammotype2 "Ammo792Kurz";
 	weapon.ammouse2 1;
 	Weapon.AmmoGive1 0;
 	Weapon.AmmoGive2 60;
@@ -31,7 +31,7 @@ class STG44 : NaziWeapon
 	{
 	Ready:
 		STGG A 0 A_JumpIfInventory("STG44Loaded",0,2);
-		STGG A 0 A_JumpIfInventory("KurzAmmo",1,2);
+		STGG A 0 A_JumpIfInventory("Ammo792Kurz",1,2);
 		STGG A 1 A_WeaponReady;
 		Loop;
 		STGG A 1 A_WeaponReady(WRF_ALLOWRELOAD);
@@ -76,10 +76,10 @@ class STG44 : NaziWeapon
 		STG1 L 2;
 		STG1 M 2;
 	ReloadLoop:
-		TNT1 A 0 A_TakeInventory("KurzAmmo",1,TIF_NOTAKEINFINITE);
+		TNT1 A 0 A_TakeInventory("Ammo792Kurz",1,TIF_NOTAKEINFINITE);
 		TNT1 A 0 A_GiveInventory("STG44Loaded");
 		TNT1 A 0 A_JumpIfInventory("STG44Loaded",0,"ReloadFinish");
-		TNT1 A 0 A_JumpIfInventory("KurzAmmo",1,"ReloadLoop");
+		TNT1 A 0 A_JumpIfInventory("Ammo792Kurz",1,"ReloadLoop");
 	ReloadFinish:
 		STG2 A 2;
 		STG2 B 2;

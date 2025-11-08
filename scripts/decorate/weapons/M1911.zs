@@ -31,7 +31,7 @@ class M191145ACP : NaziWeapon
 	Weapon.SelectionOrder 9998;
 	Weapon.AmmoType "M191145ACPLoaded";
 	Weapon.AmmoUse 1;
-	Weapon.AmmoType2 "Ammo9mm";
+	Weapon.AmmoType2 "Ammo45ACP";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
 	Weapon.UpSound "Select/pistol";
@@ -67,13 +67,13 @@ class M191145ACP : NaziWeapon
 	Ready:
 		TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
 		M45A A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 0, "ReadyEmpty");
-		M45A A 0 A_JumpIfInventory("Ammo9mm",1,2);
+		M45A A 0 A_JumpIfInventory("Ammo45ACP",1,2);
 		M45A A 1 A_WeaponReady;
 		Loop;
 		M45A A 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		Loop;
 	ReadyEmpty:
-		M45A I 0 A_JumpIfInventory("Ammo9mm",1,2);
+		M45A I 0 A_JumpIfInventory("Ammo45ACP",1,2);
 		M45A I 1 A_WeaponReady;
 		Loop;
 		M45A I 1 A_WeaponReady(WRF_ALLOWRELOAD);
@@ -112,10 +112,10 @@ class M191145ACP : NaziWeapon
 		TNT1 A 0 A_StartSound("Weapons/M1911/MagIn", CHAN_AUTO);
 		M452 PQR 1;
 	ReloadLoop:
-		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+		TNT1 A 0 A_TakeInventory("Ammo45ACP",1,TIF_NOTAKEINFINITE);
 		TNT1 A 0 A_GiveInventory("M191145ACPLoaded");
 		TNT1 A 0 A_JumpIfInventory("M191145ACPLoaded",8,"ReloadFinish");
-		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
+		TNT1 A 0 A_JumpIfInventory("Ammo45ACP",1,"ReloadLoop");
 	ReloadFinish:
 		M452 STUVWXYZ 1;
 		M453 ABC 1;
@@ -128,10 +128,10 @@ class M191145ACP : NaziWeapon
 		TNT1 A 0 A_StartSound("Weapons/M1911/MagIn", CHAN_AUTO);
 		M454 NOPQR 1;
 	Reload2Loop:
-		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+		TNT1 A 0 A_TakeInventory("Ammo45ACP",1,TIF_NOTAKEINFINITE);
 		TNT1 A 0 A_GiveInventory("M191145ACPLoaded");
 		TNT1 A 0 A_JumpIfInventory("M191145ACPLoaded",7,"Reload2Finish");
-		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"Reload2Loop");
+		TNT1 A 0 A_JumpIfInventory("Ammo45ACP",1,"Reload2Loop");
 	Reload2Finish:
 		M454 STUVW 1;
 		TNT1 A 0 A_StartSound("Weapons/M1911/Charge", CHAN_AUTO);

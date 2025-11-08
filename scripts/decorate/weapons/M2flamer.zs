@@ -30,7 +30,7 @@ class M2Flamer : NaziWeapon replaces Pyrolight
 	//$Color 14
 	Weapon.SelectionOrder 800;
 	Inventory.PickupMessage "You got the SodomUndGomorraKraftwerk modified M2 Flamethrower! Burn, baby, burn...";
-	Weapon.AmmoType "NewFlameAmmo";
+	Weapon.AmmoType "FlameAmmo";
 	Weapon.AmmoUse 1;
 	Weapon.AmmoGive 125;
 	Weapon.UpSound "flamer/select";
@@ -40,14 +40,14 @@ class M2Flamer : NaziWeapon replaces Pyrolight
 	States
 	{
 	Ready:
-		M2FI A 0 A_JumpIfInventory("NewFlameAmmo",10,4);
-		M2FI A 0 A_JumpIfInventory("NewFlameAmmo",1,2);
+		M2FI A 0 A_JumpIfInventory("FlameAmmo",10,4);
+		M2FI A 0 A_JumpIfInventory("FlameAmmo",1,2);
 		M2FI A 1 A_WeaponReady(WRF_NOSECONDARY);
 		Loop;
 		M2FI A 1 A_WeaponReady(WRF_ALLOWRELOAD|WRF_NOSECONDARY);
 		Loop;
-		M2FI A 0 A_JumpIfInventory("NewFlameAmmo",0,2);
-		M2FI A 0 A_JumpIfInventory("NewFlameAmmo",1,2);
+		M2FI A 0 A_JumpIfInventory("FlameAmmo",0,2);
+		M2FI A 0 A_JumpIfInventory("FlameAmmo",1,2);
 		M2FI A 1 A_WeaponReady;
 		Loop;
 		M2FI A 1 A_WeaponReady(WRF_ALLOWRELOAD);
@@ -63,7 +63,7 @@ class M2Flamer : NaziWeapon replaces Pyrolight
 		Loop;
 	Fire:
 		M2FI A 0 A_JumpIf(waterlevel>= 2,"NoWay");
-		M2FI A 0 A_JumpIfInventory("NewFlameAmmo",1,1);
+		M2FI A 0 A_JumpIfInventory("FlameAmmo",1,1);
 		Goto Dryfire;
 		M2FI A 0 A_Light2;
 		M2FI A 0 A_AlertMonsters;
@@ -82,9 +82,9 @@ class M2Flamer : NaziWeapon replaces Pyrolight
 		Goto Ready;
 	AltFire:
 		M2FI A 0 A_JumpIf(waterlevel>= 2,"NoWay");
-		M2FI A 0 A_JumpIfInventory("NewFlameAmmo",10,1);
+		M2FI A 0 A_JumpIfInventory("FlameAmmo",10,1);
 		Goto Dryfire;
-		M2FI A 0 A_TakeInventory("NewFlameAmmo",10,TIF_NOTAKEINFINITE);
+		M2FI A 0 A_TakeInventory("FlameAmmo",10,TIF_NOTAKEINFINITE);
 		M2FI A 0 A_StartSound("M2FIR",CHAN_WEAPON,1);
 		M2FI A 0 A_AlertMonsters;
 		M2FI A 1 A_FireProjectile("Flameball",0,0);

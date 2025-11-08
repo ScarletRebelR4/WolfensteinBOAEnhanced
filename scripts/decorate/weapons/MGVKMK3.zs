@@ -32,9 +32,9 @@ class VenomGunMK3 : NaziWeapon
 	Inventory.PickupSound "chaingun/get";
 	Tag "MG-VK MK3 Venom Gun";
 	Weapon.AmmoGive 30;
-	Weapon.AmmoType "Ammo9mm";
+	Weapon.AmmoType "Ammo842Thalberg";
 	Weapon.AmmoUse 1;
-	Weapon.AmmoType2 "Ammo9mm";
+	Weapon.AmmoType2 "Ammo842Thalberg";
 	Weapon.AmmoUse2 4;
 	Weapon.SelectionOrder 900;
 	Weapon.UpSound "chaingun/select";

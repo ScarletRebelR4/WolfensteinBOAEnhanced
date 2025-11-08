@@ -5,7 +5,7 @@ class FG42 : NaziWeapon
 		Scale 0.45;
 		Weapon.AmmoType "FG42Loaded";
 		Weapon.AmmoUse 1;
-		Weapon.AmmoType2 "NewMauserAmmo";
+		Weapon.AmmoType2 "Ammo792Kurz";
 		Weapon.AmmoUse2 1;
 		Weapon.AmmoGive2 20;
 		Weapon.UpSound "FG42COK";
@@ -20,14 +20,14 @@ class FG42 : NaziWeapon
 	Ready:
 		F42I A 0 A_JumpIfInventory("SniperZoom",1,"ScopedReady");
 		F42I A 0 A_JumpIfInventory("FG42Loaded",0,2);
-		F42I A 0 A_JumpIfInventory("NewMauserAmmo",1,2);
+		F42I A 0 A_JumpIfInventory("Ammo792Kurz",1,2);
 		F42I A 1 A_WeaponReady;
 		Loop;
 		F42I A 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		Loop;
 	ScopedReady:
 		SCO1 A 0 A_JumpIfInventory("FG42Loaded",0,2);
-		SCO1 A 0 A_JumpIfInventory("NewMauserAmmo",1,2);
+		SCO1 A 0 A_JumpIfInventory("Ammo792Kurz",1,2);
 		SCO1 A 1 A_WeaponReady(WRF_NOBOB);
 		Goto Ready;
 		SCO1 A 1 A_WeaponReady(WRF_NOBOB|WRF_ALLOWRELOAD);
@@ -137,10 +137,10 @@ class FG42 : NaziWeapon
 		F421 S 2;
 		F421 T 5;
 	ReloadLoop:
-		TNT1 A 0 A_TakeInventory("NewMauserAmmo",1,TIF_NOTAKEINFINITE);
+		TNT1 A 0 A_TakeInventory("Ammo792Kurz",1,TIF_NOTAKEINFINITE);
 		TNT1 A 0 A_GiveInventory("FG42Loaded");
 		TNT1 A 0 A_JumpIfInventory("FG42Loaded",0,"ReloadFinish");
-		TNT1 A 0 A_JumpIfInventory("NewMauserAmmo",1,"ReloadLoop");
+		TNT1 A 0 A_JumpIfInventory("Ammo792Kurz",1,"ReloadLoop");
 	ReloadFinish:
         F422 A 2;
 		F422 B 2;

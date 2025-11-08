@@ -31,7 +31,7 @@ class PPSH41 : NaziWeapon
 	Weapon.SelectionOrder 600;
 	Weapon.AmmoType "PPSH41Loaded";
 	Weapon.AmmoUse 1;
-	Weapon.AmmoType2 "Ammo9mm";
+	Weapon.AmmoType2 "Ammo763Mauser";
 	Weapon.AmmoUse2 1;
 	Weapon.UpSound "Select/SMG";
 	Tag "PPSH-41";
@@ -93,7 +93,7 @@ class PPSH41 : NaziWeapon
 			PSHA A 1;
 			Goto Ready;
 		Reload:
-			TNT1 A 0 A_JumpIf(CountInv("Ammo9mm") == 0, "Ready");
+			TNT1 A 0 A_JumpIf(CountInv("Ammo763Mauser") == 0, "Ready");
 			TNT1 A 0 A_JumpIf(CountInv("PPSH41Loaded") == 0, "Reload2");
 			PSHB ABCDEF 1;
 			TNT1 A 0 A_StartSound("Weapons/PPSH/MagOut", CHAN_AUTO, CHANF_OVERLAP, 0.75);
@@ -104,10 +104,10 @@ class PPSH41 : NaziWeapon
 			PSHB S 1 A_StartSound("Weapons/PPSH/MagIn", CHAN_AUTO, CHANF_OVERLAP, 0.75);
 			PSHB T 6;
 		ReloadLoop:
-			TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_TakeInventory("Ammo763Mauser",1,TIF_NOTAKEINFINITE);
 			TNT1 A 0 A_GiveInventory("PPSH41Loaded", 1);
 			TNT1 A 0 A_JumpIfInventory("PPSH41Loaded",71,"ReloadFinish");
-			TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
+			TNT1 A 0 A_JumpIfInventory("Ammo763Mauser",1,"ReloadLoop");
 		ReloadFinish:
 			PSHB UVWXYZ 1;
 			PSHC ABC 1;
@@ -121,10 +121,10 @@ class PPSH41 : NaziWeapon
 			PSHD STUUVW 1;
 			TNT1 A 0 A_StartSound("Weapons/PPSH/MagIn", CHAN_AUTO, CHANF_OVERLAP, 0.75);
 		Reload2Loop:
-			TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_TakeInventory("Ammo763Mauser",1,TIF_NOTAKEINFINITE);
 			TNT1 A 0 A_GiveInventory("PPSH41Loaded", 1);
 			TNT1 A 0 A_JumpIfInventory("PPSH41Loaded",71,"Reload2Finish");
-			TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"Reload2Loop");
+			TNT1 A 0 A_JumpIfInventory("Ammo763Mauser",1,"Reload2Loop");
 		Reload2Finish:
 			PSHD XXYYYYZ 1;
 			PSHE ABC 1;

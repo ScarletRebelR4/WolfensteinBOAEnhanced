@@ -12,7 +12,7 @@ Default
 	Weapon.SelectionOrder 750;
 	Weapon.AmmoType "BAR3006Loaded";
 	Weapon.AmmoUse 1;
-	Weapon.AmmoType2 "SpringAmmo";
+	Weapon.AmmoType2 "Ammo3006";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive1 20;
 	Weapon.AmmoGive2 40;
@@ -32,7 +32,7 @@ Default
 		Loop;
 	Ready:
 		BRAG A 0 A_JumpIfInventory("BAR3006Loaded",0,2);
-		BRAG A 0 A_JumpIfInventory("SpringAmmo",1,2);
+		BRAG A 0 A_JumpIfInventory("Ammo3006",1,2);
 		BRAG A 1 A_WeaponReady;
 		Loop;
 		BRAG A 1 A_WeaponReady(WRF_ALLOWRELOAD);
@@ -101,10 +101,10 @@ Default
 		BRA1 M 2;
 		BRA1 N 2;
 	ReloadLoop:
-		BRAG C 0 A_TakeInventory("SpringAmmo",1,TIF_NOTAKEINFINITE);
+		BRAG C 0 A_TakeInventory("Ammo3006",1,TIF_NOTAKEINFINITE);
 		BRAG C 0 A_GiveInventory("BAR3006Loaded");
 		BRAG C 0 A_JumpIfInventory("BAR3006Loaded",0,"ReloadFinish");
-		BRAG C 0 A_JumpIfInventory("SpringAmmo",1,"ReloadLoop");
+		BRAG C 0 A_JumpIfInventory("Ammo3006",1,"ReloadLoop");
 	ReloadFinish:
 		BRA2 A 2;
 		BRA2 B 2;

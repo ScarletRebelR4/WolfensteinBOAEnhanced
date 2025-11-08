@@ -211,8 +211,6 @@ version "3.7.2"
 #include "scripts/decorate/items/treasure.zs"
 #include "scripts/decorate/items/astrostein.zs"		//Secret Operation Episode 2
 
-#include "Scripts/ammo.zs"
-
 //Special Effects
 #include "scripts/decorate/sfx/clouds.zs"
 #include "scripts/decorate/sfx/fog.zs"

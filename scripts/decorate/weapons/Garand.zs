@@ -23,7 +23,7 @@ Default
 	Weapon.SlotNumber 5;
 	Weapon.AmmoType "GarandLoaded";
 	Weapon.AmmoUse 1;
-	Weapon.AmmoType2 "SpringAmmo";
+	Weapon.AmmoType2 "Ammo3006";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive1 0;
 	Weapon.AmmoGive2 20;
@@ -40,14 +40,14 @@ Default
 		Goto ReadyEmpty;
 		TNT1 A 0 A_CheckReload;
 		TNT1 A 0 A_JumpIfInventory("GarandLoaded",0,2);
-		TNT1 A 0 A_JumpIfInventory("SpringAmmo",1,2);
+		TNT1 A 0 A_JumpIfInventory("Ammo3006",1,2);
 		M1GI A 1 A_WeaponReady;
 		Loop;
 		M1GI A 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		Loop;
 	ReadyEmpty:
 		TNT1 A 0 A_CheckReload;
-		TNT1 A 0 A_JumpIfInventory("SpringAmmo",1,2);
+		TNT1 A 0 A_JumpIfInventory("Ammo3006",1,2);
 		M1LF D 1 A_WeaponReady;
 		Goto Ready;
 		M1LF D 1 A_WeaponReady(WRF_ALLOWRELOAD);
@@ -179,10 +179,10 @@ Default
 		M1G2 I 2;
 		M1G2 J 2;	
 	ReloadLoop:
-		M1AR A 0 A_TakeInventory("SpringAmmo",1,TIF_NOTAKEINFINITE);
+		M1AR A 0 A_TakeInventory("Ammo3006",1,TIF_NOTAKEINFINITE);
 		M1AR A 0 A_GiveInventory("GarandLoaded");
 		M1AR A 0 A_JumpIfInventory("GarandLoaded",0,"ReloadFinish");
-		M1AR A 0 A_JumpIfInventory("SpringAmmo",1,"ReloadLoop");
+		M1AR A 0 A_JumpIfInventory("Ammo3006",1,"ReloadLoop");
 	ReloadFinish:
 		M1GI A 1 A_TakeInventory("M1Pinged");
 		M1GI A 1;

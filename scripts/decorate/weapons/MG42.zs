@@ -12,7 +12,7 @@ Default
 	Weapon.SelectionOrder 750;
 	Weapon.AmmoType "MG42Loaded";
 	Weapon.AmmoUse 1;
-	Weapon.AmmoType2 "NewMauserAmmo";
+	Weapon.AmmoType2 "MauserAmmo";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive1 50;
 	Weapon.AmmoGive2 100;
@@ -69,28 +69,28 @@ Default
 	    TNT1 A 0 A_JumpIf(CountInv("MG42Loaded") <= 5,"AlmostReady");
 	    TNT1 A 0 A_JumpIf(CountInv("MG42Loaded") <= 25,"HalfReady");
 		M42I A 0 A_JumpIfInventory("MG42Loaded",0,2);
-		M42I A 0 A_JumpIfInventory("NewMauserAmmo",1,2);
+		M42I A 0 A_JumpIfInventory("MauserAmmo",1,2);
 		M42I A 1 A_WeaponReady;
 		Loop;
 		M42I A 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		Loop;
 	HalfReady:	
 		M42I C 0 A_JumpIfInventory("MG42Loaded",0,2);
-		M42I C 0 A_JumpIfInventory("NewMauserAmmo",1,2);
+		M42I C 0 A_JumpIfInventory("MauserAmmo",1,2);
 		M42I C 1 A_WeaponReady;
 		Loop;
 		M42I C 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		Loop;
 	AlmostReady:	
 		M42I E 0 A_JumpIfInventory("MG42Loaded",0,2);
-		M42I E 0 A_JumpIfInventory("NewMauserAmmo",1,2);
+		M42I E 0 A_JumpIfInventory("MauserAmmo",1,2);
 		M42I E 1 A_WeaponReady;
 		Loop;
 		M42I E 1 A_WeaponReady(WRF_ALLOWRELOAD);
 		Loop;
 	EmptyReady:	
 		M42I G 0 A_JumpIfInventory("MG42Loaded",0,2);
-		M42I G 0 A_JumpIfInventory("NewMauserAmmo",1,2);
+		M42I G 0 A_JumpIfInventory("MauserAmmo",1,2);
 		M42I G 1 A_WeaponReady;
 		Loop;
 		M42I G 1 A_WeaponReady(WRF_ALLOWRELOAD);
@@ -206,10 +206,10 @@ Default
 		M422 O 2;
 		M422 P 2;
 	ReloadLoop:
-		MG42 C 0 A_TakeInventory("NewMauserAmmo",1,TIF_NOTAKEINFINITE);
+		MG42 C 0 A_TakeInventory("MauserAmmo",1,TIF_NOTAKEINFINITE);
 		MG42 C 0 A_GiveInventory("MG42Loaded");
 		MG42 C 0 A_JumpIfInventory("MG42Loaded",0,"ReloadFinish");
-		MG42 C 0 A_JumpIfInventory("NewMauserAmmo",1,"ReloadLoop");
+		MG42 C 0 A_JumpIfInventory("MauserAmmo",1,"ReloadLoop");
 	ReloadFinish:
 		M423 A 2;
 		M423 B 2;

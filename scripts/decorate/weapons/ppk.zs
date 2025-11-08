@@ -32,7 +32,7 @@ class WaltherPPK : NaziWeapon
 	Weapon.AmmoType "WaltherPPKLoaded";
 	Weapon.SlotNumber 2;
 	Weapon.AmmoUse 1;
-	Weapon.AmmoType2 "Ammo9mm";
+	Weapon.AmmoType2 "Ammo380ACP";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
 	Weapon.UpSound "PPKCOK";
@@ -118,10 +118,10 @@ class WaltherPPK : NaziWeapon
 			TNT1 A 0 A_StartSound("Weapons/PPK/MagIn", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			PPKE JKLMMMN 1;
 		ReloadLoop:
-			TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_TakeInventory("Ammo380ACP",1,TIF_NOTAKEINFINITE);
 			TNT1 A 0 A_GiveInventory("WaltherPPKLoaded");
 			TNT1 A 0 A_JumpIfInventory("WaltherPPKLoaded",8,"ReloadFinish");
-			TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
+			TNT1 A 0 A_JumpIfInventory("Ammo380ACP",1,"ReloadLoop");
 		ReloadFinish:
 			PPKE OPQRSTU 1;
 			Goto Ready1;
@@ -134,10 +134,10 @@ class WaltherPPK : NaziWeapon
 			TNT1 A 0 A_StartSound("Weapons/PPK/MagIn", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			PPKG HIIJKLMMM 1;
 		Reload2Loop:
-			TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_TakeInventory("Ammo380ACP",1,TIF_NOTAKEINFINITE);
 			TNT1 A 0 A_GiveInventory("WaltherPPKLoaded");
 			TNT1 A 0 A_JumpIfInventory("WaltherPPKLoaded",7,"Reload2Finish");
-			TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"Reload2Loop");
+			TNT1 A 0 A_JumpIfInventory("Ammo380ACP",1,"Reload2Loop");
 		Reload2Finish:
 			PPKG NOPQQR 1;
 			TNT1 A 0 A_StartSound("Weapons/PPK/Charge", CHAN_AUTO, CHANF_OVERLAP, 1.0);

@@ -27,12 +27,12 @@ class C96 : NaziWeapon
 	//$Category Weapons (BoA)
 	//$Title (2) Walther
 	//$Color 14
-	Scale 0.50;
+	Scale 0.75;
 	Weapon.SelectionOrder 9997;
 	Weapon.AmmoType "C96Loaded";
 	Weapon.SlotNumber 2;
 	Weapon.AmmoUse 1;
-	Weapon.AmmoType2 "Ammo9mm";
+	Weapon.AmmoType2 "Ammo763Mauser";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
 	Weapon.UpSound "PPKCOK";
@@ -128,11 +128,11 @@ class C96 : NaziWeapon
 			C96F IJKLMN 1;
 			TNT1 A 0 A_StartSound("Weapons/C96/Bullet", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			C96F OPQRS 1;
-			TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_TakeInventory("Ammo763Mauser",1,TIF_NOTAKEINFINITE);
 			TNT1 A 0 A_GiveInventory("C96Loaded");
 			C96F T 2;
 			TNT1 A 0 A_JumpIfInventory("C96Loaded",10,"ReloadFinish");
-			TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
+			TNT1 A 0 A_JumpIfInventory("Ammo763Mauser",1,"ReloadLoop");
 		ReloadFinish:
 			C96F UVWXYZ 1;
 			TNT1 A 0 A_StartSound("Weapons/C96/Slap", CHAN_AUTO, CHANF_OVERLAP, 1.0);
@@ -151,10 +151,10 @@ class C96 : NaziWeapon
 			TNT1 A 0 A_StartSound("Weapons/C96/ClipIn", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			C96C OPQRSTUVWXYZ 1;
 		Reload2Loop:
-			TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_TakeInventory("Ammo763Mauser",1,TIF_NOTAKEINFINITE);
 			TNT1 A 0 A_GiveInventory("C96Loaded");
 			TNT1 A 0 A_JumpIfInventory("C96Loaded",10,"Reload2Finish");
-			TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"Reload2Loop");
+			TNT1 A 0 A_JumpIfInventory("Ammo763Mauser",1,"Reload2Loop");
 		Reload2Finish:
 			C96D A 10;
 			C96D ABCDE 2;

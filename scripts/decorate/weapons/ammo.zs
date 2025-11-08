@@ -27,7 +27,7 @@ class Ammo9mm : Ammo
 	//$Category Ammo (BoA)
 	//$Title Ammoclip (x8 clips)
 	//$Color 6
-	Scale 0.20;
+	Scale 0.15;
 	Tag "9x19mm";
 	Inventory.Amount 8;
 	Inventory.MaxAmount 256;
@@ -58,7 +58,7 @@ class Ammo9mm_MP40 : Ammo
 	//$Category Ammo (BoA)
 	//$Title MP40Mag (x32 clips)
 	//$Color 6
-	Scale 0.20;
+	Scale 0.25;
 	Inventory.Amount 32;
 	Inventory.PickupMessage "$9MMAMMO";
 	Inventory.Icon "WALT01";
@@ -77,6 +77,7 @@ class AmmoBox9mm : Ammo9mm
 	//$Category Ammo (BoA)
 	//$Title Ammobox9mm (x64 clips)
 	//$Color 6
+	Scale 0.15;
 	Inventory.Amount 64;
 	Inventory.PickupMessage "$9MMBOX";
 	Inventory.Icon "WALT02";
@@ -95,7 +96,7 @@ class Ammo45ACP : Ammo
 	//$Category Ammo (BoA)
 	//$Title Ammoclip45ACP (x8 clips)
 	//$Color 6
-	Scale 0.20;
+	Scale 0.15;
 	Tag ".45 ACP";
 	Inventory.Amount 7;
 	Inventory.MaxAmount 256;
@@ -126,6 +127,7 @@ class Ammo45ACP_Tommy : Ammo45ACP
 	//$Category Ammo (BoA)
 	//$Title Ammo45ACP (x64 clips)
 	//$Color 6
+	Scale 0.25;
 	Inventory.Amount 64;
 	Inventory.PickupMessage "$9MMBOX";
 	Inventory.Icon "WALT02";
@@ -144,6 +146,7 @@ class AmmoBox45ACP : Ammo45ACP
 	//$Category Ammo (BoA)
 	//$Title Ammobox45ACP (x64 clips)
 	//$Color 6
+	Scale 0.15;
 	Inventory.Amount 64;
 	Inventory.PickupMessage "$9MMBOX";
 	Inventory.Icon "WALT02";
@@ -156,14 +159,14 @@ class AmmoBox45ACP : Ammo45ACP
 	}
 }
 
-class Ammo793Mauser : Ammo
+class Ammo763Mauser : Ammo
 {
 	Default {
 	//$Category Ammo (BoA)
 	//$Title Ammoclip45ACP (x8 clips)
 	//$Color 6
-	Scale 0.20;
-	Tag "7.93x25mm Mauser";
+	Scale 0.14;
+	Tag "7.63x25mm Mauser";
 	Inventory.Amount 7;
 	Inventory.MaxAmount 256;
 	Ammo.BackpackAmount 64;
@@ -174,7 +177,7 @@ class Ammo793Mauser : Ammo
 	States
 	{
 	Spawn:
-		793M A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
+		763M A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
 		Stop;
 	}
 
@@ -187,12 +190,13 @@ class Ammo793Mauser : Ammo
 	}
 }
 
-class Ammo793Mauser_PPSH : Ammo793Mauser
+class Ammo763Mauser_PPSH : Ammo763Mauser
 {
 	Default {
 	//$Category Ammo (BoA)
 	//$Title Ammo45ACP (x64 clips)
 	//$Color 6
+	Scale 0.22;
 	Inventory.Amount 64;
 	Inventory.PickupMessage "$9MMBOX";
 	Inventory.Icon "WALT02";
@@ -200,17 +204,18 @@ class Ammo793Mauser_PPSH : Ammo793Mauser
 	States
 	{
 	Spawn:
-		793M B -1;
+		763M B -1;
 		Stop;
 	}
 }
 
-class AmmoBox793Mauser : Ammo793Mauser
+class AmmoBox763Mauser : Ammo763Mauser
 {
 	Default {
 	//$Category Ammo (BoA)
 	//$Title Ammobox45ACP (x64 clips)
 	//$Color 6
+	Scale 0.15;
 	Inventory.Amount 64;
 	Inventory.PickupMessage "$9MMBOX";
 	Inventory.Icon "WALT02";
@@ -218,7 +223,7 @@ class AmmoBox793Mauser : Ammo793Mauser
 	States
 	{
 	Spawn:
-		793M C -1;
+		763M C -1;
 		Stop;
 	}
 }
@@ -229,7 +234,7 @@ class Ammo380ACP : Ammo
 	//$Category Ammo (BoA)
 	//$Title Ammoclip380ACP (x8 clips)
 	//$Color 6
-	Scale 0.20;
+	Scale 0.15;
 	Tag ".380 ACP";
 	Inventory.Amount 8;
 	Inventory.MaxAmount 256;
@@ -241,7 +246,7 @@ class Ammo380ACP : Ammo
 	States
 	{
 	Spawn:
-		793M A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
+		380A A -1 NODELAY A_SetScale(Scale.X * RandomPick(-1, 1), Scale.Y);
 		Stop;
 	}
 
@@ -260,6 +265,7 @@ class Ammo380ACP_Sten : Ammo380ACP
 	//$Category Ammo (BoA)
 	//$Title Ammo45ACP (x64 clips)
 	//$Color 6
+	Scale 0.25;
 	Inventory.Amount 32;
 	Inventory.PickupMessage "$9MMBOX";
 	Inventory.Icon "WALT02";
@@ -267,7 +273,7 @@ class Ammo380ACP_Sten : Ammo380ACP
 	States
 	{
 	Spawn:
-		793M B -1;
+		380A B -1;
 		Stop;
 	}
 }
@@ -278,6 +284,7 @@ class AmmoBox380ACP : Ammo380ACP
 	//$Category Ammo (BoA)
 	//$Title Ammobox45ACP (x64 clips)
 	//$Color 6
+	Scale 0.5;
 	Inventory.Amount 64;
 	Inventory.PickupMessage "$9MMBOX";
 	Inventory.Icon "WALT02";
@@ -285,7 +292,7 @@ class AmmoBox380ACP : Ammo380ACP
 	States
 	{
 	Spawn:
-		793M C -1;
+		380A C -1;
 		Stop;
 	}
 }
