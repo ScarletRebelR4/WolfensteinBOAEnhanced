@@ -104,7 +104,7 @@ class Browning5 : NaziWeapon
 				A_StartSound("weapons/ba5/mech", CHAN_WEAPON, CHANF_OVERLAP, 0.9);
 				for(int i=0; i<9; i++)
 				{
-					A_FireProjectile("AutoShotgunTracer",frandom(-4.0,4.0),0,0,0,0,frandom(-3,3));
+					A_FireProjectile("AutoShotgunTracer",frandom(-2.5,2.5),0,0,0,0,frandom(-3,3));
 				}
 				A_SetPitch(pitch-(0.2*boa_recoilamount));
 			}

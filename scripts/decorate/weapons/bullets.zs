@@ -61,7 +61,7 @@ class LugerTracer : PlayerTracer
 	{
 	ProjectileKickback 60;
 	Speed 80;
-	BulletTracer.BaseDamage 10;
+	BulletTracer.BaseDamage 12;
 	}
 }
 
@@ -81,7 +81,7 @@ class PPKTracer : LugerTracer
 	Default
 	{
 	Speed 69;
-	BulletTracer.BaseDamage 8;
+	BulletTracer.BaseDamage 10;
 	}
 }
 
@@ -91,7 +91,7 @@ class C96Tracer : LugerTracer
 	Default
 	{
 	Speed 97;
-	BulletTracer.BaseDamage 16;
+	BulletTracer.BaseDamage 17;
 	}
 }
 
