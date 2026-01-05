@@ -195,12 +195,6 @@ shotgun/load	SHOTLOAD
 shotgun/pump	SHOTPUMP
 $alias shotgun/select select/shotgun
 
-//Browning Auto-5
-browning/fire	ba5fire
-browning/load	ba5load
-browning/cock	ba5cock
-$alias browning/select select/shotgun
-
 //MP-40
 mp40/fire		mp40fire
 mp40/reload	loadmp40

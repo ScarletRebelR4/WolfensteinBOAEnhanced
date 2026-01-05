@@ -52,7 +52,7 @@ class Ammo9mm : Ammo
 	}
 }
 
-class Ammo9mm_MP40 : Ammo
+class Ammo9mm_MP40 : Ammo9mm
 {
 	Default {
 	//$Category Ammo (BoA)

@@ -43,103 +43,117 @@ class Browning5 : NaziWeapon
 	}
 	States
 	{
-	Select:
-		BA5G A 0 A_Raise;
-		BA5G A 1 A_Raise;
-		Loop;
-	Deselect:
-		BA5G A 0 A_JumpIfReloading(3);
-		BA5G A 0 A_Lower;
-		BA5G A 1 A_Lower;
-		Loop;
-		BA5G E 1 Offset(-8,58) A_StartSound("browning/cock", CHAN_5);
-		BA5G E 1 Offset(-8,60);
-		BA5G E 1 Offset(-8,63);
-		BA5G E 1 Offset(-9,67);
-		BA5G E 1 Offset(-9,72);
-		BA5G E 1 Offset(-10,75);
-		BA5G E 2 Offset(-10,77);
-		BA5G E 3 Offset(-11,78);
-		BA5G E 1 Offset(-10,76);
-		BA5G E 1 Offset(-8,68);
-		BA5G E 1 Offset(-6,58);
-		BA5G E 1 Offset(-4,46);
-		BA5G E 1 Offset(-2,33);
-		BA5G E 1 Offset(-1,32) A_Reloading(0);
-		Loop;
-	Ready:
-		BA5G A 0 A_JumpIfInventory("Browning5Loaded",0,2);
-		BA5G A 0 A_JumpIfInventory("Ammo12Gauge",1,2);
-		BA5G A 1 A_WeaponReady;
-		Loop;
-		BA5G A 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	Fire:
-		BA5G A 0 A_JumpIfReloading("ReloadFinish");
-		BA5G A 0 A_JumpIfInventory("Browning5Loaded",1,1);
-		Goto Dryfire;
-		BA5G A 0 A_StartSound("browning/fire", CHAN_WEAPON);
-		BA5G A 0 A_SpawnItemEx("ShotgunCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
-		BA5G AAAAAAAAAA 0 A_FireProjectile("AutoShotgunTracer",frandom(-4.0,4.0),0,0,0,0,frandom(-3,3));
-		BA5G A 0 A_TakeInventory("Browning5Loaded",1,TIF_NOTAKEINFINITE);
-		BA5G A 0 A_JumpIf(waterlevel > 0,2);
-		BA5G A 0 A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
-		BA5G A 0 A_AlertMonsters;
-		BA5G A 1 A_GunFlash;
-		BA5G A 1 Offset(0,42) A_SetPitch(pitch-(4.0*boa_recoilamount));
-		BA5G A 1 Offset(0,47) A_SetPitch(pitch-(2.0*boa_recoilamount));
-		BA5G A 1 Offset(0,36) A_SetPitch(pitch-(1.0*boa_recoilamount));
-		BA5G A 1 Offset(0,34) A_SetPitch(pitch+(1.0*boa_recoilamount));
-		BA5G A 4 Offset(0,33) A_SetPitch(pitch+(0.5*boa_recoilamount));
-		BA5G A 1;
-		TNT1 A 0 A_CheckReload;
-		Goto Ready;
-	Reload:
-		BA5G E 1 Offset(-1,33) A_Reloading;
-		BA5G E 1 Offset(-4,41);
-		BA5G E 1 Offset(-6,46);
-		BA5G E 1 Offset(-7,55);
+		Deselect:
+			BA5S ABCDEF 1;
+			BA5G A 0 A_Lower;
+			Wait;
+		Select:
+			TNT1 A 0; //A_JumpIf(!invoker.firstPickup, "FirstSelect");
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstSelect:
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstReady: //First Time Select
+			//[Pop] no animatino for the Auto5 yet, BUT this is still needed
+			//so we can make sure to set the ammo in mag to 11, rather than
+			//editing the ACS for every map that gives you one on start
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96I ABCDE 1;
+			C96I E 4;
+			C96F TUVWXYZ 1;
+			TNT1 A 0
+			{
+				A_GiveInventory("Browning5Loaded", 6);
+				invoker.firstPickup = true;
+			}
+			TNT1 A 0 A_StartSound("Weapons/C96/Slap", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G A 1;
+			TNT1 A 0 A_StartSound("Weapons/C96/BoltClose", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G BCDEFGHIJKLMN 1;
+			Goto Ready1;
+		Ready:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			BA5S FEDCBA 1;
+		Ready1:
+			LUGG A 0 A_JumpIf(CountInv("Browning5Loaded") == 0, "Ready2");
+			BA5F A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Ready2:
+			BA5F D 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Fire:
+			PPKA A 0 A_JumpIf(CountInv("Browning5Loaded") == 0,"DryFire");
+			BA5F B 1 BRIGHT
+			{
+				A_GunFlash();
+				A_AlertMonsters();
+				
+				if(waterlevel > 0.2)
+				{
+					//[Pop] Refactor later with new smoke system
+					A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-3,3),0,0);
+				}
+				A_SpawnItemEx("ShotgunCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+				A_TakeInventory("Browning5Loaded",1);
+				
+				A_StartSound("weapons/ba5/fire", CHAN_WEAPON, CHANF_OVERLAP, 0.6);
+				A_StartSound("weapons/ba5/add", CHAN_WEAPON, CHANF_OVERLAP, 0.8);
+				A_StartSound("weapons/ba5/firebass", CHAN_WEAPON, CHANF_OVERLAP);
+				A_StartSound("weapons/ba5/mech", CHAN_WEAPON, CHANF_OVERLAP, 0.9);
+				for(int i=0; i<9; i++)
+				{
+					A_FireProjectile("AutoShotgunTracer",frandom(-4.0,4.0),0,0,0,0,frandom(-3,3));
+				}
+				A_SetPitch(pitch-(0.2*boa_recoilamount));
+			}
+			BA5F C 1 BRIGHT;
+			TNT1 A 0 A_JumpIf(CountInv("C96Loaded") == 0,"Ready2");
+			BA5F DEF 1;
+			Goto Ready1;
+		Reload:
+			BA5F A 1;
+			TNT1 A 0 A_JumpIf(CountInv("Browning5Loaded") == 11, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("Browning5Loaded") > 0,"Reload2");
+			BA1R ABCDEFGHIJKLMNOPQRST 1;
+			TNT1 A 0 A_StartSound("weapons/ba5/boltback", CHAN_WEAPON, CHANF_OVERLAP); //[Pop] play slightly early.
+			BA1R UVWXYZZZZZ 1;
+			BA2R ABBBC 1;
+			TNT1 A 0 A_StartSound("weapons/ba5/Shell", CHAN_WEAPON, CHANF_OVERLAP);
+			BA2R DEFGGHIJJJ 1;
+			TNT1 A 0 A_TakeInventory("Ammo12Gauge",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_GiveInventory("Browning5Loaded");
+			TNT1 A 0 A_StartSound("weapons/ba5/boltforward", CHAN_WEAPON, CHANF_OVERLAP);
+			BA2R KLMNOPQRSTUV 1;
+			TNT1 A 0 A_StartSound("weapons/ba5/out", CHAN_WEAPON, CHANF_OVERLAP); //[Pop] Play it early because length of audio file
+			BA5F AAAAAAAAAAAAAAA 1;
+			BA3R ABCDEFGHIJJJKLMNOPQ 1;
+			Goto Reload3;
+		Reload2:
+			TNT1 A 0 A_StartSound("weapons/ba5/out", CHAN_WEAPON, CHANF_OVERLAP); //[Pop] Play it early because length of audio file
+			BA5F AAAAAAAAAAAAAAA 1;
+			BA4R ABCDEFGHIJJJKLMNOPQ 1;
+		Reload3:
+			BA5R AAAAAAAAAABCDEFGH 1;
+			TNT1 A 0 A_StartSound("weapons/ba5/in", CHAN_WEAPON, CHANF_OVERLAP);
 		ReloadLoop:
-		BA5G A 0 A_TakeInventory("Ammo12Gauge",1,TIF_NOTAKEINFINITE);
-		BA5G A 0 A_GiveInventory("Browning5Loaded");
-		BA5G E 1 Offset(-8,58) A_StartSound("browning/load", CHAN_5);
-		BA5G E 1 Offset(-9,64);
-		BA5G E 1 Offset(-10,70);
-		BA5G E 1 Offset(-10,68);
-		BA5G E 1 Offset(-9,66);
-		BA5G E 1 Offset(-9,64);
-		BA5G E 1 Offset(-9,62);
-		BA5G E 1 Offset(-8,61) A_WeaponReady(WRF_NOBOB);
-		BA5G E 1 Offset(-8,60) A_WeaponReady(WRF_NOBOB);
-		BA5G E 2 Offset(-8,59) A_WeaponReady(WRF_NOBOB);
-		BA5G E 3 Offset(-8,58) A_WeaponReady(WRF_NOBOB);
-		BA5G A 0 A_JumpIfInventory("Browning5Loaded",0,"ReloadFinish");
-		BA5G A 0 A_JumpIfInventory("Ammo12Gauge",1,"ReloadLoop");
-		ReloadFinish:
-		BA5G E 1 Offset(-8,58) A_StartSound("browning/cock", CHAN_5);
-		BA5G E 1 Offset(-8,60);
-		BA5G E 1 Offset(-8,63);
-		BA5G E 1 Offset(-9,67);
-		BA5G E 1 Offset(-9,72);
-		BA5G E 1 Offset(-10,75);
-		BA5G E 1 Offset(-10,77);
-		BA5G E 2 Offset(-11,78);
-		BA5G E 1 Offset(-10,76);
-		BA5G E 1 Offset(-8,68);
-		BA5G E 1 Offset(-6,58);
-		BA5G E 1 Offset(-4,46);
-		BA5G E 1 Offset(-2,33);
-		BA5G E 1 Offset(-1,32) A_Reloading(0);
-		Goto Ready;
-	Flash:
-		BA5G B 1 A_Light2;
-		BA5G C 1;
-		BA5G D 1 A_Light1;
-		TNT1 A 1;
-		Goto LightDone;
-	Spawn:
-		BA5P A -1;
-		Stop;
+			TNT1 A 0 A_TakeInventory("Ammo12Gauge",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_GiveInventory("Browning5Loaded");
+			TNT1 A 0 A_JumpIfInventory("Browning5Loaded",11,"Reload3Finish");
+			TNT1 A 0 A_JumpIfInventory("Ammo12Gauge",1,"ReloadLoop");
+		Reload3Finish:
+			BA5R IJKLMNOPQRST 1;
+			Goto Ready1;
+		Flash:
+			TNT1 A 1 A_Light2;
+			TNT1 A 1;
+			TNT1 A 1 A_Light1;
+			TNT1 A 1;
+			Goto LightDone;
+		Spawn:
+			BA5P A -1;
+			Stop;
 	}
 }
 
@@ -148,7 +162,7 @@ class Browning5Loaded : Ammo
 	Default
 	{
 	Tag "$TAGGAUGE";
-	Inventory.MaxAmount 5;
+	Inventory.MaxAmount 11;
 	+INVENTORY.IGNORESKILL
 	Inventory.Icon "BROW01";
 	}

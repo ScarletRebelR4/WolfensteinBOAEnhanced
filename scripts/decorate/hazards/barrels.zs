@@ -113,9 +113,13 @@ class GoodieBarrel1 : TNTBarrel1
 		DropItem "MauserAmmo", 64, 5;
 		DropItem "Meal", 32, 1;
 		Dropitem "Medikit_Small", 16;
+		Scale 0.5;
 	}
 	States
 	{
+	Spawn:
+		XCRA A -1;
+		Stop;
 	Death:
 		TNT1 A 0 A_Scream;
 		BARL A 2 A_SpawnItemEx("BarrelFrags");
