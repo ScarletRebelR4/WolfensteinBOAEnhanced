@@ -34,7 +34,7 @@ class Browning5 : NaziWeapon
 	Weapon.AmmoType2 "Ammo12Gauge";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
-	Weapon.UpSound "browning/select";
+	Weapon.UpSound "weapon/shotgun/raise";
 	Scale .5;
 	Inventory.PickupMessage "$BROWNING";
 	Tag "Browning Auto-5";
@@ -44,6 +44,7 @@ class Browning5 : NaziWeapon
 	States
 	{
 		Deselect:
+			TNT1 A 0 A_StartSound("weapons/ba5/Lower", CHAN_WEAPON, CHANF_OVERLAP);
 			BA5S ABCDEF 1;
 			BA5G A 0 A_Lower;
 			Wait;
@@ -74,7 +75,7 @@ class Browning5 : NaziWeapon
 			Goto Ready1;
 		Ready:
 			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
-			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			TNT1 A 0 A_StartSound("Weapons/BA5/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			BA5S FEDCBA 1;
 		Ready1:
 			LUGG A 0 A_JumpIf(CountInv("Browning5Loaded") == 0, "Ready2");
@@ -109,15 +110,17 @@ class Browning5 : NaziWeapon
 				A_SetPitch(pitch-(0.2*boa_recoilamount));
 			}
 			BA5F C 1 BRIGHT;
-			TNT1 A 0 A_JumpIf(CountInv("C96Loaded") == 0,"Ready2");
+			TNT1 A 0 A_JumpIf(CountInv("Browning5Loaded") == 0,"Ready2");
 			BA5F DEF 1;
 			Goto Ready1;
 		Reload:
 			BA5F A 1;
 			TNT1 A 0 A_JumpIf(CountInv("Browning5Loaded") == 11, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("Ammo12Gauge") == 0, "Ready1");
 			TNT1 A 0 A_JumpIf(CountInv("Browning5Loaded") > 0,"Reload2");
 			BA1R ABCDEFGHIJKLMNOPQRST 1;
 			TNT1 A 0 A_StartSound("weapons/ba5/boltback", CHAN_WEAPON, CHANF_OVERLAP); //[Pop] play slightly early.
+			TNT1 A 0 A_StartSound("weapons/ba5/boltbackadd", CHAN_WEAPON, CHANF_OVERLAP);
 			BA1R UVWXYZZZZZ 1;
 			BA2R ABBBC 1;
 			TNT1 A 0 A_StartSound("weapons/ba5/Shell", CHAN_WEAPON, CHANF_OVERLAP);

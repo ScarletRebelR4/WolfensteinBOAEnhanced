@@ -33,7 +33,7 @@ class PPSH41 : NaziWeapon
 	Weapon.AmmoUse 1;
 	Weapon.AmmoType2 "Ammo763Mauser";
 	Weapon.AmmoUse2 1;
-	Weapon.UpSound "Select/SMG";
+	Weapon.UpSound "weapon/SMG/raise";
 	Tag "PPSH-41";
 	Inventory.PickupMessage "$PPSH41";
 	Weapon.AmmoGive2 32;

@@ -34,7 +34,7 @@ class Luger9mm : NaziWeapon
 	Weapon.AmmoType2 "Ammo9mm";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
-	Weapon.UpSound "Select/pistol";
+	Weapon.UpSound "weapon/Pistol/raise";
 	Tag "Luger P08";
 	Inventory.PickupMessage "$P08LUG";
 	+WEAPON.NOAUTOFIRE
@@ -103,11 +103,13 @@ class Luger9mm : NaziWeapon
 		Goto ReadyEmpty;
 		
 	Reload:
+		LUGG A 0 A_JumpIf(CountInv("Ammo9mm") == 0, "Ready");
+		TNT1 A 0 A_JumpIf(CountInv("Luger9mmLoaded") == 9, "Ready");
 		TNT1 A 0 A_JumpIf(CountInv("Luger9mmLoaded") == 0, "Reload2");
 		L2GG ABCDEF 1;
 		TNT1 A 0 A_StartSound("Weapons/Luger/MagOut", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 		TNT1 A 0 A_StartSound("Weapons/Luger/MagOutAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
-		L2GG GHIJKLMNOP 1;
+		L2GG GHIJKLMMMMMNOP 1;
 		TNT1 A 0 A_StartSound("Weapons/Luger/MagIn", CHAN_AUTO);
 		L2GG QRSTUV 1;
 	ReloadLoop:
@@ -123,7 +125,7 @@ class Luger9mm : NaziWeapon
 		L4GG ABCDEFG 1;
 		TNT1 A 0 A_StartSound("Weapons/Luger/MagOut", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 		TNT1 A 0 A_StartSound("Weapons/Luger/MagOutAdd", CHAN_AUTO, CHANF_OVERLAP, 0.75);
-		L4GG HIJKLMNOPQR 1;
+		L4GG HIJKLMNNNNNOPQR 1;
 		TNT1 A 0 A_StartSound("Weapons/Luger/MagIn", CHAN_AUTO);
 		L4GG STUVWX 1;
 	Reload2Loop:

@@ -223,8 +223,11 @@ weapons/BA5/Mech4	"Sounds/Weapons/Browning/Fire/ba5Mech4.wav"
 
 weapons/BA5/In	"Sounds/Weapons/Browning/BA5In.wav"
 weapons/BA5/Out	"Sounds/Weapons/Browning/BA5Out.wav"
+weapons/BA5/Raise	"Sounds/Weapons/Browning/BA5Raise.wav"
+weapons/BA5/Lower	"Sounds/Weapons/Browning/BA5Lower.wav"
 weapons/BA5/EmptyOut	"Sounds/Weapons/Browning/BA5EmptyOut.wav"
 weapons/BA5/BoltBack	"Sounds/Weapons/Browning/BA5BoltBack.wav"
+weapons/BA5/BoltBackAdd	"Sounds/Weapons/Browning/BA5BoltBackAdd.mp3"
 weapons/BA5/BoltForward	"Sounds/Weapons/Browning/BA5BoltForward.wav"
 $RANDOM weapons/BA5/Shell { weapons/BA5/Shell1 weapons/BA5/Shell2 weapons/BA5/Shell3 weapons/BA5/Shell4 weapons/BA5/Shell5 }
 weapons/BA5/Shell1	"Sounds/Weapons/Browning/BA5Shell1.wav"

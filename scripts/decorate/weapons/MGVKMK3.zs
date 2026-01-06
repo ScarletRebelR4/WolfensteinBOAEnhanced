@@ -37,7 +37,7 @@ class VenomGunMK3 : NaziWeapon
 	Weapon.AmmoType2 "Ammo842Thalberg";
 	Weapon.AmmoUse2 4;
 	Weapon.SelectionOrder 900;
-	Weapon.UpSound "chaingun/select";
+	Weapon.UpSound "weapon/AR/raise";
 	-WEAPON.AMMO_CHECKBOTH
 	-WEAPON.NOALERT
 	}

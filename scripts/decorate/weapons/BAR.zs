@@ -16,6 +16,7 @@ Default
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive1 20;
 	Weapon.AmmoGive2 40;
+	Weapon.UpSound "weapon/AR/raise";
 	Tag "Browning Automatic Rifle";
 	Inventory.PickupMessage "You got the Browning Automatic Rifle! Firing it in alternate attack will use its slow auto mode instead of full.";
 	Weapon.UpSound "BARCOK";

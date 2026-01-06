@@ -35,7 +35,7 @@ class Pyrolight : NaziWeapon
 	Weapon.AmmoUse 1;
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 50;
-	Weapon.UpSound "flamer/select";
+	Weapon.UpSound "weapon/Launcher/raise";
 	Tag "$TAGPYROL";
 	Scale 0.5;
 	}

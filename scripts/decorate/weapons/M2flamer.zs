@@ -33,7 +33,7 @@ class M2Flamer : NaziWeapon replaces Pyrolight
 	Weapon.AmmoType "FlameAmmo";
 	Weapon.AmmoUse 1;
 	Weapon.AmmoGive 125;
-	Weapon.UpSound "flamer/select";
+	Weapon.UpSound "weapon/Launcher/raise";
 	Tag "M2 Flamethrower (SUGK)";
 	Scale 0.5;
 	}

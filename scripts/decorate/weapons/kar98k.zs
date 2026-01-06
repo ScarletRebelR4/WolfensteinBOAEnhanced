@@ -33,7 +33,7 @@ class Kar98k : NaziWeapon
 	Weapon.AmmoType2 "MauserAmmo";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 5;
-	Weapon.UpSound "K98FOW";
+	Weapon.UpSound "weapon/Sniper/raise";
 	Inventory.PickupMessage "$Kar98k";
 	Weapon.SelectionOrder 750;
 	+WEAPON.NOAUTOFIRE

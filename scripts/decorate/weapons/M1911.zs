@@ -34,7 +34,7 @@ class M191145ACP : NaziWeapon
 	Weapon.AmmoType2 "Ammo45ACP";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
-	Weapon.UpSound "Select/pistol";
+	Weapon.UpSound "weapon/Pistol/raise";
 	Tag "M1911";
 	Inventory.PickupMessage "$P08LUG";
 	+WEAPON.NOAUTOFIRE
@@ -105,10 +105,12 @@ class M191145ACP : NaziWeapon
 		Goto ReadyEmpty;
 		
 	Reload:
+		M45A A 0 A_JumpIf(CountInv("Ammo45ACP") == 0, "Ready");
+		TNT1 A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 8, "Ready");
 		TNT1 A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 0, "Reload2");
 		M452 ABCDEF 1;
 		TNT1 A 0 A_StartSound("Weapons/M1911/MagOut", CHAN_AUTO);
-		M452 GHIJKLMNO 1;
+		M452 GHIJKLLLLLMNO 1;
 		TNT1 A 0 A_StartSound("Weapons/M1911/MagIn", CHAN_AUTO);
 		M452 PQR 1;
 	ReloadLoop:
@@ -124,7 +126,7 @@ class M191145ACP : NaziWeapon
 	Reload2:
 		M454 ABCDE 1;
 		TNT1 A 0 A_StartSound("Weapons/M1911/MagOut", CHAN_AUTO);
-		M454 FGHIJKLM 1;
+		M454 FGHIJKKKKKLM 1;
 		TNT1 A 0 A_StartSound("Weapons/M1911/MagIn", CHAN_AUTO);
 		M454 NOPQR 1;
 	Reload2Loop:

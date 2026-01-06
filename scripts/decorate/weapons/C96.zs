@@ -36,6 +36,7 @@ class C96 : NaziWeapon
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
 	Weapon.UpSound "PPKCOK";
+	Weapon.UpSound "weapon/Pistol/raise";
 	Tag "C96";
 	Inventory.PickupMessage "You got the C96!";
 	+WEAPON.NOAUTOFIRE;

@@ -1,0 +1,37 @@
+$RANDOM Weapon/Melee/Raise { Weapon/Melee/Raise1 Weapon/Melee/Raise2 Weapon/Melee/Raise3 Weapon/Melee/Raise4 }
+Weapon/Melee/Raise1	"Sounds/weapons/weapon_select/Generic/MeleeRaise1.wav"
+Weapon/Melee/Raise2	"Sounds/weapons/weapon_select/Generic/MeleeRaise2.wav"
+Weapon/Melee/Raise3	"Sounds/weapons/weapon_select/Generic/MeleeRaise3.wav"
+Weapon/Melee/Raise4	"Sounds/weapons/weapon_select/Generic/MeleeRaise4.wav"
+
+$RANDOM Weapon/Pistol/Raise { Weapon/Pistol/Raise1 Weapon/Pistol/Raise2 Weapon/Pistol/Raise3 }
+Weapon/Pistol/Raise1	"Sounds/weapons/weapon_select/Generic/PistolRaise1.wav"
+Weapon/Pistol/Raise2	"Sounds/weapons/weapon_select/Generic/PistolRaise2.wav"
+Weapon/Pistol/Raise3	"Sounds/weapons/weapon_select/Generic/PistolRaise3.wav"
+
+$RANDOM Weapon/SMG/Raise { Weapon/SMG/Raise1 Weapon/SMG/Raise2 Weapon/SMG/Raise3 }
+Weapon/SMG/Raise1	"Sounds/weapons/weapon_select/Generic/SMGRaise1.wav"
+Weapon/SMG/Raise2	"Sounds/weapons/weapon_select/Generic/SMGRaise2.wav"
+Weapon/SMG/Raise3	"Sounds/weapons/weapon_select/Generic/SMGRaise3.wav"
+
+$RANDOM Weapon/AR/Raise { Weapon/AR/Raise1 Weapon/AR/Raise2 Weapon/AR/Raise3 }
+Weapon/AR/Raise1	"Sounds/weapons/weapon_select/Generic/ARRaise1.wav"
+Weapon/AR/Raise2	"Sounds/weapons/weapon_select/Generic/ARRaise2.wav"
+Weapon/AR/Raise3	"Sounds/weapons/weapon_select/Generic/ARRaise3.wav"
+
+$RANDOM Weapon/Shotgun/Raise { Weapon/Shotgun/Raise1 Weapon/Shotgun/Raise2 Weapon/Shotgun/Raise3 Weapon/Shotgun/Raise4 Weapon/Shotgun/Raise5 Weapon/Shotgun/Raise6 }
+Weapon/Shotgun/Raise1	"Sounds/weapons/weapon_select/Generic/ShotgunRaise1.wav"
+Weapon/Shotgun/Raise2	"Sounds/weapons/weapon_select/Generic/ShotgunRaise2.wav"
+Weapon/Shotgun/Raise3	"Sounds/weapons/weapon_select/Generic/ShotgunRaise3.wav"
+Weapon/Shotgun/Raise4	"Sounds/weapons/weapon_select/Generic/ShotgunRaise4.wav"
+Weapon/Shotgun/Raise5	"Sounds/weapons/weapon_select/Generic/ShotgunRaise5.wav"
+Weapon/Shotgun/Raise6	"Sounds/weapons/weapon_select/Generic/ShotgunRaise6.wav"
+
+$RANDOM Weapon/Sniper/Raise { Weapon/Sniper/Raise1 Weapon/Sniper/Raise2 }
+Weapon/Sniper/Raise1	"Sounds/weapons/weapon_select/Generic/SniperRaise1.wav"
+Weapon/Sniper/Raise2	"Sounds/weapons/weapon_select/Generic/SniperRaise2.wav"
+
+$RANDOM Weapon/Launcher/Raise { Weapon/Launcher/Raise1 Weapon/Launcher/Raise2 Weapon/Launcher/Raise3 }
+Weapon/Launcher/Raise1	"Sounds/weapons/weapon_select/Generic/LauncherRaise1.wav"
+Weapon/Launcher/Raise2	"Sounds/weapons/weapon_select/Generic/LauncherRaise2.wav"
+Weapon/Launcher/Raise3	"Sounds/weapons/weapon_select/Generic/LauncherRaise3.wav"

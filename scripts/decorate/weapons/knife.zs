@@ -39,6 +39,7 @@ class KnifeSilent : NaziWeapon
 	Weapon.BobStyle "Smooth";
 	Weapon.BobSpeed 1.5;
 	Weapon.BobRangeX 1.5;
+	Weapon.UpSound "weapon/Melee/raise";
 	Inventory.PickupMessage "$KNIFE";
 	Weapon.SelectionOrder 10000;
 	}
@@ -48,32 +49,32 @@ class KnifeSilent : NaziWeapon
 		KNFE A -1;
 		Stop;
 	Ready:
-		KNFG A 1 A_WeaponReady;
+		KNFW A 1 A_WeaponReady;
 		Loop;
 	Deselect:
-		KNFG A 1 A_Lower;
+		KNFW A 1 A_Lower(12);
 		Loop;
 	Select:
-		KNFG A 1 A_Raise;
+		KNFW A 1 A_Raise(12);
 		Loop;
 	Fire:
-	    KNFG ABCDE 1;
+	    KNFW A 1;
 	Fire.BerserkorNot:	
-		KNFG A 0 A_JumpIfInventory("PowerStrength", 1, "Fire.Berserked");
+		KNFW A 0 A_JumpIfInventory("PowerStrength", 1, "Fire.Berserked");
 	Fire.Normal:
-	    KNFA ABCD 1;
-		KNFA E 1 A_StartSound("knife/swing", CHAN_WEAPON);
-		KNFA F 1 A_CustomPunch(10, 1, 0, "KnifePuff", 64);
+		TNT1 A 0 A_StartSound("knife/swing", CHAN_WEAPON);
+	    KNFW ABC 1;
+		KNFW D 1 A_CustomPunch(10, 1, 0, "KnifePuff", 64);
 		Goto Fire.End;
 	Fire.Berserked:
-	    KNFA ABCD 1;
-		KNFA E 1 A_StartSound("knife/swing", CHAN_WEAPON);
-		KNFA F 1 A_CustomPunch(10*5, 1, 0, "KnifePuff", 64); //Quintuple Damage with NaziBerserk, suggested by N00b - ozy81
+		TNT1 A 0 A_StartSound("knife/swing", CHAN_WEAPON);
+	    KNFW ABC 1;
+		KNFW D 1 A_CustomPunch(10*5, 1, 0, "KnifePuff", 64); //Quintuple Damage with NaziBerserk, suggested by N00b - ozy81
 	Fire.End:
-		KNFA A 1;
+		KNFW D 2;
+		KNFW CBA 1;
 		TNT1 A 0 A_Refire("Fire.BerserkorNot");
-		KNFG EDCBA 1;
-		KNFG A 2;
+		KNFW A 2;
 		Goto Ready;
 	}
 }

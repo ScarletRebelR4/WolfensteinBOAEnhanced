@@ -34,6 +34,7 @@ class G43 : NaziWeapon
 	Weapon.AmmoType2 "MauserAmmo";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 10;
+	Weapon.UpSound "weapon/Sniper/raise";
 	Inventory.PickupMessage "$G43";
 	Tag "Gewehr 43";
 	Weapon.UpSound "G43COK";

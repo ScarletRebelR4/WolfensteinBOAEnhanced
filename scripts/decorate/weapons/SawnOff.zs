@@ -34,7 +34,7 @@ class Coachgun : NaziWeapon
 	Weapon.AmmoType2 "Ammo12Gauge";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
-	Weapon.UpSound "SSGCLO";
+	Weapon.UpSound "weapon/Shotgun/raise";
 	Inventory.PickupMessage "You got the Sawn-off Coachgun! Pass the whiskey!";
 	+WEAPON.NOAUTOFIRE
 	+NaziWeapon.NORAMPAGE

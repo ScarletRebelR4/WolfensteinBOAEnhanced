@@ -34,7 +34,7 @@ class M1Thompson : NaziWeapon
 	Weapon.AmmoUse 1;
 	Weapon.AmmoType2 "Ammo45ACP";
 	Weapon.AmmoUse2 1;
-	Weapon.UpSound "TGCOK";
+	Weapon.UpSound "weapon/SMG/raise";
 	Tag "M1A1 Thompson";
 	Inventory.PickupMessage "You got the M1A1 Thompson!";
 	Weapon.AmmoGive2 30;

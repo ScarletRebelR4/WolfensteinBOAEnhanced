@@ -33,7 +33,7 @@ class MP40 : NaziWeapon
 	Weapon.AmmoUse 1;
 	Weapon.AmmoType2 "Ammo9mm";
 	Weapon.AmmoUse2 1;
-	Weapon.UpSound "MP40FOW";
+	Weapon.UpSound "weapon/SMG/raise";
 	Tag "MP 40";
 	Inventory.PickupMessage "$MP40";
 	Weapon.AmmoGive2 32;

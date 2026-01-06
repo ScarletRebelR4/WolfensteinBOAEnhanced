@@ -35,7 +35,7 @@ class Sten : NaziWeapon //Rate of fire: ~500 rounds/min - Wikipedia
 	Weapon.AmmoType2 "Ammo380ACP";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 32;
-	Weapon.UpSound "weapons/sten/Raise";
+	Weapon.UpSound "weapon/SMG/raise";
 	Tag "STEN Mk II";
 	+WEAPON.NOAUTOFIRE //had to add this to make the altfire non-automatic --N00b
 	}

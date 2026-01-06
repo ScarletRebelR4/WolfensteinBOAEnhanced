@@ -27,6 +27,7 @@ Default
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive1 0;
 	Weapon.AmmoGive2 20;
+	Weapon.UpSound "weapon/Sniper/raise";
 	Inventory.PickupMessage "You got the M1 Garand! Trust me, when you load this gun up... - Lt. Hyde";
 	Weapon.SelectionOrder 750;
 	+WEAPON.NOAUTOFIRE;

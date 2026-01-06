@@ -22,7 +22,25 @@
 
 class Walther9mm : Luger9mm
 {
-	//[Pop] This exists as a patch to make sure the Luger isnt replaced lol
+	States
+	{
+		Select:
+			TNT1 A 0 A_Raise();
+			Wait;
+		Ready:
+			TNT1 A 1;
+			TNT1 A 0 A_GiveInventory("Luger9mm", 1);
+			TNT1 A 0 A_SelectWeapon("Luger9mm", 1);
+			TNT1 A 0 A_TakeInventory("Walther9mm");
+			Loop;
+		Deselect:
+			TNT1 A 0 A_Lower();
+			Wait;
+		Spawn:
+			TNT1 A 1;
+			TNT1 A 0 A_DropItem("Luger9mm");
+			Stop;
+	}
 }
 
 class Walther9mmLoaded : Ammo

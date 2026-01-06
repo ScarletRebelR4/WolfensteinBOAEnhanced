@@ -473,14 +473,14 @@ class MauserAmmo_G43 : MauserAmmo
 	//$Category Ammo (BoA)
 	//$Title G43 Mag (x10 clips)
 	//$Color 6
-	Scale 0.5;
-	Inventory.Amount 20;
+	Scale 0.25;
+	Inventory.Amount 10;
 	Inventory.PickupMessage "$MAUSBOX";
 	}
 	States
 	{
 	Spawn:
-		792A B -1;
+		792M B -1;
 		Stop;
 	}
 }
@@ -499,7 +499,7 @@ class MauserAmmo_MG42 : MauserAmmo
 	States
 	{
 	Spawn:
-		792A C -1;
+		792M C -1;
 		Stop;
 	}
 }
@@ -518,7 +518,7 @@ class MauserAmmoBox : MauserAmmo
 	States
 	{
 	Spawn:
-		792A D -1;
+		792M D -1;
 		Stop;
 	}
 }

@@ -33,7 +33,7 @@ class TrenchShotgun : NaziWeapon
 	Weapon.AmmoType2 "Ammo12Gauge";
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive2 8;
-	Weapon.UpSound "SGFOW";
+	Weapon.UpSound "weapon/shotgun/raise";
 	Inventory.PickupMessage "$TRENSSG";
 	+WEAPON.NOAUTOFIRE
 	+NaziWeapon.NORAMPAGE

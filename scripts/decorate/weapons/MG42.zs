@@ -16,6 +16,7 @@ Default
 	Weapon.AmmoUse2 1;
 	Weapon.AmmoGive1 50;
 	Weapon.AmmoGive2 100;
+	Weapon.UpSound "weapon/AR/raise";
 	Tag "MG 42";
 	Inventory.PickupMessage "You got the Maschinengewehr 42!";
 	Weapon.UpSound "MG42COK";

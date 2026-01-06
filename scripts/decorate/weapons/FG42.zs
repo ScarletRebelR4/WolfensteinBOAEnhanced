@@ -9,6 +9,7 @@ class FG42 : NaziWeapon
 		Weapon.AmmoUse2 1;
 		Weapon.AmmoGive2 20;
 		Weapon.UpSound "FG42COK";
+		Weapon.UpSound "weapon/AR/raise";
 		Weapon.SlotNumber 5;
 		Inventory.PickupMessage "You got the FG-42!";
 		Weapon.SelectionOrder 50;

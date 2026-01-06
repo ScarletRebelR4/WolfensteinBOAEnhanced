@@ -23,6 +23,7 @@ class STG44 : NaziWeapon
 	weapon.ammouse2 1;
 	Weapon.AmmoGive1 0;
 	Weapon.AmmoGive2 60;
+	Weapon.UpSound "weapon/AR/raise";
 	Scale .5;
 	Tag "Sturmgewehr 44";
 	Weapon.UpSound "MP44COK";
