@@ -307,9 +307,9 @@ class Ammo12Gauge : Ammo
 	Tag "$TAGGAUGE";
 	Inventory.PickupMessage "$GAUGAMMO";
 	Inventory.Amount 4;
-	Inventory.MaxAmount 32;
+	Inventory.MaxAmount 64;
 	Ammo.BackpackAmount 4;
-	Ammo.BackpackMaxAmount 64;
+	Ammo.BackpackMaxAmount 128;
 	Inventory.Icon "BROW02";
 	}
 	States

@@ -45,7 +45,7 @@ class G43 : NaziWeapon
 	{
 		Deselect:
 			//TNT1 A 0 A_StartSound("Weapons/C96/Lower", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			G43C FEDCBA 1;
+			G43C ABCDEF 1;
 			TNT1 A 0 A_Lower();
 			Wait;
 		Select:
@@ -72,7 +72,7 @@ class G43 : NaziWeapon
 		Ready:
 			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
 			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			G43C ABCDEF 1;
+			G43C FEDCBA 1;
 		Ready1:
 			TNT1 A 0 A_JumpIf(CountInv("G43Loaded") == 0, "Ready2");
 			G43A A 1 A_WeaponReady(WRF_ALLOWRELOAD);
