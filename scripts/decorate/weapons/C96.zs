@@ -74,7 +74,7 @@ class C96 : NaziWeapon
 			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			C96B ABCDEF 1;
 		Ready1:
-			LUGG A 0 A_JumpIf(CountInv("C96Loaded") == 0, "ReadyEmpty");
+			LUGG A 0 A_JumpIf(CountInv("C96Loaded") == 0, "Ready2");
 			C96A A 1 A_WeaponReady(WRF_ALLOWRELOAD);
 			Loop;
 		Ready2:
@@ -112,6 +112,7 @@ class C96 : NaziWeapon
 			C96A EEE 1;
 			Goto Ready2;
 		Reload:
+			TNT1 A 0 A_JumpIf(CountInv("Ammo763Mauser") == 0, "Ready1");
 			TNT1 A 0 A_JumpIf(CountInv("C96Loaded") == 10, "Ready1");
 			TNT1 A 0 A_JumpIf(CountInv("C96Loaded") == 0, "Reload2"); //Clip Load
 			TNT1 A 0 A_StartSound("Weapons/C96/ArmSwish", CHAN_AUTO, CHANF_OVERLAP, 1.0);
