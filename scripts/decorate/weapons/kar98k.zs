@@ -42,206 +42,166 @@ class Kar98k : NaziWeapon
 	}
 	States
 	{
-	Ready:
-		K98I A 0 A_JumpIfInventory("SniperZoom",1,"ScopedReady");
-		K98I A 0 A_JumpIfInventory("Kar98kLoaded",0,2);
-		K98I A 0 A_JumpIfInventory("MauserAmmo",1,2);
-		K98I A 1 A_WeaponReady;
-		Loop;
-		K98I A 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	ScopedReady:
-		SCO1 A 0 A_JumpIfInventory("Kar98kLoaded",0,2);
-		SCO1 A 0 A_JumpIfInventory("MauserAmmo",1,2);
-		SCO1 A 1 A_WeaponReady(WRF_NOBOB);
-		Goto Ready;
-		SCO1 A 1 A_WeaponReady(WRF_NOBOB|WRF_ALLOWRELOAD);
-		Goto Ready;
-	Select:
-		K98I A 0 A_Raise;
-		K98I A 1 A_Raise;
-		Loop;
-	Deselect:
-		K98I A 0 A_JumpIfReloading(4);
-		K98I A 0 A_JumpIfInventory("SniperZoom",1,"ScopedDeselect");
-		K98I A 0 A_Lower;
-		K98I A 1 A_Lower;
-		Loop;
-	    K983 A 2;
-		K983 B 2;
-		TNT1 A 0 A_StartSound("K98FOW",5);
-		K983 C 2;
-		K983 D 2;
-		TNT1 A 0 A_StartSound("K98DOW",5);
-		K983 E 2;
-		K983 F 2;
-		K983 G 2;
-		K983 H 2;
-		K983 I 2;
-		K983 J 2 A_Reloading(0);
-		Loop;
-	ScopedDeselect:
-		SCO1 A 0 A_TakeInventory("SniperZoom");
-		SCO1 A 0 A_StartSound("mauser/scope");
-		SCO1 A 1 A_ZoomFactor(1.0);
-		Goto Deselect;
-	Fire:
-		K98I A 0 A_JumpIfReloading("ReloadEnd");
-		K98I A 0 A_JumpIfInventory("Kar98kLoaded",1,1);
-		Goto Dryfire;
-		K98I A 0 A_AlertMonsters;
-		K98I A 0 A_StartSound("K98FIR", CHAN_WEAPON);
-		K98I A 0 A_JumpIfInventory("SniperZoom", 1, "ScopedFire");
-		K98I A 0 A_GunFlash;
-		K98F A 1 BRIGHT A_FireProjectile("Kar98kTracer");
-		K98I A 0 A_JumpIf(waterlevel > 0,2);
-		K98I A 0 A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
-		K98F B 2 Offset(0,40) A_SetPitch(pitch-(4.0*boa_recoilamount));
-		K98F C 1 Offset(0,36) A_SetPitch(pitch-(2.0*boa_recoilamount));
-		K98F D 1 Offset(0,32)A_SetPitch(pitch+(1.0*boa_recoilamount));
-		K98F E 1 A_SetPitch(pitch+(1.0*boa_recoilamount));
-		K98F F 1 A_SetPitch(pitch+(0.5*boa_recoilamount));
-	    K98C A 2;
-		K98C B 2;
-		K98C C 2;
-		K98C D 2;
-		TNT1 A 0 A_StartSound("K98UP",5);
-		K98C E 2;
-		K98C F 2;
-		TNT1 A 0 A_StartSound("K98BAC",5);
-		K98I A 0 A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
-		K98C G 2;
-		K98C H 2;
-		K98C I 2;
-		K98C J 2;
-		TNT1 A 0 A_StartSound("K98FOW",5);
-		K98C K 2;
-		TNT1 A 0 A_StartSound("K98DOW",5);
-		K98C L 2;
-		K98C M 2;
-		K98C N 2;
-		K98C O 2;
-		K98C P 2;
-		K98C Q 2;
-		K98I A 1 A_CheckReload;
-		Goto Ready;
-	ScopedFire:
-		SCO1 A 2 A_FireProjectile("Kar98kTracer2");
-		SCO1 A 0 A_JumpIf(height<=30,"ScopedFireLowRecoil");
-		SCO1 A 0 A_JumpIf(waterlevel > 0,2);
-		SCO1 A 0 A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
-		SCO1 A 2 A_SetPitch(pitch-(4.0*boa_recoilamount));
-		SCO1 A 1 A_SetPitch(pitch-(2.0*boa_recoilamount));
-		SCO1 A 1 A_SetPitch(pitch+(1.0*boa_recoilamount));
-		SCO1 A 3 A_SetPitch(pitch+(1.0*boa_recoilamount));
-		SCO1 A 1 A_SetPitch(pitch+(0.5*boa_recoilamount));
-		SCO1 A 8;
-		TNT1 A 0 A_StartSound("K98UP",5);
-		SCO1 A 4;
-		TNT1 A 0 A_StartSound("K98BAC",5);
-		K98I A 0 A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
-		SCO1 A 8;
-		TNT1 A 0 A_StartSound("K98FOW",5);
-		SCO1 A 2;
-		TNT1 A 0 A_StartSound("K98DOW",5);
-		SCO1 A 1 A_CheckReload;
-		Goto Ready;
-	ScopedFireLowRecoil:
-		SCO1 A 0 A_JumpIf(waterlevel > 0,2);
-		SCO1 A 0 A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
-		SCO1 A 2 A_SetPitch(pitch-(2.0*boa_recoilamount));
-		SCO1 A 1 A_SetPitch(pitch-(1.0*boa_recoilamount));
-		SCO1 A 1 A_SetPitch(pitch+(0.5*boa_recoilamount));
-		SCO1 A 3 A_SetPitch(pitch+(0.5*boa_recoilamount));
-		SCO1 A 1 A_SetPitch(pitch+(0.25*boa_recoilamount));
-		SCO1 A 8;
-		TNT1 A 0 A_StartSound("K98UP",5);
-		SCO1 A 4;
-		TNT1 A 0 A_StartSound("K98BAC",5);
-		K98I A 0 A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
-		SCO1 A 8;
-		TNT1 A 0 A_StartSound("K98FOW",5);
-		SCO1 A 2;
-		TNT1 A 0 A_StartSound("K98DOW",5);
-		SCO1 A 1 A_CheckReload;
-		Goto Ready;
-	Flash:
-		TNT1 A 1 A_Light2;
-		TNT1 A 1;
-		TNT1 A 2 A_Light1;
-		Goto LightDone;
-	AltFire:
-		K98I A 0 A_JumpIfReloading("ReloadEnd");
-		SCO1 A 0 A_JumpIfInventory("SniperZoom",1,"ZoomOut");
-		SCO1 A 0 A_StartSound("mauser/scope");
-		SCO1 A 0 A_GiveInventory("SniperZoom");
-		SCO1 A 3 A_ZoomFactor(12.0);
-		Goto Ready;
-	ZoomOut:
-		SCO1 A 0 A_TakeInventory("SniperZoom");
-		SCO1 A 0 A_StartSound("mauser/scope");
-		SCO1 A 3 A_ZoomFactor(1.0);
-		Goto Ready;
-	Reload:
-		SCO1 A 0 A_Reloading;
-		SCO1 A 0 A_JumpIfInventory("SniperZoom",1,2);
-		SCO1 A 0 A_Jump(256,4);
-		SCO1 A 0 A_TakeInventory("SniperZoom");
-		SCO1 A 0 A_StartSound("mauser/scope");
-		SCO1 A 3 A_ZoomFactor(1.0);
-	    K981 A 2;
-		K981 B 2;
-		K981 C 2;
-		K981 D 2;
-		K981 E 2;
-		K981 F 2;
-		K981 G 2;
-		K981 H 2;
-		K981 I 2;
-		TNT1 A 0 A_StartSound("K98UP",5);
-		K981 J 2;
-		K981 K 2;
-		K981 L 2;
-		TNT1 A 0 A_StartSound("K98BAC",5);
-		K981 M 2;
-		K981 N 2;
-		K981 O 2;
-		K981 P 2;
-		K981 Q 2;
-	ReloadLoop:
-		TNT1 A 0 A_TakeInventory("MauserAmmo",1,TIF_NOTAKEINFINITE);
-		TNT1 A 0 A_GiveInventory("Kar98kLoaded");
-        K982 A 2;
-		K982 B 2;
-		K982 C 2;
-		K982 D 2;
-		K982 E 2;
-		TNT1 A 0 A_StartSound("K98IN",5);
-		K982 F 2;
-		K982 G 2;
-		K982 H 2;
-		K982 I 2;
-		K982 J 2;
-		K982 J 1 A_WeaponReady(WRF_NOBOB);
-		TNT1 A 0 A_JumpIfInventory("Kar98kLoaded",0,"ReloadEnd");
-		TNT1 A 0 A_JumpIfInventory("MauserAmmo",1,"ReloadLoop");
-	ReloadEnd:
-	    K983 A 2;
-		K983 B 2;
-		TNT1 A 0 A_StartSound("K98FOW",5);
-		K983 C 2;
-		K983 D 2;
-		TNT1 A 0 A_StartSound("K98DOW",5);
-		K983 E 2;
-		K983 F 2;
-		K983 G 2;
-		K983 H 2;
-		K983 I 2;
-		K983 J 2 A_Reloading(0);
-		Goto Ready;
-	Spawn:
-		K98K A -1;
-		Stop;
+		Deselect:
+			//TNT1 A 0 A_StartSound("Weapons/C96/Lower", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			K98D FEDCBA 1;
+			TNT1 A 0 A_Lower();
+			Wait;
+		Select:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstSelect");
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstSelect:
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstReady: //First Time Select
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96I ABCDE 1;
+			C96I E 4;
+			C96F TUVWXYZ 1;
+			TNT1 A 0
+			{
+				invoker.firstPickup = true;
+			}
+			TNT1 A 0 A_StartSound("Weapons/C96/Slap", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G A 1;
+			TNT1 A 0 A_StartSound("Weapons/C96/BoltClose", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G BCDEFGHIJKLMN 1;
+			Goto Ready1;
+		Ready:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			K98D ABCDEF 1;
+		Ready1:
+			TNT1 A 0 A_JumpIfInventory("SniperZoom",1,"ScopedReady");
+			TNT1 A 0 A_JumpIf(CountInv("Kar98kLoaded") == 0, "Ready2");
+			K98F A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Ready2:
+			K98F C 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		ScopedReady:
+			K98S A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Fire:
+			TNT1 A 0 A_JumpIf(CountInv("Kar98kLoaded") == 0,"DryFire");
+			TNT1 A 0 A_JumpIfInventory("SniperZoom", 1, "ScopedFire");
+			K98F B 2 BRIGHT
+			{
+				A_GunFlash();
+				A_AlertMonsters();
+				
+				if(waterlevel > 0.2)
+				{
+					//[Pop] Refactor later with new smoke system
+					A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
+				}
+				//[Pop] no casing this time!
+				
+				A_StartSound("K98FIR", CHAN_WEAPON);
+				A_FireProjectile("Kar98kTracer");
+				A_SetPitch(pitch-(2.0*boa_recoilamount));
+			}
+			K98F C 4;
+			TNT1 A 0 A_JumpIf(CountInv("Kar98kLoaded") == 0,"Ready2");
+			K98F C 2;
+			K98R AB 2;
+			TNT1 A 0 A_StartSound("K98UP",5);
+			K98R CD 2;
+			TNT1 A 0 A_StartSound("K98BAC",5);
+			K98R EF 2;
+			TNT1 A 0 A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+			K98R F 4;
+			TNT1 A 0 A_StartSound("K98FOW",5);
+			K98R FED 2;
+			TNT1 A 0 A_StartSound("K98DOW",5);
+			K98R CBA 2;
+			K98F A 2;
+			Goto Ready1;
+		ScopedFire:
+			K98S B 2 BRIGHT
+			{
+				A_GunFlash();
+				A_AlertMonsters();
+				
+				if(waterlevel > 0.2)
+				{
+					//[Pop] Refactor later with new smoke system
+					A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
+				}
+				//[Pop] no casing this time!
+				
+				A_StartSound("K98FIR", CHAN_WEAPON);
+				A_FireProjectile("Kar98kTracer");
+				A_SetPitch(pitch-(4.0*boa_recoilamount));
+			}
+			K98S A 4;
+			TNT1 A 0 A_JumpIf(CountInv("Kar98kLoaded") == 0,"Ready2");
+			K98S A 6;
+			TNT1 A 0 A_StartSound("K98UP",5);
+			K98S A 4;
+			TNT1 A 0 A_StartSound("K98BAC",5);
+			K98S A 4;
+			K98I A 0 A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+			K98S A 4;
+			TNT1 A 0 A_StartSound("K98FOW",5);
+			K98S A 6;
+			TNT1 A 0 A_StartSound("K98DOW",5);
+			K98S A 8;
+			Goto ScopedReady;
+			
+		Flash:
+			TNT1 A 1 A_Light2;
+			TNT1 A 1;
+			TNT1 A 2 A_Light1;
+			Goto LightDone;
+			
+		AltFire:
+			SCO1 A 0 A_JumpIfInventory("SniperZoom",1,"ZoomOut");
+			SCO1 A 0 A_StartSound("mauser/scope");
+			SCO1 A 0 A_GiveInventory("SniperZoom");
+			K98S A 3 A_ZoomFactor(12.0);
+			Goto ScopedReady;
+		ZoomOut:
+			SCO1 A 0 A_TakeInventory("SniperZoom");
+			SCO1 A 0 A_StartSound("mauser/scope");
+			K98S A 3 A_ZoomFactor(1.0);
+			Goto Ready1;
+		Reload:
+			TNT1 A 0 A_JumpIf(CountInv("MauserAmmo") == 0, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("Kar98kLoaded") == 5, "Ready1");
+			SCO1 A 0 A_JumpIf(CountInv("SniperZoom") == 0,"ReloadStart");
+			SCO1 A 0 A_TakeInventory("SniperZoom");
+			SCO1 A 0 A_StartSound("mauser/scope");
+			SCO1 A 3 A_ZoomFactor(1.0);
+		ReloadStart:
+			K98F C 2;
+			K98R AB 2;
+			TNT1 A 0 A_StartSound("K98UP",5);
+			K98R CD 2;
+			TNT1 A 0 A_StartSound("K98BAC",5);
+			K98R EFGH 2;
+		ReloadLoop:
+			K98R IJ 2;
+			TNT1 A 0 A_StartSound("K98IN",5);
+			K98R KL 2;
+			TNT1 A 0 A_TakeInventory("MauserAmmo",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_GiveInventory("Kar98kLoaded");
+			K98R KJI 2;
+			TNT1 A 0 A_JumpIfInventory("Kar98kLoaded",5,"ReloadEnd");
+			TNT1 A 0 A_JumpIfInventory("MauserAmmo",1,"ReloadLoop");
+		ReloadEnd:
+			K98R H 2;
+			K98R F 4;
+			TNT1 A 0 A_StartSound("K98FOW",5);
+			K98R FED 2;
+			TNT1 A 0 A_StartSound("K98DOW",5);
+			K98R CBA 2;
+			K98F A 2;
+			Goto Ready1;
+		Spawn:
+			K98P A -1;
+			Stop;
 	}
 }
 
