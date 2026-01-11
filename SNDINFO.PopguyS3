@@ -1,0 +1,23 @@
+weapons/BA5/fire	"Sounds/Weapons/Browning/Fire/ba5fire.ogg"
+weapons/BA5/add	"Sounds/Weapons/Browning/Fire/ba5add.ogg"
+weapons/BA5/firebass	"Sounds/Weapons/Browning/Fire/ba5firebass.wav"
+$RANDOM weapons/BA5/Mech { weapons/BA5/Mech1 weapons/BA5/Mech2 weapons/BA5/Mech3 weapons/BA5/Mech4 }
+weapons/BA5/Mech1	"Sounds/Weapons/Browning/Fire/ba5Mech1.wav"
+weapons/BA5/Mech2	"Sounds/Weapons/Browning/Fire/ba5Mech2.wav"
+weapons/BA5/Mech3	"Sounds/Weapons/Browning/Fire/ba5Mech3.wav"
+weapons/BA5/Mech4	"Sounds/Weapons/Browning/Fire/ba5Mech4.wav"
+
+weapons/BA5/In	"Sounds/Weapons/Browning/BA5In.wav"
+weapons/BA5/Out	"Sounds/Weapons/Browning/BA5Out.wav"
+weapons/BA5/Raise	"Sounds/Weapons/Browning/BA5Raise.wav"
+weapons/BA5/Lower	"Sounds/Weapons/Browning/BA5Lower.wav"
+weapons/BA5/EmptyOut	"Sounds/Weapons/Browning/BA5EmptyOut.wav"
+weapons/BA5/BoltBack	"Sounds/Weapons/Browning/BA5BoltBack.wav"
+weapons/BA5/BoltBackAdd	"Sounds/Weapons/Browning/BA5BoltBackAdd.mp3"
+weapons/BA5/BoltForward	"Sounds/Weapons/Browning/BA5BoltForward.wav"
+$RANDOM weapons/BA5/Shell { weapons/BA5/Shell1 weapons/BA5/Shell2 weapons/BA5/Shell3 weapons/BA5/Shell4 weapons/BA5/Shell5 }
+weapons/BA5/Shell1	"Sounds/Weapons/Browning/BA5Shell1.wav"
+weapons/BA5/Shell2	"Sounds/Weapons/Browning/BA5Shell2.wav"
+weapons/BA5/Shell3	"Sounds/Weapons/Browning/BA5Shell3.wav"
+weapons/BA5/Shell4	"Sounds/Weapons/Browning/BA5Shell4.wav"
+weapons/BA5/Shell5	"Sounds/Weapons/Browning/BA5Shell5.wav"

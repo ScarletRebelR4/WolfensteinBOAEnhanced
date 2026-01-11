@@ -40,96 +40,116 @@ class MP40 : NaziWeapon
 	}
 	States
 	{
-	Ready:
-		RIFG A 0 A_JumpIfInventory("MP40Loaded",0,2);
-		RIFG A 0 A_JumpIfInventory("Ammo9mm",1,2);
-		RIFG A 1 A_WeaponReady;
-		Loop;
-		RIFG A 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	Deselect:
-		RIFG A 0 A_Lower;
-		RIFG A 1 A_Lower;
-		Loop;
-	Select:
-		RIFG A 0 A_Raise;
-		RIFG A 1 A_Raise;
-		Loop;
-	Fire:
-		RIFG A 0 A_JumpIfInventory("MP40Loaded",1,1);
-		Goto Dryfire;
-		RIFG A 0 A_GunFlash;
-		RIFG A 0 A_SetPitch(pitch-(0.5*boa_recoilamount));
-		RIFG A 0 A_JumpIf(waterlevel > 0,2);
-		RIFG A 0 A_FireProjectile("ChainSmokeSpawner",0,0,0,random(-4,4),0,0);
-		RIFG A 0 A_StartSound("MP40FIR", CHAN_WEAPON, 0, frandom(0.6, 0.8));
-		RIFG A 0 A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
-		RIFG A 0 A_AlertMonsters;
-		RIFF A 1 BRIGHT A_FireProjectile("MP40Tracer",frandom(-1.4,1.4));
-		RIFF B 1;
-		RIFF C 1;
-		RIFG A 1;
-		TNT1 A 0 A_CheckReload;
-		Goto Ready;
-	Reload:
-		RIF1 A 2;
-		RIF1 B 2;
-		RIF1 C 2;
-		RIF1 D 2;
-		RIF1 E 2;
-		RIF1 F 2;
-		RIF1 G 2;
-		TNT1 A 0 A_StartSound("MP40BAC", CHAN_5);
-		RIF1 H 2;
-		RIF1 I 2;
-		RIF1 J 2;
-		RIF1 K 2;
-		RIF1 L 2;
-		TNT1 A 0 A_StartSound("MP40OUT", CHAN_5);
-		RIF1 M 2;
-		RIF1 N 2;
-		RIF1 O 2;
-		RIF1 P 2;
-		RIF1 Q 2;
-		RIF1 R 5;
-	ReloadLoop:
-		TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
-		TNT1 A 0 A_GiveInventory("MP40Loaded");
-		TNT1 A 0 A_JumpIfInventory("MP40Loaded",0,"ReloadFinish");
-		TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
-	ReloadFinish:
-		RIF2 A 2;
-		RIF2 B 2;
-		RIF2 C 2;
-		RIF2 D 2;
-		TNT1 A 0 A_StartSound("MP40IN", CHAN_5);
-		RIF2 E 2;
-		RIF2 F 2;
-		RIF2 G 2;
-		RIF2 H 2;
-		RIF2 I 2;
-		RIF2 J 2;
-		RIF2 K 2;
-		RIF2 L 2;
-		TNT1 A 0 A_StartSound("MP40FOW", CHAN_5);
-		RIF2 M 2;
-		RIF2 N 2;
-		RIF2 O 2;
-		RIF2 P 2;
-		RIF2 Q 2;
-		RIF2 R 2;
-		RIF2 S 2;
-		RIF2 T 2;
-		RIFG A 1 A_WeaponReady(WRF_NOBOB);
-		Goto Ready;
-	Flash:
-		TNT1 A 1 A_Light2;
-		TNT1 A 1;
-		TNT1 A 2 A_Light1;
-		Goto LightDone;
-	Spawn:
-		MP40 A -1;
-		Stop;
+		Ready:
+			RIFG A 0 A_JumpIfInventory("MP40Loaded",0,2);
+			RIFG A 0 A_JumpIfInventory("Ammo9mm",1,2);
+			RIFG A 1 A_WeaponReady;
+			Loop;
+			RIFG A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Deselect:
+			//TNT1 A 0 A_StartSound("Weapons/C96/Lower", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			M40S ABCDEF 1;
+			TNT1 A 0 A_Lower();
+			Wait;
+		Select:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstSelect");
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstSelect:
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstReady: //First Time Select
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96I ABCDE 1;
+			C96I E 4;
+			C96F TUVWXYZ 1;
+			TNT1 A 0
+			{
+				invoker.firstPickup = true;
+			}
+			TNT1 A 0 A_StartSound("Weapons/C96/Slap", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G A 1;
+			TNT1 A 0 A_StartSound("Weapons/C96/BoltClose", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G BCDEFGHIJKLMN 1;
+			Goto Ready1;
+		Ready:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			M40S FEDCBA 1;
+		Ready1:
+			TNT1 A 0 A_JumpIf(CountInv("MP40Loaded") == 0, "Ready2");
+			M40F A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Ready2:
+			M40F C 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Fire:
+			TNT1 A 0 A_JumpIf(CountInv("MP40Loaded") == 0,"DryFire");
+			M40F B 1 BRIGHT
+			{
+				A_GunFlash();
+				A_AlertMonsters();
+				
+				if(waterlevel > 0.2)
+				{
+					//[Pop] Refactor later with new smoke system
+					A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
+				}
+				A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+				//Take Ammo
+				
+				A_StartSound("weapons/MP40/Fire",CHAN_WEAPON, CHANF_OVERLAP);
+				A_StartSound("weapons/MP40/Sweet",CHAN_WEAPON, CHANF_OVERLAP, 0.9);
+				A_StartSound("weapons/MP40/Bass",CHAN_WEAPON, CHANF_OVERLAP);
+				A_StartSound("weapons/MP40/Mech",CHAN_WEAPON, CHANF_OVERLAP, 0.8);
+				A_StartSound("weapons/MP40/Tail",CHAN_WEAPON, CHANF_OVERLAP, 0.65);
+				A_FireProjectile("MP40Tracer",frandom(-1.4,1.4));
+				A_SetPitch(pitch-(0.5*boa_recoilamount));
+			}
+			M40F C 1;
+			TNT1 A 0 A_JumpIf(CountInv("MP40Loaded") == 0,"Ready2");
+			M40F D 1;
+			M40F A 1;
+			Goto Ready1;
+		Reload:
+			TNT1 A 0 A_JumpIf(CountInv("MauserAmmo") == 0, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("MP40Loaded") == 32, "Ready1");
+			M40F A 4;
+			M40R AB 4;
+			TNT1 A 0 A_StartSound("weapons/MP40/Out", CHAN_WEAPON, CHANF_OVERLAP);
+			M40R BCD 4;
+			M40R D 12;
+			TNT1 A 0 A_JumpIf(CountInv("MP40Loaded") > 0, "Reload2");
+			M40R D 4;
+			TNT1 A 0 A_StartSound("weapons/MP40/Back", CHAN_WEAPON, CHANF_OVERLAP);
+			M40R E 4;
+			M40R F 18;
+			TNT1 A 0 A_StartSound("weapons/MP40/Forward", CHAN_WEAPON, CHANF_OVERLAP);
+			M40R E 4;
+			M40R D 4;
+		Reload2:
+			M40R D 4;
+			TNT1 A 0 A_StartSound("weapons/MP40/In", CHAN_WEAPON, CHANF_OVERLAP);
+			M40R DGB 4;
+		ReloadLoop:
+			TNT1 A 0 A_TakeInventory("Ammo9mm",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_GiveInventory("MP40Loaded");
+			TNT1 A 0 A_JumpIfInventory("MP40Loaded",32,"ReloadFinish");
+			TNT1 A 0 A_JumpIfInventory("Ammo9mm",1,"ReloadLoop");
+		ReloadFinish:
+			M40R BA 4;
+			M40F A 6;
+			Goto Ready1;
+		
+		Flash:
+			TNT1 A 1 A_Light2;
+			TNT1 A 1;
+			TNT1 A 2 A_Light1;
+			Goto LightDone;
+		Spawn:
+			MP40 A -1;
+			Stop;
 	}
 }
 

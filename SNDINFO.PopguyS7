@@ -1,0 +1,41 @@
+weapons/VenomGun/WindUp "sounds/weapons/MGVGMK3/VenomWindUp.wav"
+weapons/VenomGun/Loop "sounds/weapons/MGVGMK3/VenomLoop.wav"
+weapons/VenomGun/WindDown "sounds/weapons/MGVGMK3/VenomWindDown.wav"
+
+$RANDOM weapons/VenomGun/Fire { weapons/VenomGun/Fire1 weapons/VenomGun/Fire2 weapons/VenomGun/Fire3 weapons/VenomGun/Fire4 weapons/VenomGun/Fire5 weapons/VenomGun/Fire6 }
+
+weapons/VenomGun/Fire1	"sounds/weapons/MGVGMK3/VenomFire1.wav"
+weapons/VenomGun/Fire2	"sounds/weapons/MGVGMK3/VenomFire2.wav"
+weapons/VenomGun/Fire3	"sounds/weapons/MGVGMK3/VenomFire3.wav"
+weapons/VenomGun/Fire4	"sounds/weapons/MGVGMK3/VenomFire4.wav"
+weapons/VenomGun/Fire5	"sounds/weapons/MGVGMK3/VenomFire5.wav"
+weapons/VenomGun/Fire6	"sounds/weapons/MGVGMK3/VenomFire6.wav"
+
+$RANDOM weapons/VenomGun/FireAdd { weapons/VenomGun/FireAdd1 weapons/VenomGun/FireAdd2 weapons/VenomGun/FireAdd3 weapons/VenomGun/FireAdd4 weapons/VenomGun/FireAdd5 weapons/VenomGun/FireAdd6 }
+
+weapons/VenomGun/FireAdd1	"sounds/weapons/MGVGMK3/VenomFireAdd1.wav"
+weapons/VenomGun/FireAdd2	"sounds/weapons/MGVGMK3/VenomFireAdd2.wav"
+weapons/VenomGun/FireAdd3	"sounds/weapons/MGVGMK3/VenomFireAdd3.wav"
+weapons/VenomGun/FireAdd4	"sounds/weapons/MGVGMK3/VenomFireAdd4.wav"
+weapons/VenomGun/FireAdd5	"sounds/weapons/MGVGMK3/VenomFireAdd5.wav"
+weapons/VenomGun/FireAdd6	"sounds/weapons/MGVGMK3/VenomFireAdd6.wav"
+
+weapons/VenomGun/MechAdd "Sounds/Weapons/MGVGMK3/VenomMech.ogg"
+
+$RANDOM weapons/VenomGun/Mech { weapons/VenomGun/Mech1 weapons/VenomGun/Mech2 weapons/VenomGun/Mech3 weapons/VenomGun/Mech4 weapons/VenomGun/Mech5 weapons/VenomGun/Mech6 }
+
+weapons/VenomGun/Mech1	"sounds/weapons/MGVGMK3/VenomMech1.wav"
+weapons/VenomGun/Mech2	"sounds/weapons/MGVGMK3/VenomMech2.wav"
+weapons/VenomGun/Mech3	"sounds/weapons/MGVGMK3/VenomMech3.wav"
+weapons/VenomGun/Mech4	"sounds/weapons/MGVGMK3/VenomMech4.wav"
+weapons/VenomGun/Mech5	"sounds/weapons/MGVGMK3/VenomMech5.wav"
+weapons/VenomGun/Mech6	"sounds/weapons/MGVGMK3/VenomMech6.wav"
+
+$RANDOM weapons/VenomGun/Bass { weapons/VenomGun/Bass1 weapons/VenomGun/Bass2 weapons/VenomGun/Bass3 weapons/VenomGun/Bass4 weapons/VenomGun/Bass5 weapons/VenomGun/Bass6 }
+
+weapons/VenomGun/Bass1	"sounds/weapons/MGVGMK3/VenomBass1.wav"
+weapons/VenomGun/Bass2	"sounds/weapons/MGVGMK3/VenomBass2.wav"
+weapons/VenomGun/Bass3	"sounds/weapons/MGVGMK3/VenomBass3.wav"
+weapons/VenomGun/Bass4	"sounds/weapons/MGVGMK3/VenomBass4.wav"
+weapons/VenomGun/Bass5	"sounds/weapons/MGVGMK3/VenomBass5.wav"
+weapons/VenomGun/Bass6	"sounds/weapons/MGVGMK3/VenomBass6.wav"

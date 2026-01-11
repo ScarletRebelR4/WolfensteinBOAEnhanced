@@ -1,22 +1,3 @@
-weapons/Sten/Raise	"Sounds/Weapons/Sten/StenRaise.wav"
-weapons/Sten/Lower	"Sounds/Weapons/Sten/StenLower.wav"
-weapons/Sten/MagOut	"Sounds/Weapons/Sten/StenMagout.wav"
-weapons/Sten/MagIn	"Sounds/Weapons/Sten/StenMagIn.wav"
-weapons/Sten/MagTap	"Sounds/Weapons/Sten/StenMagTap.wav"
-weapons/Sten/Charge	"Sounds/Weapons/Sten/StenCharge.wav"
-
-$RANDOM weapons/Sten/Fire { weapons/Sten/Fire1 weapons/Sten/Fire2 weapons/Sten/Fire3 weapons/Sten/Fire4 weapons/Sten/Fire5 weapons/Sten/Fire6 }
-
-weapons/Sten/Fire1	"Sounds/Weapons/Sten/Fire/StenFIre1.wav"
-weapons/Sten/Fire2	"Sounds/Weapons/Sten/Fire/StenFIre2.wav"
-weapons/Sten/Fire3	"Sounds/Weapons/Sten/Fire/StenFIre3.wav"
-weapons/Sten/Fire4	"Sounds/Weapons/Sten/Fire/StenFIre4.wav"
-weapons/Sten/Fire5	"Sounds/Weapons/Sten/Fire/StenFIre5.wav"
-weapons/Sten/Fire6	"Sounds/Weapons/Sten/Fire/StenFIre6.wav"
-
-weapons/Sten/FireMech	"Sounds/Weapons/Sten/Fire/StenMech1.wav"
-weapons/Sten/FireAdd	"Sounds/Weapons/Sten/Fire/StenAdd1.wav"
-
 weapons/M1911/Charge	"Sounds/weapons/m1911/M1911Charge.wav"
 weapons/M1911/MagIn	"Sounds/weapons/m1911/M1911MagIn.wav"
 weapons/M1911/MagOut	"Sounds/weapons/m1911/M1911MagOut.wav"
@@ -40,6 +21,8 @@ weapons/M1911/FireAdd2	"Sounds/weapons/M1911/Fire/M1911Add2.wav"
 weapons/M1911/FireAdd3	"Sounds/weapons/M1911/Fire/M1911Add3.wav"
 weapons/M1911/FireAdd4	"Sounds/weapons/M1911/Fire/M1911Add4.wav"
 weapons/M1911/FireAdd5	"Sounds/weapons/M1911/Fire/M1911Add5.wav"
+
+
 
 weapons/Luger/MagIn	"Sounds/Weapons/Luger/LugerMagIn.wav"
 weapons/Luger/MagOut	"Sounds/Weapons/Luger/LugerMagOut.wav"
@@ -93,6 +76,8 @@ Weapons/PPK/FireMech4	"Sounds/Weapons/ppk/Fire/PPKFiremech4.wav"
 Weapons/PPK/FireMech5	"Sounds/Weapons/ppk/Fire/PPKFiremech5.wav"
 Weapons/PPK/FireMech6	"Sounds/Weapons/ppk/Fire/PPKFireMech6.wav"
 
+
+
 Weapons/C96/Raise	"Sounds/weapons/C96/C96Raise.wav"
 Weapons/C96/Lower	"Sounds/weapons/C96/C96Lower.wav"
 
@@ -139,99 +124,3 @@ Weapons/C96/FireAdd5	"Sounds/weapons/C96/Fire/C96FireAdd5.wav"
 Weapons/C96/FireAdd6	"Sounds/weapons/C96/Fire/C96FireAdd6.wav"
 Weapons/C96/FireAdd7	"Sounds/weapons/C96/Fire/C96FireAdd7.wav"
 Weapons/C96/FireAdd8	"Sounds/weapons/C96/Fire/C96FireAdd8.wav"
-
-weapons/VenomGun/WindUp "sounds/weapons/MGVGMK3/VenomWindUp.wav"
-weapons/VenomGun/Loop "sounds/weapons/MGVGMK3/VenomLoop.wav"
-weapons/VenomGun/WindDown "sounds/weapons/MGVGMK3/VenomWindDown.wav"
-
-$RANDOM weapons/VenomGun/Fire { weapons/VenomGun/Fire1 weapons/VenomGun/Fire2 weapons/VenomGun/Fire3 weapons/VenomGun/Fire4 weapons/VenomGun/Fire5 weapons/VenomGun/Fire6 }
-
-weapons/VenomGun/Fire1	"sounds/weapons/MGVGMK3/VenomFire1.wav"
-weapons/VenomGun/Fire2	"sounds/weapons/MGVGMK3/VenomFire2.wav"
-weapons/VenomGun/Fire3	"sounds/weapons/MGVGMK3/VenomFire3.wav"
-weapons/VenomGun/Fire4	"sounds/weapons/MGVGMK3/VenomFire4.wav"
-weapons/VenomGun/Fire5	"sounds/weapons/MGVGMK3/VenomFire5.wav"
-weapons/VenomGun/Fire6	"sounds/weapons/MGVGMK3/VenomFire6.wav"
-
-$RANDOM weapons/VenomGun/FireAdd { weapons/VenomGun/FireAdd1 weapons/VenomGun/FireAdd2 weapons/VenomGun/FireAdd3 weapons/VenomGun/FireAdd4 weapons/VenomGun/FireAdd5 weapons/VenomGun/FireAdd6 }
-
-weapons/VenomGun/FireAdd1	"sounds/weapons/MGVGMK3/VenomFireAdd1.wav"
-weapons/VenomGun/FireAdd2	"sounds/weapons/MGVGMK3/VenomFireAdd2.wav"
-weapons/VenomGun/FireAdd3	"sounds/weapons/MGVGMK3/VenomFireAdd3.wav"
-weapons/VenomGun/FireAdd4	"sounds/weapons/MGVGMK3/VenomFireAdd4.wav"
-weapons/VenomGun/FireAdd5	"sounds/weapons/MGVGMK3/VenomFireAdd5.wav"
-weapons/VenomGun/FireAdd6	"sounds/weapons/MGVGMK3/VenomFireAdd6.wav"
-
-weapons/VenomGun/MechAdd "Sounds/Weapons/MGVGMK3/VenomMech.ogg"
-
-$RANDOM weapons/VenomGun/Mech { weapons/VenomGun/Mech1 weapons/VenomGun/Mech2 weapons/VenomGun/Mech3 weapons/VenomGun/Mech4 weapons/VenomGun/Mech5 weapons/VenomGun/Mech6 }
-
-weapons/VenomGun/Mech1	"sounds/weapons/MGVGMK3/VenomMech1.wav"
-weapons/VenomGun/Mech2	"sounds/weapons/MGVGMK3/VenomMech2.wav"
-weapons/VenomGun/Mech3	"sounds/weapons/MGVGMK3/VenomMech3.wav"
-weapons/VenomGun/Mech4	"sounds/weapons/MGVGMK3/VenomMech4.wav"
-weapons/VenomGun/Mech5	"sounds/weapons/MGVGMK3/VenomMech5.wav"
-weapons/VenomGun/Mech6	"sounds/weapons/MGVGMK3/VenomMech6.wav"
-
-$RANDOM weapons/VenomGun/Bass { weapons/VenomGun/Bass1 weapons/VenomGun/Bass2 weapons/VenomGun/Bass3 weapons/VenomGun/Bass4 weapons/VenomGun/Bass5 weapons/VenomGun/Bass6 }
-
-weapons/VenomGun/Bass1	"sounds/weapons/MGVGMK3/VenomBass1.wav"
-weapons/VenomGun/Bass2	"sounds/weapons/MGVGMK3/VenomBass2.wav"
-weapons/VenomGun/Bass3	"sounds/weapons/MGVGMK3/VenomBass3.wav"
-weapons/VenomGun/Bass4	"sounds/weapons/MGVGMK3/VenomBass4.wav"
-weapons/VenomGun/Bass5	"sounds/weapons/MGVGMK3/VenomBass5.wav"
-weapons/VenomGun/Bass6	"sounds/weapons/MGVGMK3/VenomBass6.wav"
-
-weapons/PPSH/MagOut	"Sounds/Weapons/PPSH/PPSHMagOut.ogg"
-weapons/PPSH/MagIn	"Sounds/Weapons/PPSH/PPSHMagIn.mp3"
-weapons/PPSH/MagTap	"Sounds/Weapons/PPSH/PPSHMagTap.wav"
-weapons/PPSH/Charge	"Sounds/Weapons/PPSH/PPSHCharge.wav"
-
-$RANDOM weapons/PPSH/Fire { weapons/PPSH/Fire1 weapons/PPSH/Fire2 weapons/PPSH/Fire3 weapons/PPSH/Fire4 }
-
-weapons/PPSH/Fire1	"Sounds/Weapons/PPSH/Fire/PPSHFire1.wav"
-weapons/PPSH/Fire2	"Sounds/Weapons/PPSH/Fire/PPSHFire2.wav"
-weapons/PPSH/Fire3	"Sounds/Weapons/PPSH/Fire/PPSHFire3.wav"
-weapons/PPSH/Fire4	"Sounds/Weapons/PPSH/Fire/PPSHFire4.wav"
-
-$RANDOM weapons/PPSH/Add { weapons/PPSH/Add1 weapons/PPSH/Add2 weapons/PPSH/Add3 }
-
-weapons/PPSH/Add1	"Sounds/Weapons/PPSH/Fire/PPSHAdd1.wav"
-weapons/PPSH/Add2	"Sounds/Weapons/PPSH/Fire/PPSHAdd2.wav"
-weapons/PPSH/Add3	"Sounds/Weapons/PPSH/Fire/PPSHAdd3.wav"
-
-$RANDOM weapons/PPSH/Mech { weapons/PPSH/Mech1 weapons/PPSH/Mech2 weapons/PPSH/Mech3 weapons/PPSH/Mech4 weapons/PPSH/Mech5 weapons/PPSH/Mech6 }
-weapons/PPSH/Mech1	"Sounds/Weapons/PPSH/Fire/PPSHMech1.wav"
-weapons/PPSH/Mech2	"Sounds/Weapons/PPSH/Fire/PPSHMech2.wav"
-weapons/PPSH/Mech3	"Sounds/Weapons/PPSH/Fire/PPSHMech3.wav"
-weapons/PPSH/Mech4	"Sounds/Weapons/PPSH/Fire/PPSHMech4.wav"
-weapons/PPSH/Mech5	"Sounds/Weapons/PPSH/Fire/PPSHMech5.wav"
-weapons/PPSH/Mech6	"Sounds/Weapons/PPSH/Fire/PPSHMech6.wav"
-
-weapons/PPSH/Thump	"Sounds/Weapons/PPSH/Fire/PPSHThump.wav"
-
-
-
-weapons/BA5/fire	"Sounds/Weapons/Browning/Fire/ba5fire.ogg"
-weapons/BA5/add	"Sounds/Weapons/Browning/Fire/ba5add.ogg"
-weapons/BA5/firebass	"Sounds/Weapons/Browning/Fire/ba5firebass.wav"
-$RANDOM weapons/BA5/Mech { weapons/BA5/Mech1 weapons/BA5/Mech2 weapons/BA5/Mech3 weapons/BA5/Mech4 }
-weapons/BA5/Mech1	"Sounds/Weapons/Browning/Fire/ba5Mech1.wav"
-weapons/BA5/Mech2	"Sounds/Weapons/Browning/Fire/ba5Mech2.wav"
-weapons/BA5/Mech3	"Sounds/Weapons/Browning/Fire/ba5Mech3.wav"
-weapons/BA5/Mech4	"Sounds/Weapons/Browning/Fire/ba5Mech4.wav"
-
-weapons/BA5/In	"Sounds/Weapons/Browning/BA5In.wav"
-weapons/BA5/Out	"Sounds/Weapons/Browning/BA5Out.wav"
-weapons/BA5/Raise	"Sounds/Weapons/Browning/BA5Raise.wav"
-weapons/BA5/Lower	"Sounds/Weapons/Browning/BA5Lower.wav"
-weapons/BA5/EmptyOut	"Sounds/Weapons/Browning/BA5EmptyOut.wav"
-weapons/BA5/BoltBack	"Sounds/Weapons/Browning/BA5BoltBack.wav"
-weapons/BA5/BoltBackAdd	"Sounds/Weapons/Browning/BA5BoltBackAdd.mp3"
-weapons/BA5/BoltForward	"Sounds/Weapons/Browning/BA5BoltForward.wav"
-$RANDOM weapons/BA5/Shell { weapons/BA5/Shell1 weapons/BA5/Shell2 weapons/BA5/Shell3 weapons/BA5/Shell4 weapons/BA5/Shell5 }
-weapons/BA5/Shell1	"Sounds/Weapons/Browning/BA5Shell1.wav"
-weapons/BA5/Shell2	"Sounds/Weapons/Browning/BA5Shell2.wav"
-weapons/BA5/Shell3	"Sounds/Weapons/Browning/BA5Shell3.wav"
-weapons/BA5/Shell4	"Sounds/Weapons/Browning/BA5Shell4.wav"
-weapons/BA5/Shell5	"Sounds/Weapons/Browning/BA5Shell5.wav"

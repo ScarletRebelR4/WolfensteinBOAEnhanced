@@ -44,7 +44,7 @@ class Kar98k : NaziWeapon
 	{
 		Deselect:
 			//TNT1 A 0 A_StartSound("Weapons/C96/Lower", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			K98D FEDCBA 1;
+			K98D ABCDEF 1;
 			TNT1 A 0 A_Lower();
 			Wait;
 		Select:
@@ -71,7 +71,7 @@ class Kar98k : NaziWeapon
 		Ready:
 			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
 			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			K98D ABCDEF 1;
+			K98D FEDCBA 1;
 		Ready1:
 			TNT1 A 0 A_JumpIfInventory("SniperZoom",1,"ScopedReady");
 			TNT1 A 0 A_JumpIf(CountInv("Kar98kLoaded") == 0, "Ready2");

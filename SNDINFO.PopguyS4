@@ -1,0 +1,74 @@
+weapons/Sten/Raise	"Sounds/Weapons/Sten/StenRaise.wav"
+weapons/Sten/Lower	"Sounds/Weapons/Sten/StenLower.wav"
+weapons/Sten/MagOut	"Sounds/Weapons/Sten/StenMagout.wav"
+weapons/Sten/MagIn	"Sounds/Weapons/Sten/StenMagIn.wav"
+weapons/Sten/MagTap	"Sounds/Weapons/Sten/StenMagTap.wav"
+weapons/Sten/Charge	"Sounds/Weapons/Sten/StenCharge.wav"
+
+$RANDOM weapons/Sten/Fire { weapons/Sten/Fire1 weapons/Sten/Fire2 weapons/Sten/Fire3 weapons/Sten/Fire4 weapons/Sten/Fire5 weapons/Sten/Fire6 }
+
+weapons/Sten/Fire1	"Sounds/Weapons/Sten/Fire/StenFIre1.wav"
+weapons/Sten/Fire2	"Sounds/Weapons/Sten/Fire/StenFIre2.wav"
+weapons/Sten/Fire3	"Sounds/Weapons/Sten/Fire/StenFIre3.wav"
+weapons/Sten/Fire4	"Sounds/Weapons/Sten/Fire/StenFIre4.wav"
+weapons/Sten/Fire5	"Sounds/Weapons/Sten/Fire/StenFIre5.wav"
+weapons/Sten/Fire6	"Sounds/Weapons/Sten/Fire/StenFIre6.wav"
+
+weapons/Sten/FireMech	"Sounds/Weapons/Sten/Fire/StenMech1.wav"
+weapons/Sten/FireAdd	"Sounds/Weapons/Sten/Fire/StenAdd1.wav"
+
+
+
+weapons/PPSH/MagOut	"Sounds/Weapons/PPSH/PPSHMagOut.ogg"
+weapons/PPSH/MagIn	"Sounds/Weapons/PPSH/PPSHMagIn.mp3"
+weapons/PPSH/MagTap	"Sounds/Weapons/PPSH/PPSHMagTap.wav"
+weapons/PPSH/Charge	"Sounds/Weapons/PPSH/PPSHCharge.wav"
+
+$RANDOM weapons/PPSH/Fire { weapons/PPSH/Fire1 weapons/PPSH/Fire2 weapons/PPSH/Fire3 weapons/PPSH/Fire4 }
+
+weapons/PPSH/Fire1	"Sounds/Weapons/PPSH/Fire/PPSHFire1.wav"
+weapons/PPSH/Fire2	"Sounds/Weapons/PPSH/Fire/PPSHFire2.wav"
+weapons/PPSH/Fire3	"Sounds/Weapons/PPSH/Fire/PPSHFire3.wav"
+weapons/PPSH/Fire4	"Sounds/Weapons/PPSH/Fire/PPSHFire4.wav"
+
+$RANDOM weapons/PPSH/Add { weapons/PPSH/Add1 weapons/PPSH/Add2 weapons/PPSH/Add3 }
+
+weapons/PPSH/Add1	"Sounds/Weapons/PPSH/Fire/PPSHAdd1.wav"
+weapons/PPSH/Add2	"Sounds/Weapons/PPSH/Fire/PPSHAdd2.wav"
+weapons/PPSH/Add3	"Sounds/Weapons/PPSH/Fire/PPSHAdd3.wav"
+
+$RANDOM weapons/PPSH/Mech { weapons/PPSH/Mech1 weapons/PPSH/Mech2 weapons/PPSH/Mech3 weapons/PPSH/Mech4 weapons/PPSH/Mech5 weapons/PPSH/Mech6 }
+weapons/PPSH/Mech1	"Sounds/Weapons/PPSH/Fire/PPSHMech1.wav"
+weapons/PPSH/Mech2	"Sounds/Weapons/PPSH/Fire/PPSHMech2.wav"
+weapons/PPSH/Mech3	"Sounds/Weapons/PPSH/Fire/PPSHMech3.wav"
+weapons/PPSH/Mech4	"Sounds/Weapons/PPSH/Fire/PPSHMech4.wav"
+weapons/PPSH/Mech5	"Sounds/Weapons/PPSH/Fire/PPSHMech5.wav"
+weapons/PPSH/Mech6	"Sounds/Weapons/PPSH/Fire/PPSHMech6.wav"
+
+weapons/PPSH/Thump	"Sounds/Weapons/PPSH/Fire/PPSHThump.wav"
+
+
+weapons/MP40/Fire	"Sounds/Weapons/MP40/Fire/MP40Fire.wav"
+weapons/MP40/Bass	"Sounds/Weapons/MP40/Fire/MP40Bass.wav"
+
+weapons/MP40/Back	"Sounds/Weapons/MP40/MP40BoltBack.wav"
+weapons/MP40/Forward	"Sounds/Weapons/MP40/MP40BoltForward.wav"
+weapons/MP40/In	"Sounds/Weapons/MP40/MP40MagIn.wav"
+weapons/MP40/Out	"Sounds/Weapons/MP40/MP40MagOut.wav"
+
+$RANDOM weapons/MP40/Mech { weapons/MP40/Mech1 weapons/MP40/Mech2 weapons/MP40/Mech3 }
+weapons/MP40/Mech1	"Sounds/Weapons/MP40/Fire/MP40Mech1.wav"
+weapons/MP40/Mech2	"Sounds/Weapons/MP40/Fire/MP40Mech2.wav"
+weapons/MP40/Mech3	"Sounds/Weapons/MP40/Fire/MP40Mech3.wav"
+
+$RANDOM weapons/MP40/Tail { weapons/MP40/Tail1 weapons/MP40/Tail2 weapons/MP40/Tail3 weapons/MP40/Tail4 }
+weapons/MP40/Tail1	"Sounds/Weapons/MP40/Fire/MP40Tail1.wav"
+weapons/MP40/Tail2	"Sounds/Weapons/MP40/Fire/MP40Tail2.wav"
+weapons/MP40/Tail3	"Sounds/Weapons/MP40/Fire/MP40Tail3.wav"
+weapons/MP40/Tail4	"Sounds/Weapons/MP40/Fire/MP40Tail4.wav"
+
+$RANDOM weapons/MP40/Sweet { weapons/MP40/Sweet1 weapons/MP40/Sweet2 weapons/MP40/Sweet3 weapons/MP40/Sweet4 }
+weapons/MP40/Sweet1	"Sounds/Weapons/MP40/Fire/MP40Sweet1.wav"
+weapons/MP40/Sweet2	"Sounds/Weapons/MP40/Fire/MP40Sweet2.wav"
+weapons/MP40/Sweet3	"Sounds/Weapons/MP40/Fire/MP40Sweet3.wav"
+weapons/MP40/Sweet4	"Sounds/Weapons/MP40/Fire/MP40Sweet4.wav"
