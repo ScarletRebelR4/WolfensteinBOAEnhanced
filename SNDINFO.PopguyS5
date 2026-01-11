@@ -1,0 +1,29 @@
+weapons/Kar98k/BoltUp	"Sounds/Weapons/Kar98k/KarBoltB1.ogg"
+weapons/Kar98k/BoltBack	"Sounds/Weapons/Kar98k/KarBoltB2.ogg"
+weapons/Kar98k/BoltForward	"Sounds/Weapons/Kar98k/KarBoltF1.ogg"
+weapons/Kar98k/BoltDown	"Sounds/Weapons/Kar98k/KarBoltF2.ogg"
+
+weapons/Kar98k/Raise	"Sounds/Weapons/Kar98k/KarRaise.wav"
+weapons/Kar98k/Lower	"Sounds/Weapons/Kar98k/KarLower.wav"
+
+$RANDOM weapons/Kar98k/Load { weapons/Kar98k/Load1 weapons/Kar98k/Load2 weapons/Kar98k/Load3 weapons/Kar98k/Load4 weapons/Kar98k/Load5 weapons/Kar98k/Load6 weapons/Kar98k/Load7 }
+weapons/Kar98k/Load1	"Sounds/Weapons/Kar98k/KarCartridge1.wav"
+weapons/Kar98k/Load2	"Sounds/Weapons/Kar98k/KarCartridge2.wav"
+weapons/Kar98k/Load3	"Sounds/Weapons/Kar98k/KarCartridge3.wav"
+weapons/Kar98k/Load4	"Sounds/Weapons/Kar98k/KarCartridge4.wav"
+weapons/Kar98k/Load5	"Sounds/Weapons/Kar98k/KarCartridge5.wav"
+weapons/Kar98k/Load6	"Sounds/Weapons/Kar98k/KarCartridge6.wav"
+weapons/Kar98k/Load7	"Sounds/Weapons/Kar98k/KarCartridge7.wav"
+
+weapons/Kar98k/SweetHi	"Sounds/Weapons/Kar98k/Fire/KarSweetH.wav"
+weapons/Kar98k/SweetLo	"Sounds/Weapons/Kar98k/Fire/KarSweetL.wav"
+weapons/Kar98k/Mech	"Sounds/Weapons/Kar98k/Fire/KarMech.wav"
+weapons/Kar98k/Bass	"Sounds/Weapons/Kar98k/Fire/KarBass.wav"
+
+$RANDOM weapons/Kar98k/Fire { weapons/Kar98k/Fire1 weapons/Kar98k/Fire2 weapons/Kar98k/Fire3 weapons/Kar98k/Fire4 weapons/Kar98k/Fire5 weapons/Kar98k/Fire6 }
+weapons/Kar98k/Fire1	"Sounds/weapons/kar98k/Fire/KarFire1.wav"
+weapons/Kar98k/Fire2	"Sounds/weapons/kar98k/Fire/KarFire2.wav"
+weapons/Kar98k/Fire3	"Sounds/weapons/kar98k/Fire/KarFire3.wav"
+weapons/Kar98k/Fire4	"Sounds/weapons/kar98k/Fire/KarFire4.wav"
+weapons/Kar98k/Fire5	"Sounds/weapons/kar98k/Fire/KarFire5.wav"
+weapons/Kar98k/Fire6	"Sounds/weapons/kar98k/Fire/KarFire6.wav"

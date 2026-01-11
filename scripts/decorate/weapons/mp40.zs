@@ -113,7 +113,7 @@ class MP40 : NaziWeapon
 			M40F A 1;
 			Goto Ready1;
 		Reload:
-			TNT1 A 0 A_JumpIf(CountInv("MauserAmmo") == 0, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("Ammo9mm") == 0, "Ready1");
 			TNT1 A 0 A_JumpIf(CountInv("MP40Loaded") == 32, "Ready1");
 			M40F A 4;
 			M40R AB 4;

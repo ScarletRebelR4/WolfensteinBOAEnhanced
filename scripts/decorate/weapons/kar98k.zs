@@ -43,7 +43,7 @@ class Kar98k : NaziWeapon
 	States
 	{
 		Deselect:
-			//TNT1 A 0 A_StartSound("Weapons/C96/Lower", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			TNT1 A 0 A_StartSound("Weapons/Kar98k/Lower", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			K98D ABCDEF 1;
 			TNT1 A 0 A_Lower();
 			Wait;
@@ -55,7 +55,7 @@ class Kar98k : NaziWeapon
 			TNT1 A 0 A_Raise();
 			Wait;
 		FirstReady: //First Time Select
-			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			TNT1 A 0 A_StartSound("Weapons/Kar98k/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			C96I ABCDE 1;
 			C96I E 4;
 			C96F TUVWXYZ 1;
@@ -70,7 +70,7 @@ class Kar98k : NaziWeapon
 			Goto Ready1;
 		Ready:
 			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
-			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			TNT1 A 0 A_StartSound("Weapons/Kar98k/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 			K98D FEDCBA 1;
 		Ready1:
 			TNT1 A 0 A_JumpIfInventory("SniperZoom",1,"ScopedReady");
@@ -98,23 +98,27 @@ class Kar98k : NaziWeapon
 				}
 				//[Pop] no casing this time!
 				
-				A_StartSound("K98FIR", CHAN_WEAPON);
+				A_StartSound("weapons/Kar98k/Fire", CHAN_WEAPON, CHANF_OVERLAP);
+				A_StartSound("weapons/Kar98k/Mech", CHAN_WEAPON, CHANF_OVERLAP, 0.8);
+				A_StartSound("weapons/Kar98k/SweetHi", CHAN_WEAPON, CHANF_OVERLAP, 0.7, ATTN_NORM, frandom(0.7,0.8));
+				A_StartSound("weapons/Kar98k/SweetLo", CHAN_WEAPON, CHANF_OVERLAP, 0.9);
+				A_StartSound("weapons/Kar98k/Bass", CHAN_WEAPON, CHANF_OVERLAP);
 				A_FireProjectile("Kar98kTracer");
 				A_SetPitch(pitch-(2.0*boa_recoilamount));
 			}
 			K98F C 4;
 			TNT1 A 0 A_JumpIf(CountInv("Kar98kLoaded") == 0,"Ready2");
 			K98F C 2;
-			K98R AB 2;
-			TNT1 A 0 A_StartSound("K98UP",5);
-			K98R CD 2;
-			TNT1 A 0 A_StartSound("K98BAC",5);
-			K98R EF 2;
+			K98R A 2;
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltup",CHAN_WEAPON, CHANF_OVERLAP);
+			K98R BC 2;
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltback",CHAN_WEAPON, CHANF_OVERLAP);
+			K98R DEF 2;
 			TNT1 A 0 A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 			K98R F 4;
-			TNT1 A 0 A_StartSound("K98FOW",5);
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltforward",CHAN_WEAPON, CHANF_OVERLAP);
 			K98R FED 2;
-			TNT1 A 0 A_StartSound("K98DOW",5);
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltdown",CHAN_WEAPON, CHANF_OVERLAP);
 			K98R CBA 2;
 			K98F A 2;
 			Goto Ready1;
@@ -131,22 +135,26 @@ class Kar98k : NaziWeapon
 				}
 				//[Pop] no casing this time!
 				
-				A_StartSound("K98FIR", CHAN_WEAPON);
+				A_StartSound("weapons/Kar98k/Fire", CHAN_WEAPON, CHANF_OVERLAP);
+				A_StartSound("weapons/Kar98k/Mech", CHAN_WEAPON, CHANF_OVERLAP, 0.8);
+				A_StartSound("weapons/Kar98k/SweetHi", CHAN_WEAPON, CHANF_OVERLAP, 0.7, ATTN_NORM, frandom(0.7,0.8));
+				A_StartSound("weapons/Kar98k/SweetLo", CHAN_WEAPON, CHANF_OVERLAP, 0.9);
+				A_StartSound("weapons/Kar98k/Bass", CHAN_WEAPON, CHANF_OVERLAP);
 				A_FireProjectile("Kar98kTracer");
 				A_SetPitch(pitch-(4.0*boa_recoilamount));
 			}
 			K98S A 4;
 			TNT1 A 0 A_JumpIf(CountInv("Kar98kLoaded") == 0,"Ready2");
-			K98S A 6;
-			TNT1 A 0 A_StartSound("K98UP",5);
 			K98S A 4;
-			TNT1 A 0 A_StartSound("K98BAC",5);
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltup",CHAN_WEAPON, CHANF_OVERLAP);
+			K98S A 4;
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltback",CHAN_WEAPON, CHANF_OVERLAP);
 			K98S A 4;
 			K98I A 0 A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 			K98S A 4;
-			TNT1 A 0 A_StartSound("K98FOW",5);
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltforward",CHAN_WEAPON, CHANF_OVERLAP);
 			K98S A 6;
-			TNT1 A 0 A_StartSound("K98DOW",5);
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltdown",CHAN_WEAPON, CHANF_OVERLAP);
 			K98S A 8;
 			Goto ScopedReady;
 			
@@ -176,14 +184,15 @@ class Kar98k : NaziWeapon
 			SCO1 A 3 A_ZoomFactor(1.0);
 		ReloadStart:
 			K98F C 2;
-			K98R AB 2;
-			TNT1 A 0 A_StartSound("K98UP",5);
-			K98R CD 2;
-			TNT1 A 0 A_StartSound("K98BAC",5);
-			K98R EFGH 2;
+			K98R A 2;
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltup",CHAN_WEAPON, CHANF_OVERLAP);
+			K98R BC 2;
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltback",CHAN_WEAPON, CHANF_OVERLAP);
+			K98R DEF 2;
+			K98R GH 2;
 		ReloadLoop:
 			K98R IJ 2;
-			TNT1 A 0 A_StartSound("K98IN",5);
+			TNT1 A 0 A_StartSound("Weapons/Kar98k/Load",CHAN_WEAPON, CHANF_OVERLAP);
 			K98R KL 2;
 			TNT1 A 0 A_TakeInventory("MauserAmmo",1,TIF_NOTAKEINFINITE);
 			TNT1 A 0 A_GiveInventory("Kar98kLoaded");
@@ -193,9 +202,9 @@ class Kar98k : NaziWeapon
 		ReloadEnd:
 			K98R H 2;
 			K98R F 4;
-			TNT1 A 0 A_StartSound("K98FOW",5);
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltforward",CHAN_WEAPON, CHANF_OVERLAP);
 			K98R FED 2;
-			TNT1 A 0 A_StartSound("K98DOW",5);
+			TNT1 A 0 A_StartSound("weapons/kar98k/boltdown",CHAN_WEAPON, CHANF_OVERLAP);
 			K98R CBA 2;
 			K98F A 2;
 			Goto Ready1;
