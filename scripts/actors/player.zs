@@ -126,7 +126,7 @@ class BoAPlayer : PlayerPawn
 		
 		Player.SoundClass "player";
 		Player.ViewHeight 56;
-		Player.AttackZOffset 24;
+		Player.AttackZOffset 18;
 		Player.DisplayName "William Blazkowicz";
 		Player.CrouchSprite "PLYC";
 		Player.SideMove 1.0, 1.0;

@@ -45,113 +45,118 @@ class Panzerschreck : NaziWeapon
 	}
 	States
 	{
-	Ready:
-		PZSI A 0 A_JumpIfInventory("PanzerschreckLoaded",0,2);
-		PZSI A 0 A_JumpIfInventory("PanzerAmmo",1,2);
-		PZSI A 1 A_WeaponReady;
-		Loop;
-		PZSI A 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	Select:
-		PZSI A 1 A_Raise;
-		Loop;
 	Deselect:
-		PZSI A 1 A_Lower;
-		Loop;
-	AltFire:
-		PZS1 A 2;
-		PZS1 B 2;
-		PZS1 C 2;
-		PZS1 D 2;
-		PZS1 E 2;
-		PZS1 F 2;
-		PZS1 G 2;
-		PZS1 H 2;
-	AltHold:
-		PZS1 H 1;
-		PZS1 H 1A_Refire;
-		Goto FireFinish;
-	FireFinish:
-		PZS1 H 2;
-		PZS1 G 2;
-		PZS1 F 2;
-		PZS1 E 2;
-		PZS1 D 2;
-		PZS1 C 2;
-		PZS1 B 2;
-		PZS1 A 2;
-		PZSI A 1 A_WeaponReady;
-		Goto Ready;
-	Flash:
-		TNT1 A 1 BRIGHT A_Light2;
-		TNT1 A 1 BRIGHT;
-		TNT1 A 2 A_Light1;
-		Goto LightDone;
-	Fire:
-		PZSI A 0 A_JumpIfInventory("PanzerschreckLoaded",1,1);
-		Goto Dryfire;
-		PZSI A 0 A_StartSound("Panzer/fire", CHAN_WEAPON);
-		PZSI A 0 A_GunFlash;
-		PZSI A 2 BRIGHT A_FireProjectile("PanzerRocket",0,1,12,0);
-		PZSI A 1 Offset(6,34);
-		PZSI A 1 Offset(14,36);
-		PZSI A 1 Offset(24,39);
-		PZSI A 1 Offset(28,43);
-		PZSI A 1 Offset(31,48);
-		PZSI A 1 Offset(27,44);
-		PZSI A 1 Offset(23,40);
-		PZSI A 1 Offset(18,36);
-		PZSI A 1 Offset(12,34);
-		PZSI A 1 Offset(6,32);
-		PZSI A 1 Offset(3,30);
-		PZSI A 1 Offset(1,29);
-		PZSI A 1 Offset(-2,30);
-		PZSI A 1 Offset(-1,32);
-		TNT1 A 0 A_CheckReload;
-		Goto Ready;
-	Reload:
-		TNT1 A 0 A_StartSound("Panzer/load", CHAN_WEAPON);
-		PZS1 A 2;
-		PZS1 B 2;
-		PZS1 C 2;
-		PZS1 D 2;
-		PZS1 E 2;
-		PZS1 F 2;
-		PZS1 G 2;
-		PZS1 H 2;
-		PZS2 A 2;
-		PZS2 B 2;
-		PZS2 C 2;
-		PZS2 D 2;
-		PZS2 E 2;
-		PZS2 F 2;
-		PZS2 G 2;
-		PZS2 H 2;
-		PZS2 I 2;
-		PZS2 J 2;
-		PZS2 K 2;
-		PZS2 L 2;
-		PZS2 M 2;
-		PZS2 N 2;
-		PZS2 O 2;
-		PZS2 P 2;
-		PZS2 Q 2;
-		PZS2 R 2;
-		PZS2 S 2;
-		PZS2 T 2;		
-		TNT1 A 0 A_TakeInventory("PanzerAmmo",1);
-		TNT1 A 0 A_GiveInventory("PanzerschreckLoaded");
-		PZS3 A 2;
-		PZS3 B 2;
-		PZS3 C 2;
-		PZS3 D 2;
-		PZS3 E 2;
-		PZS3 F 2;
-		PZS3 G 2;
-		Goto Ready;
-	Spawn:
-		PANP A -1;
-		Loop;
+			//TNT1 A 0 A_StartSound("Weapons/C96/Lower", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			PANZ A 1 Offset(0,32);
+			PANZ A 1 Offset(-4, 36);
+			PANZ A 1 Offset(-16, 52);
+			PANZ A 1 Offset(-28, 71);
+			PANZ A 1 Offset(-40, 90);
+			PANZ A 1 Offset(-52, 109);
+			TNT1 A 0 Offset(-64, 128);
+			TNT1 A 0 A_Lower();
+			Wait;
+		Select:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstSelect");
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstSelect:
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstReady: //First Time Select
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96I ABCDE 1;
+			C96I E 4;
+			C96F TUVWXYZ 1;
+			TNT1 A 0
+			{
+				invoker.firstPickup = true;
+			}
+			TNT1 A 0 A_StartSound("Weapons/C96/Slap", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G A 1;
+			TNT1 A 0 A_StartSound("Weapons/C96/BoltClose", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G BCDEFGHIJKLMN 1;
+			Goto Ready1;
+		Ready:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			TNT1 A 0 A_WeaponOffset(-64, 128, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(-52, 109, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(-40, 90, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(-28, 71, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(-16, 52, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(-4, 36, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(0,32, WOF_INTERPOLATE);
+		Ready1:
+			PANZ A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		AltFire:
+			PANZ A 1 A_WeaponOffset(0, 32, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(4, 48, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(8, 64, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(16, 80, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(24, 88, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(32, 96, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(48, 100, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(64, 104, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(80, 108, WOF_INTERPOLATE);
+		AltHold:
+			PANZ A 1 A_WeaponOffset(80, 108, WOF_INTERPOLATE);
+			PANZ A 1 A_Refire;
+			Goto AltFireFinish;
+		AltFireFinish:
+			PANZ A 1 A_WeaponOffset(80, 108, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(64, 104, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(48, 100, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(32, 96, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(24, 88, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(16, 80, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(8, 64, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(4, 48, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponOffset(0, 32, WOF_INTERPOLATE);
+			PANZ A 1 A_WeaponReady;
+			Goto Ready1;
+	
+		Flash:
+			TNT1 A 1 BRIGHT A_Light2;
+			TNT1 A 1 BRIGHT;
+			TNT1 A 2 A_Light1;
+			Goto LightDone;
+	
+		Fire:
+			PANZ A 0 A_JumpIf(CountInv("PanzerschreckLoaded") == 0, "DryFire");
+			PANZ A 2;
+			PANZ B 2 BRIGHT
+			{
+				A_GunFlash();
+				A_AlertMonsters();
+				if(waterlevel > 0.2)
+				{
+					for(int i=0; i<10; i++)
+					{
+						//[Pop] Refactor later with new smoke system
+						A_FireProjectile("ShotSmokeSpawner",frandom(4,-4),0,0,0,0,frandom(4,-4));
+					}
+				}
+				A_StartSound("Panzer/fire", CHAN_WEAPON);
+				A_FireProjectile("PanzerRocket",0,1,12,0);
+			}
+			PANZ A 16;
+			TNT1 A 0 A_CheckReload;
+			Goto Ready1;
+		Reload:
+			TNT1 A 0 A_JumpIf(CountInv("PanzerAmmo") == 0, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("PanzerschreckLoaded") == 1, "Ready1");
+			PANZ ACD 10;
+			TNT1 A 0 A_StartSound("Panzer/load", CHAN_WEAPON);
+			PANZ EFG 10;
+			TNT1 A 0 A_TakeInventory("PanzerAmmo",1);
+			TNT1 A 0 A_GiveInventory("PanzerschreckLoaded");
+			PANZ HDCA 10;
+			Goto Ready1;
+		Spawn:
+			PANP A -1;
+			Loop;
 	}
 }
 
