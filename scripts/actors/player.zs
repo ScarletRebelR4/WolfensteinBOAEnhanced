@@ -125,8 +125,8 @@ class BoAPlayer : PlayerPawn
 		
 		
 		Player.SoundClass "player";
-		Player.ViewHeight 56;
-		Player.AttackZOffset 18;
+		Player.ViewHeight 58;
+		Player.AttackZOffset 22;
 		Player.DisplayName "William Blazkowicz";
 		Player.CrouchSprite "PLYC";
 		Player.SideMove 1.0, 1.0;
@@ -305,7 +305,46 @@ class BoAPlayer : PlayerPawn
 				}
 			}
 		}
-
+		
+		//[Pop] im going to UNFUCK the CROUCH ATTACKZOFFSET RIGHT HERE
+		
+		if(GetCrouchFactor() <  1)
+		{
+			//[Pop] I SWEAR im not doing yandev tier coding here
+			//it just refused to work properly with the previous system
+			//of VH + (30 / ((CF()-0.4)*10))
+			if(GetCrouchFactor() > 0.8)
+			{
+				ViewHeight = 64;
+				AttackZOffset = 25;
+			}
+			else if(GetCrouchFactor() > 0.7)
+			{
+				ViewHeight = 70;
+				AttackZOffset = 29;
+			}
+			else if(GetCrouchFactor() > 0.6)
+			{
+				ViewHeight = 76;
+				AttackZOffset = 33;
+			}
+			else if(GetCrouchFactor() > 0.5)
+			{
+				ViewHeight = 82;
+				AttackZOffset = 37;
+			}
+			else
+			{
+				ViewHeight = 90;
+				AttackZOffset = 42;
+			}
+		}
+		else
+		{
+			ViewHeight = 58;
+			AttackZOffset = 21;
+		}
+		
 		Super.Tick();
 	}
 
@@ -1250,12 +1289,12 @@ class BoAPlayer : PlayerPawn
 
 			if (!wpn) { return; }
 
-			if (st && st.Amount > 29)
+			if (st && st.Amount > 9)
 			{
 				if (mo.FindInventory("PowerStrength")) { wpn.modifier = 3.0; } // Strength increases damage by 3 and range by 10
 				else { wpn.modifier = 1.0; }
 
-				mo.A_TakeInventory("Stamina", 30);
+				mo.A_TakeInventory("Stamina", 10);
 				mo.player.SetPsprite(-10, wpn.FindState("KickOverlay"), true);
 			}
 		}
