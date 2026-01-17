@@ -831,8 +831,8 @@ class SSToilet : WToilet
 		Stop;
 	Missile.Aimed:
 		"####" C 6 A_FaceTarget;
-		"####" D 0 { A_StartSound("nazi/pistol", CHAN_WEAPON); A_AlertMonsters(512); }
-		"####" D 6 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyPistolTracer",32,1,random(-8,8));
+		"####" D 0 { A_StartSound("Weapons/C96/FireExtra", CHAN_WEAPON); A_AlertMonsters(512); }
+		"####" D 6 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyC96Tracer",32,1,random(-8,8));
 		"####" C 6 A_SpawnItemEx("Casing9mm", 1, 0, 32, random(1,2), random(-1,1), random(1,2), random(-55,-80), SXF_NOCHECKPOSITION);
 		"####" C 0 {user_count++; if(user_count > 7) {user_count = 0; return ResolveState("Reload");} return ResolveState(null);}
 		"####" C 0 A_Jump(64, "LeaveWC");
@@ -905,6 +905,11 @@ class Officer : BasicGuard
 	SeeSound "Nazi4/Sighted";
 	PainSound "Nazi4/Pain";
 	DeathSound "Nazi4/Death";
+	
+	//[Pop] Officers are going to have C96
+	DropItem "Ammo763Mauser", 192;
+	DropItem "C96", 64;
+	
 	Nazi.FrightMultiplier 0.8;
 	Nazi.ZombieVariant "AKZombieOfficer";
 	}
@@ -923,8 +928,8 @@ class Officer : BasicGuard
 		"####" E 4 A_FaceTarget;
 	Missile.Aimed:
 		"####" F 4 A_FaceTarget;
-		"####" G 0 { A_StartSound("nazi/pistol", CHAN_WEAPON); A_AlertMonsters(512); }
-		"####" G 6 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyPistolTracer",52,1,random(-4,4));
+		"####" G 0 { A_StartSound("Weapons/C96/FireExtra", CHAN_WEAPON); A_AlertMonsters(512); }
+		"####" G 6 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyC96Tracer",52,1,random(-4,4));
 		"####" F 5 A_SpawnItemEx("Casing9mm", 1,0,54, random(3,4), random(-1,1), random(2,4), random(-55,-80),SXF_NOCHECKPOSITION);
 		"####" F 0 {user_count++; if(user_count > 7) {user_count = 0; return ResolveState("Reload");} return ResolveState(null);}
 		"####" F 0 A_Jump(256,"See");
@@ -998,12 +1003,12 @@ class SSOfficer : Officer
 		"####" E 5 A_FaceTarget;
 	Missile.Aimed:
 		"####" F 5 A_FaceTarget;
-		"####" G 0 { A_StartSound("nazi/pistol", CHAN_WEAPON); A_AlertMonsters(512); }
-		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyPistolTracer",52,1,random(-6,6));
+		"####" G 0 { A_StartSound("Weapons/C96/FireExtra", CHAN_WEAPON); A_AlertMonsters(512); }
+		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyC96Tracer",52,1,random(-6,6));
 		"####" G 0 A_SpawnItemEx("Casing9mm", 1,0,54, random(3,4), random(-1,1), random(2,4), random(-55,-80),SXF_NOCHECKPOSITION);
 		"####" F 4 A_FaceTarget;
-		"####" G 0 { A_StartSound("nazi/pistol", CHAN_WEAPON); A_AlertMonsters(512); }
-		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyPistolTracer",52,1,random(-6,6));
+		"####" G 0 { A_StartSound("Weapons/C96/FireExtra", CHAN_WEAPON); A_AlertMonsters(512); }
+		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyC96Tracer",52,1,random(-6,6));
 		"####" G 0 A_SpawnItemEx("Casing9mm", 1,0,54, random(3,4), random(-1,1), random(2,4), random(-55,-80),SXF_NOCHECKPOSITION);
 		"####" G 0 {user_count++; if(user_count > 3) {user_count = 0; return ResolveState("Reload");} return ResolveState(null);}
 		"####" F 4;
@@ -1087,20 +1092,20 @@ class WOfficer : Officer
 		"####" E 4 A_FaceTarget;
 	Missile.Aimed:
 		"####" F 4 A_FaceTarget;
-		"####" G 0 { A_StartSound("nazi/pistol", CHAN_WEAPON); A_AlertMonsters(512); }
-		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyPistolTracer",52,1,random(-4,4));
+		"####" G 0 { A_StartSound("Weapons/C96/FireExtra", CHAN_WEAPON); A_AlertMonsters(512); }
+		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyC96Tracer",52,1,random(-4,4));
 		"####" G 0 A_SpawnItemEx("Casing9mm", 1,0,54, random(3,4), random(-1,1), random(2,4), random(-55,-80),SXF_NOCHECKPOSITION);
 		"####" F 4 A_FaceTarget;
-		"####" G 0 { A_StartSound("nazi/pistol", CHAN_WEAPON); A_AlertMonsters(512); }
-		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyPistolTracer",52,1,random(-6,6));
+		"####" G 0 { A_StartSound("Weapons/C96/FireExtra", CHAN_WEAPON); A_AlertMonsters(512); }
+		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyC96Tracer",52,1,random(-6,6));
 		"####" G 0 A_SpawnItemEx("Casing9mm", 1,0,54, random(3,4), random(-1,1), random(2,4), random(-55,-80),SXF_NOCHECKPOSITION);
 		"####" F 4 A_FaceTarget;
-		"####" G 0 { A_StartSound("nazi/pistol", CHAN_WEAPON); A_AlertMonsters(512); }
-		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyPistolTracer",52,1,random(-8,8));
+		"####" G 0 { A_StartSound("Weapons/C96/FireExtra", CHAN_WEAPON); A_AlertMonsters(512); }
+		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyC96Tracer",52,1,random(-8,8));
 		"####" G 0 A_SpawnItemEx("Casing9mm", 1,0,54, random(3,4), random(-1,1), random(2,4), random(-55,-80),SXF_NOCHECKPOSITION);
 		"####" F 4 A_FaceTarget;
-		"####" G 0 { A_StartSound("nazi/pistol", CHAN_WEAPON); A_AlertMonsters(512); }
-		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyPistolTracer",52,1,random(-8,8));
+		"####" G 0 { A_StartSound("Weapons/C96/FireExtra", CHAN_WEAPON); A_AlertMonsters(512); }
+		"####" G 5 LIGHT("NAZIFIRE") A_SpawnProjectile("EnemyC96Tracer",52,1,random(-8,8));
 		"####" G 0 A_SpawnItemEx("Casing9mm", 1,0,54, random(3,4), random(-1,1), random(2,4), random(-55,-80),SXF_NOCHECKPOSITION);
 		"####" G 0 {user_count++; if(user_count > 1) {user_count = 0; return ResolveState("Reload");} return ResolveState(null);}
 		"####" F 3;

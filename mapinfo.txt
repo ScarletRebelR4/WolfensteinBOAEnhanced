@@ -1366,12 +1366,12 @@ DoomEdNums
 	15021=Sten
 	15022=VenomGunMK3
 	15097=G43
-	15102=Ammo12Gauge
-	15103=AmmoBox12Gauge
+	15102=Spawner_Shell
+	15103=Spawner_ShellBox
 	15110=NebAmmoBox
 	15114=FlameAmmo
-	15115=MauserAmmoBox
-	15116=MauserAmmo
+	15115=Spawner_HighCalBox
+	15116=Spawner_HighCal
 	15117=ArtifactAstrostrein
 	15118=ArtifactAstrostreinIM
 	15119=NebAmmo
@@ -1397,8 +1397,8 @@ DoomEdNums
 	15164=Saw2
 	15165=Tongs
 	15166=Wrench
-	15192=AmmoBox9mm
-	15193=Ammo9mm
+	15192=Spawner_LowCalBox
+	15193=Spawner_LowCal
 	15198=Wheelbarrow
 	15199=OilCan
 	15200=Handrail

@@ -167,10 +167,10 @@ class Ammo763Mauser : Ammo
 	//$Color 6
 	Scale 0.14;
 	Tag "7.63x25mm Mauser";
-	Inventory.Amount 7;
-	Inventory.MaxAmount 256;
+	Inventory.Amount 10;
+	Inventory.MaxAmount 120;
 	Ammo.BackpackAmount 64;
-	Ammo.BackpackMaxAmount 480;
+	Ammo.BackpackMaxAmount 240;
 	Inventory.PickupMessage "$9MMAMMO";
 	Inventory.Icon "WALT01";
 	}
@@ -371,7 +371,7 @@ class Ammo792Kurz : Ammo
 	//$Category Ammo (BoA)
 	//$Title Clip (x5 clips)
 	//$Color 6
-	Scale 0.3;
+	Scale 0.15;
 	Tag "7.92x33mm Kurz";
 	Inventory.Amount 20;
 	Inventory.MaxAmount 120;
@@ -403,7 +403,7 @@ class Ammo792Kurz_STG : Ammo792Kurz
 	//$Category Ammo (BoA)
 	//$Title G43 Mag (x10 clips)
 	//$Color 6
-	Scale 0.5;
+	Scale 0.2;
 	Inventory.Amount 30;
 	Inventory.PickupMessage "$MAUSBOX";
 	}
@@ -492,7 +492,7 @@ class MauserAmmo_MG42 : MauserAmmo
 	//$Category Ammo (BoA)
 	//$Title G43 Mag (x10 clips)
 	//$Color 6
-	Scale 0.5;
+	Scale 0.2;
 	Inventory.Amount 50;
 	Inventory.PickupMessage "$MAUSBOX";
 	}
@@ -530,7 +530,7 @@ class Ammo3006 : Ammo
 	//$Category Ammo (BoA)
 	//$Title Clip (x5 clips)
 	//$Color 6
-	Scale 0.3;
+	Scale 0.1;
 	Tag ".30-06 Springfield";
 	Inventory.Amount 8;
 	Inventory.MaxAmount 100;
@@ -562,7 +562,7 @@ class Ammo3006_BAR : Ammo3006
 	//$Category Ammo (BoA)
 	//$Title G43 Mag (x10 clips)
 	//$Color 6
-	Scale 0.5;
+	Scale 0.2;
 	Inventory.Amount 20;
 	Inventory.PickupMessage "$MAUSBOX";
 	}
@@ -814,5 +814,123 @@ class TurretHeatAmmo : Ammo
 	Inventory.Amount 1;
 	Inventory.MaxAmount 100;
 	Inventory.Icon "HEAT01";
+	}
+}
+
+
+
+
+
+//[Pop] Gonna put ammo spawners down here! These are going to replace preplaced
+//ammo pickups as well as what is spawned from goodie boxes! Maybe we should
+//consider making goodiebox spawners and map placed spawners separate? That way
+//goodieboxes can have higher chances of the unique ammo, and it doesnt screw
+//with normal ammo economy as much?
+
+class Spawner_LowCal : RandomSpawner
+{
+	Default
+	{
+		DropItem "Ammo9mm", 255, 8;
+		DropItem "Ammo9mm_mp40", 255, 8;
+		DropItem "Ammo763mauser", 255, 6;
+		DropItem "Ammo763mauser_ppsh", 255, 6;
+		DropItem "Ammo45ACP", 255, 2;
+		DropItem "Ammo45ACP_tommy", 255, 2;
+		DropItem "Ammo380ACP", 255, 2;
+		DropItem "Ammo380ACP_Sten", 255, 2;
+	}
+}
+
+class Spawner_LowCalBox : RandomSpawner
+{
+	Default
+	{
+		DropItem "AmmoBox9mm", 255, 8;
+		DropItem "AmmoBox763mauser", 255, 6;
+		DropItem "AmmoBox45ACP", 255, 2;
+		DropItem "AmmoBox380ACP", 255, 2;
+	}
+}
+
+class Spawner_LowCalGoodie : RandomSpawner
+{
+	Default
+	{
+		DropItem "Ammo9mm", 255, 2;
+		DropItem "Ammo9mm_mp40", 255, 2;
+		DropItem "Ammo763mauser", 255, 3;
+		DropItem "Ammo763mauser_ppsh", 255, 3;
+		DropItem "Ammo45ACP", 255, 4;
+		DropItem "Ammo45ACP_tommy", 255, 4;
+		DropItem "Ammo380ACP", 255, 4;
+		DropItem "Ammo380ACP_Sten", 255, 4;
+	}
+}
+
+class Spawner_Shell : RandomSpawner
+{
+	Default
+	{
+		DropItem "Ammo12Gauge", 255, 8;
+		DropItem "Ammo12Gauge_drum", 255, 8;
+		DropItem "Ammo3006", 255, 6;
+		DropItem "Ammo3006_BAR", 255, 6;
+	}
+}
+
+class Spawner_ShellBox : RandomSpawner
+{
+	Default
+	{
+		DropItem "AmmoBox12Gauge", 255, 8;
+		DropItem "AmmoBox3006", 255, 6;
+	}
+}
+
+class Spawner_ShellGoodie : RandomSpawner
+{
+	Default
+	{
+		DropItem "Ammo12Gauge", 255, 8;
+		DropItem "Ammo12Gauge_drum", 255, 8;
+	}
+}
+
+class Spawner_HighCal : RandomSpawner
+{
+	Default
+	{
+		DropItem "MauserAmmo", 255, 8;
+		DropItem "MauserAmmo_G43", 255, 8;
+		DropItem "MauserAmmo_MG42", 255, 8;
+		DropItem "Ammo792Kurz", 255, 6;
+		DropItem "Ammo792Kurz_STG", 255, 6;
+		DropItem "Ammo3006", 255, 2;
+		DropItem "Ammo3006_BAR", 255, 2;
+	}
+}
+
+class Spawner_HighCalBox : RandomSpawner
+{
+	Default
+	{
+		DropItem "MauserAmmoBox", 255, 8;
+		DropItem "AmmoBox792Kurz", 255, 6;
+		DropItem "AmmoBox3006", 255, 2;
+	}
+}
+
+class Spawner_HighCalGoodie : RandomSpawner
+{
+	Default
+	{
+		DropItem "MauserAmmo", 255, 2;
+		DropItem "MauserAmmo_G43", 255, 2;
+		DropItem "MauserAmmo_MG42", 255, 2;
+		DropItem "Ammo792Kurz", 255, 3;
+		DropItem "Ammo792Kurz_STG", 255, 3;
+		DropItem "Ammo3006", 255, 4;
+		DropItem "Ammo3006_BAR", 255, 4;
 	}
 }

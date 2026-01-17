@@ -105,14 +105,13 @@ class GoodieBarrel1 : TNTBarrel1
 	{
 		//$Title Goodie Barrel (disguise)
 		DeathSound "WOODBRK";
-		DropItem "Ammo12Gauge", 64;
-		DropItem "Ammo9mm", 64;
-		DropItem "Bandages", 48;
-		DropItem "Dogfood", 64;
+		DropItem "Spawner_ShellGoodie", 64;
+		DropItem "Spawner_LowCalGoodie", 64;
+		DropItem "Spawner_HighCalGoodie", 64;
+		DropItem "Bandages", 64;
+		Dropitem "Medikit_Small", 48;
+		Dropitem "Medikit_Medium", 32;
 		DropItem "GrenadePickup", 16;
-		DropItem "MauserAmmo", 64, 5;
-		DropItem "Meal", 32, 1;
-		Dropitem "Medikit_Small", 16;
 		Scale 0.5;
 	}
 	States

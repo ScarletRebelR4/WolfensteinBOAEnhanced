@@ -448,6 +448,7 @@ class EnemyChaingunTracer : BulletTracer 			{Default { DamageFunction (random(6,
 class EnemyChaingunTracer2 : BulletTracer 			{Default { Scale 2.0; DamageFunction (random(6,8)); } }
 class EnemyMutantTracer : MutantTracer				{Default { DamageFunction (random(2,4)); } }
 class EnemyPistolTracer : BulletTracer				{Default { DamageFunction (random(4,8)); } }
+class EnemyC96Tracer : BulletTracer				{Default { DamageFunction (random(6,9)); } }
 class EnemyRifleTracer : BulletTracer				{Default { DamageFunction (random(15,30)); } }
 class EnemySMGTracer : BulletTracer					{Default { DamageFunction (random(6,7)); } }
 class EnemyShotgunTracer : BulletTracer 			{Default { DamageFunction (random(3,7)); } }

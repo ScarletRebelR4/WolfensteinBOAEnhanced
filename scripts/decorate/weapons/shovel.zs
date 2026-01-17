@@ -32,6 +32,7 @@ class Shovel : NaziWeapon
 	Weapon.UpSound "weapon/Melee/raise";
 	Tag "$TAGSHOVL";
 	Inventory.PickupMessage "$SHOVEL";
+	Inventory.MaxAmount 16;
 	-WEAPON.AMMO_CHECKBOTH
 	+WEAPON.MELEEWEAPON
 	+WEAPON.NOAUTOFIRE
