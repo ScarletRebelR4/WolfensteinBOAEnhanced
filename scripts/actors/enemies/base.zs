@@ -1866,7 +1866,7 @@ class Nazi : Base
 
 		if (target && target.species == species) { target = null; return; }
 
-		if (alertrange) { A_AlertMonsters(alertrange / 2); } // Alert monsters in given range
+		if (alertrange) { A_AlertMonsters(alertrange); } // Alert monsters in given range
 		if (StartSound) { A_Pain(); } // Play pain sound unless passed 'false'
 
 		if (target && user_sneakable && bFriendly) // If we attacked a sneakable actor who wasn't alerted...
@@ -2555,7 +2555,9 @@ class Nazi : Base
 					A_RemoveChildren(TRUE, RMVF_EVERYTHING, "None", "AlertMarker");
 					bFriendly = False; // Force to not friendly so that they will count as a kill and be healable.
 					if (self is "NaziStandard") { DeathSound = "Nazi/Gurgle"; } // Reset death sound to gurgle
-					SoundAlert(source, false, 192);
+					//[Pop] ITS A GURGLE, DONT FUCKING ALERT NEARBY UNLESS ITS
+					//LIKE RIGHT NEXT TO YOU
+					SoundAlert(source, false, 32);
 					damage = health;
 					flags |= DMG_FORCED;
 					user_noaltdeath = True;
@@ -2575,7 +2577,7 @@ class Nazi : Base
 				user_incombat = True;
 				A_Log(StringTable.Localize("$CRITICAL"));
 				if (self is "NaziStandard") { DeathSound = "Nazi/Gurgle"; } // Reset death sound to gurgle
-				SoundAlert(source, false, 192);
+				SoundAlert(source, false, 32);
 				damage = health;
 				flags |= DMG_FORCED;
 				user_noaltdeath = True;
@@ -2643,7 +2645,7 @@ class Nazi : Base
 		{
 			lastenemy = target;
 			target = source; // Target the source if it wasn't friendly or of the same species
-			SoundAlert(source, false, 192);
+			SoundAlert(source, false, 64);
 		}
 
 		if (source.player && NaziLoper(self) && !(inflictor is "SwordPuff")) { NaziLoper(self).noachievement[source.PlayerNumber()] = true; }
@@ -2718,7 +2720,6 @@ class Nazi : Base
 		}
 
 		reactiontime = 0; // Make the enemy respond to seeing the player right away
-		A_AlertMonsters(512); // Alert an extra-large radius
 		[sp, eyes] = A_SpawnItemEx("SneakableGuardEyesAlerted", 0, 0, 0, 0, 0, 0, 0, SXF_SETMASTER | SXF_NOCHECKPOSITION, 0, tid); // Spawn active guard eyes
 		if (target && target.GetSpecies() == GetSpecies()) { target = null; SetStateLabel("Spawn"); } // Don't go after same-species targets
 

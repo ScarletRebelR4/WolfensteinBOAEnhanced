@@ -2761,6 +2761,9 @@ DoomEdNums
 	32311=M191145ACP
 	32312=Ammo45ACP
 	32313=Ammo3006
+	32314=AmmoBox380ACP
+	32315=WaltherPPK
+	32316=AmmoBox9mm //[Pop] For special inclusions where its needed specifically
 }
 
 ////////////

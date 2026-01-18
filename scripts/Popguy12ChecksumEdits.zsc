@@ -1,3 +1,7 @@
+//[Pop] Basically, at least until our map guy is able to, all edits to weapon
+//placements or ammo placements that need to be done will happen via code, right
+//in this file. Checksums will need to be updated if a map file is modified.
+
 class PG12_ChecksumChecks : LevelPostProcessor
 {
     protected void Apply(Name checksum, String mapname)
@@ -17,6 +21,15 @@ class PG12_ChecksumChecks : LevelPostProcessor
 				AddThing(32312, (43, -623, 80), SKILLS_ALL);
 				AddThing(32312, (37, -625, 80), SKILLS_ALL);
 				AddThing(32312, (35, -615, 80), SKILLS_ALL);
+				break;
+			//[Pop] C2M1 edits
+			case '2f68c1fff3b9524e4945a93c4a8f0658':
+				//[Pop] Lets put a Box of 9mm in this room near the start as backup
+				AddThing(32316, (-3319, 1161, -768), SKILLS_ALL);
+				
+				//Next up: the PPK
+				AddThing(32315, (-3734, 4264, -680), SKILLS_ALL);
+				AddThing(32314, (-3702, 4247, -712), SKILLS_ALL);
 				break;
         }
     }
