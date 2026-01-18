@@ -96,7 +96,7 @@ class Ammo45ACP : Ammo
 	//$Category Ammo (BoA)
 	//$Title Ammoclip45ACP (x8 clips)
 	//$Color 6
-	Scale 0.15;
+	Scale 0.14;
 	Tag ".45 ACP";
 	Inventory.Amount 7;
 	Inventory.MaxAmount 256;
@@ -530,7 +530,7 @@ class Ammo3006 : Ammo
 	//$Category Ammo (BoA)
 	//$Title Clip (x5 clips)
 	//$Color 6
-	Scale 0.1;
+	Scale 0.18;
 	Tag ".30-06 Springfield";
 	Inventory.Amount 8;
 	Inventory.MaxAmount 100;

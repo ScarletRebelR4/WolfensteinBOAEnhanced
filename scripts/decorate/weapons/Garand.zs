@@ -1,201 +1,162 @@
-
-
-Class M1GarandRifleCasing : MauserRifleCasing{Default{}}
-
-Class M1GarandTracer : PlayerTracer
-{
-Default
-{
-	Damage 50;
-	Speed 180;
-	ProjectileKickback 100;
-}	
-}
-
 Class Garand : NaziWeapon
 {
-Default
-{
-	//$Category Weapons (Neoatomized Weapons)
-	//$Title (5) M1 Garand
-	//$Color 14
-	Scale 0.40;
-	Weapon.SlotNumber 5;
-	Weapon.AmmoType "GarandLoaded";
-	Weapon.AmmoUse 1;
-	Weapon.AmmoType2 "Ammo3006";
-	Weapon.AmmoUse2 1;
-	Weapon.AmmoGive1 0;
-	Weapon.AmmoGive2 20;
-	Weapon.UpSound "weapon/Sniper/raise";
-	Inventory.PickupMessage "You got the M1 Garand! Trust me, when you load this gun up... - Lt. Hyde";
-	Weapon.SelectionOrder 750;
-	+WEAPON.NOAUTOFIRE;
-	Tag "M1 Garand";
-	Weapon.UpSound "M1GFOW";
-}	
+	Default
+	{
+		//$Category Weapons (Neoatomized Weapons)
+		//$Title (5) M1 Garand
+		//$Color 14
+		Scale 0.7;
+		Weapon.SlotNumber 5;
+		Weapon.AmmoType "GarandLoaded";
+		Weapon.AmmoUse 1;
+		Weapon.AmmoType2 "Ammo3006";
+		Weapon.AmmoUse2 1;
+		Weapon.AmmoGive1 0;
+		Weapon.AmmoGive2 20;
+		Weapon.UpSound "weapon/Sniper/raise";
+		Inventory.PickupMessage "You got the M1 Garand! Trust me, when you load this gun up... - Lt. Hyde";
+		Weapon.SelectionOrder 750;
+		+WEAPON.NOAUTOFIRE;
+		Tag "M1 Garand";
+	}	
+	
 	States
 	{
-	Ready:
-		TNT1 A 0 A_JumpIfInventory("GarandLoaded",1,2);
-		Goto ReadyEmpty;
-		TNT1 A 0 A_CheckReload;
-		TNT1 A 0 A_JumpIfInventory("GarandLoaded",0,2);
-		TNT1 A 0 A_JumpIfInventory("Ammo3006",1,2);
-		M1GI A 1 A_WeaponReady;
-		Loop;
-		M1GI A 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	ReadyEmpty:
-		TNT1 A 0 A_CheckReload;
-		TNT1 A 0 A_JumpIfInventory("Ammo3006",1,2);
-		M1LF D 1 A_WeaponReady;
-		Goto Ready;
-		M1LF D 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Goto Ready;
-	Select:
-		TNT1 A 0 A_JumpIfInventory("GarandLoaded",1,3);
-		M1LF D 0 A_Raise;
-		M1LF D 1 A_Raise;
-		Loop;
-		M1GI A 0 A_Raise;
-		M1GI A 1 A_Raise;
-		Loop;
-	Deselect:
-		TNT1 A 0 A_JumpIfInventory("GarandLoaded",1,3);
-		M1LF D 0 A_Lower;
-		M1LF D 1 A_Lower;
-		Loop;
-		M1GI A 0 A_Lower;
-		M1GI A 1 A_Lower;
-		Loop;
-	Fire:
-		M1GI A 0 A_JumpIfInventory("GarandLoaded",1,1);
-		Goto Dryfire;
-		M1GI A 0 A_GunFlash;
-		TNT1 A 0 A_PlaySound("M1GFIR",CHAN_WEAPON);
-		M1GI A 0 A_SpawnItemEx("M1GarandRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
-		M1GI A 0 A_AlertMonsters;
-		M1FG A 1 BRIGHT A_FireProjectile("M1GarandTracer");
-		M1FG B 1 A_SetPitch(pitch-(3.6*boa_recoilamount));
-		M1GI C 0 A_JumpIf(waterlevel > 0,2);
-		M1GI C 0 A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
-		M1FG B 1 A_JumpIf(CountInv("GarandLoaded") == 0,"ClipEject");
-	FireFinish:
-		M1FG C 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		M1FG D 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		M1FG E 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		TNT1 A 0 A_CheckReload;
-		Goto Ready;
-	ClipEject:
-	    TNT1 A 0 A_PlaySound("M1GPING",5);
-		M1LF A 1;
-		M1LF B 1;
-		M1LF C 1;
-		M1LF D 1;
-		M1LF D 1 A_GiveInventory("M1Pinged");
-		Goto Ready;
-	Reload:
-		TNT1 A 0 A_JumpIfInventory("M1Pinged",1,"FullReload");
-		M1H1 A 2;
-		M1H1 B 2;
-		M1H1 C 2;
-		M1H1 D 2;
-		M1H1 E 2;
-		M1H1 F 2;
-		M1H1 G 2;
-		M1H1 H 2;
-		M1H1 I 2;
-		M1H1 J 2;
-		M1H1 K 2;
-		M1H1 L 2;
-		M1H1 M 2;
-		M1H1 N 2;
-		M1H1 O 2;
-		M1H1 P 2;
-		TNT1 A 0 A_PlaySound("M1GBAC",5);
-		TNT1 A 0 A_PlaySound("M1GOUT",6);
-		M1H2 A 2;
-		M1H2 B 2;
-		M1H2 C 2;
-		M1H2 D 2;
-		M1H2 E 2;
-		TNT1 A 0 A_PlaySound("M1GFOW",5);
-		M1H2 F 2;
-		M1H2 G 2;
-		M1H2 H 2;
-		M1H2 I 2;
-		M1H2 J 2; //Are we there yet????
-		M1H2 K 2;
-		M1H2 L 2;
-		M1H3 A 2;
-		M1H3 B 2;
-		M1H3 C 2;
-		M1H3 D 2;
-		M1H3 E 2;
-		M1H3 F 2;
-		M1H3 G 2;
-		M1H3 H 2;
-		M1H3 I 2;
-		M1H3 J 2;
-		M1H3 K 2;
-		TNT1 A 0 A_PlaySound("M1GBAC",5);
-		M1H3 L 2;
-		M1H3 M 2;
-		M1H4 A 2;
-		M1H4 B 2;
-		M1H4 C 2;
-		M1H4 D 2;
-		M1H4 E 2;
-		M1H4 F 2;
-		TNT1 A 0 A_PlaySound("M1GIN",5);
-		M1H4 G 2;
-		TNT1 A 0 A_PlaySound("M1GFOW",6);
-		M1H4 H 2;
-		M1H4 I 2;
-		M1H4 J 2;
-		M1H4 K 2;
-		M1H4 L 2;
-		Goto ReloadLoop;
-	FullReload:
-		M1G1 A 2;
-		M1G1 B 2;
-		M1G1 C 2;
-		M1G1 D 2;
-		M1G1 E 2;
-		M1G1 F 2;
-		M1G1 G 2;
-		M1G1 H 2;
-		M1G1 I 2;
-		M1G2 A 2;
-		M1G2 B 2;
-		M1G2 C 2;
-		M1G2 D 2;
-		TNT1 A 0 A_PlaySound("M1GIN",5);
-		M1G2 E 2;
-		TNT1 A 0 A_PlaySound("M1GFOW",6);
-		M1G2 F 2;
-		M1G2 G 2;
-		M1G2 H 2;
-		M1G2 I 2;
-		M1G2 J 2;	
-	ReloadLoop:
-		M1AR A 0 A_TakeInventory("Ammo3006",1,TIF_NOTAKEINFINITE);
-		M1AR A 0 A_GiveInventory("GarandLoaded");
-		M1AR A 0 A_JumpIfInventory("GarandLoaded",0,"ReloadFinish");
-		M1AR A 0 A_JumpIfInventory("Ammo3006",1,"ReloadLoop");
-	ReloadFinish:
-		M1GI A 1 A_TakeInventory("M1Pinged");
-		M1GI A 1;
-		Goto Ready;
-	Flash:
-		TNT1 A 1 BRIGHT A_Light2;
-		TNT1 A 1;
-		TNT1 A 2 A_Light1;
-		Goto LightDone;
-	Spawn:
-		M1GP A -1;
-		Stop;
+		Deselect:
+			//TNT1 A 0 A_StartSound("Weapons/C96/Lower", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			M1GS ABCDEF 1;
+			TNT1 A 0 A_Lower();
+			Wait;
+		Select:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstSelect");
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstSelect:
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstReady: //First Time Select
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96I ABCDE 1;
+			C96I E 4;
+			C96F TUVWXYZ 1;
+			TNT1 A 0
+			{
+				invoker.firstPickup = true;
+			}
+			TNT1 A 0 A_StartSound("Weapons/C96/Slap", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G A 1;
+			TNT1 A 0 A_StartSound("Weapons/C96/BoltClose", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G BCDEFGHIJKLMN 1;
+			Goto Ready1;
+		Ready:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			M1GS FEDCBA 1;
+		Ready1:
+			TNT1 A 0 A_JumpIf(CountInv("GarandLoaded") == 0, "Ready2");
+			M1GF A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Ready2:
+			M1GF E 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Fire:
+			TNT1 A 0 A_JumpIf(CountInv("GarandLoaded") == 0,"DryFire");
+			M1GF B 1 BRIGHT
+			{
+				A_GunFlash();
+				A_AlertMonsters();
+				
+				if(waterlevel > 0.2)
+				{
+					//[Pop] Refactor later with new smoke system
+					A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
+				}
+				A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+				//Take Ammo
+				
+				A_StartSound("M1GFIR",CHAN_WEAPON, CHANF_OVERLAP);
+				A_FireProjectile("M1GarandTracer");
+				A_SetPitch(pitch-(1.6*boa_recoilamount));
+			}
+			M1GF C 1 BRIGHT;
+			M1GF DE 1;
+			TNT1 A 0 A_JumpIf(CountInv("GarandLoaded") == 0,"FireEnd");
+			M1GF DA 1;
+			Goto Ready1;
+		FireEnd:
+			TNT1 A 0 A_Overlay(5, "Enbloc");
+			TNT1 A 0 A_OverlayFlags(5, PSPF_ADDWEAPON, false);
+			TNT1 A 0 A_OverlayFlags(5, PSPF_ADDBOB, false);
+			TNT1 A 0 A_OverlayPivotAlign(5, PSPA_CENTER, PSPA_CENTER);
+			M1GF E 10;
+			TNT1 A 0 A_CheckReload;
+			Goto Ready2;
+		Enbloc:
+			M1GR A 0 A_OverlayOffset(5, -12, 52);
+			M1GR A 1 { A_OverlayOffset(5, 8, -10, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 8, -10, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 8, -5, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 8, 0, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 4, 5, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 4, 10, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 4, 10, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 4, 15, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 4, 15, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 2, 15, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 2, 20, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 2, 20, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 2, 20, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			//[Pop] Just to make sure it gets off screen here.
+			M1GR A 1 { A_OverlayOffset(5, 2, 20, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 2, 20, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 2, 20, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			M1GR A 1 { A_OverlayOffset(5, 2, 20, WOF_ADD | WOF_INTERPOLATE); A_OverlayRotate(5, -32, WOF_ADD | WOF_INTERPOLATE); }
+			Stop;
+		Reload:
+			TNT1 A 0 A_JumpIf(CountInv("GarandLoaded") == 0,"Reload2");
+			M1GF A 10;
+			M1GR D 10;
+			TNT1 A 0 A_PlaySound("M1GBAC",5);
+			M1GR C 2;
+			TNT1 A 0 A_PlaySound("M1GOUT",6);
+			M1GR C 30;
+			TNT1 A 0 A_PlaySound("M1GIN",5);
+			Goto ReloadLoop;
+		ReloadLoop:
+			M1AR A 0 A_TakeInventory("Ammo3006",1,TIF_NOTAKEINFINITE);
+			M1AR A 0 A_GiveInventory("GarandLoaded");
+			M1AR A 0 A_JumpIfInventory("GarandLoaded",8,"ReloadFinish");
+			M1AR A 0 A_JumpIfInventory("Ammo3006",1,"ReloadLoop");
+		ReloadFinish:
+			M1GR C 4;
+			TNT1 A 0 A_PlaySound("M1GFOW",6);
+			M1GR D 10;
+			M1GF A 10;
+			Goto Ready1;
+		Reload2:
+			M1GF E 8;
+			M1GR C 20;
+			TNT1 A 0 A_PlaySound("M1GIN",5);
+		Reload2Loop:
+			M1AR A 0 A_TakeInventory("Ammo3006",1,TIF_NOTAKEINFINITE);
+			M1AR A 0 A_GiveInventory("GarandLoaded");
+			M1AR A 0 A_JumpIfInventory("GarandLoaded",8,"Reload2Finish");
+			M1AR A 0 A_JumpIfInventory("Ammo3006",1,"Reload2Loop");
+		Reload2Finish:
+			M1GR C 20;
+			TNT1 A 0 A_PlaySound("M1GFOW",6);
+			M1GR D 10;
+			M1GF A 8;
+			Goto Ready1;
+		
+		Flash:
+			TNT1 A 1 BRIGHT A_Light2;
+			TNT1 A 1;
+			TNT1 A 2 A_Light1;
+			Goto LightDone;
+		Spawn:
+			M1GP A -1;
+			Stop;
 	}
 }
 

@@ -2755,6 +2755,12 @@ DoomEdNums
 	32765=ScreenLabel
 	32766=Tornado
 	32767=SmokeMonster
+	
+	//[Pop] reserving 323XX for custom stuff here
+	32310=Garand
+	32311=M191145ACP
+	32312=Ammo45ACP
+	32313=Ammo3006
 }
 
 ////////////

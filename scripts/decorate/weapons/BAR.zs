@@ -43,7 +43,7 @@ Default
 		Goto Dryfire;
 		BRAG A 0 A_GunFlash;
 		BRAG A 0 A_PlaySound("BARFIR",CHAN_WEAPON);
-		BRAG A 0 A_SpawnItemEx("M1GarandRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+		BRAG A 0 A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		BRAG A 0 A_AlertMonsters;
 		BRAF A 1 BRIGHT A_FireProjectile("M1GarandTracer",frandom(-2.0,2.0),1,0,0,0,frandom(-1.0,1.0));
 		BRAF B 1 A_SetPitch(pitch-(2.6*boa_recoilamount));
@@ -57,7 +57,7 @@ Default
 		Goto Dryfire;
 		BRAG A 0 A_GunFlash;
 		BRAG A 0 A_PlaySound("BARFIR",CHAN_WEAPON);
-		BRAG A 0 A_SpawnItemEx("M1GarandRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+		BRAG A 0 A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		BRAG A 0 A_AlertMonsters;
 		BRAF A 1 BRIGHT A_FireProjectile("M1GarandTracer",frandom(-2.0,2.0),1,0,0,0,frandom(-1.0,1.0));
 		BRAF B 1 A_SetPitch(pitch-(2.6*boa_recoilamount));
@@ -72,7 +72,7 @@ Default
 		BRAG A 0 A_GunFlash;
 		TNT1 A 0;
 		BRAG B 0 A_PlaySound("BARFIR",CHAN_WEAPON);
-		BRAG B 0 A_SpawnItemEx("M1GarandRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+		BRAG B 0 A_SpawnItemEx("MauserRifleCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 		BRAG B 0 A_AlertMonsters;
 		BRAG B 0 A_TakeInventory("BAR3006Loaded",1,TIF_NOTAKEINFINITE);
 		BRAF A 1 BRIGHT A_FireProjectile("M1GarandTracer",frandom(-1.0,1.0),0,0,0,0,frandom(-1.0,1.0));

@@ -27,7 +27,7 @@ class M191145ACP : NaziWeapon
 	//$Category Weapons (BoA)
 	//$Title (2) M1911
 	//$Color 14
-	Scale 0.50;
+	Scale 0.6;
 	Weapon.SelectionOrder 9998;
 	Weapon.AmmoType "M191145ACPLoaded";
 	Weapon.AmmoUse 1;
@@ -60,6 +60,7 @@ class M191145ACP : NaziWeapon
 		M451 ABCDEFGHI 1;
 		TNT1 A 0 
 		{
+			A_GiveInventory("M191145ACPLoaded", 8);
 			A_StartSound("Weapons/M1911/Charge", CHAN_AUTO);
 			invoker.firstPickup = true;
 		}
@@ -147,7 +148,7 @@ class M191145ACP : NaziWeapon
 		TNT1 A 2 A_Light1;
 		Goto LightDone;
 	Spawn:
-		LUGP A -1;
+		M45P A -1;
 		Stop;
 	}
 }

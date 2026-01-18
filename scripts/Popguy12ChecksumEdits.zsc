@@ -1,0 +1,23 @@
+class PG12_ChecksumChecks : LevelPostProcessor
+{
+    protected void Apply(Name checksum, String mapname)
+    {
+		Console.printf("%s", level.getchecksum());
+		switch(checksum)
+        {
+			//[Pop] Lets add the Garand and M1911 to C1M2 as a test first
+            case 'e53a54b7fa7ac1ffb59dbcd297eb9e86':
+				AddThing(32310, (-3, -665, 80), SKILLS_ALL);
+				
+				AddThing(32311, (39, -620, 80), SKILLS_ALL);
+				
+				AddThing(32313, (-8, -673, 80), SKILLS_ALL);
+				AddThing(32313, (4, -658, 80), SKILLS_ALL);
+				
+				AddThing(32312, (43, -623, 80), SKILLS_ALL);
+				AddThing(32312, (37, -625, 80), SKILLS_ALL);
+				AddThing(32312, (35, -615, 80), SKILLS_ALL);
+				break;
+        }
+    }
+}

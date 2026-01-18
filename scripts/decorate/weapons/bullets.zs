@@ -171,6 +171,18 @@ class G43Tracer : Kar98kTracer
 	}
 }
 
+class M1GarandTracer : Kar98kTracer
+{
+	Default
+	{
+		ProjectileKickback 60;
+		BulletTracer.BaseDamage 65;
+		Speed 196;
+		Obituary "$OBMAUSER";
+		DamageType "Rifle";
+	}
+}
+
 class ChaingunTracer : PlayerTracer
 {
 	Default

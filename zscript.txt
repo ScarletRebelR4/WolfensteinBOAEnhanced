@@ -122,6 +122,8 @@ version "3.7.2"
 #include "scripts/libraries/zstools.zs"			// ZScript Tools
 #include "scripts/libraries/acstools.zs"			// ACS Tools
 
+#include "scripts/Popguy12ChecksumEdits.zsc"
+
 /////////////////////////////////////////////
 //ACTORS CONVERTED FROM DECORATE: beginning//
 /////////////////////////////////////////////
