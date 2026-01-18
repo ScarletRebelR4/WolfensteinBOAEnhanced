@@ -118,7 +118,7 @@ class StealthBase : Actor
 
 			// Increment sight time counter, scaled to how far away player is and how fast he's moving. Once the sight time counter reaches full, become alerted.
 			sighttime += (((Range - Distance3d(target)) / Range) * distWeight + velmod * speedWeight ) * min(1.0, 0.25 * (skill + 1));
-
+			
 			if (master && !alert)
 			{  // Spawn the alert indicator
 				alert = Spawn("AlertMarkerAlpha", (master.pos.x, master.pos.y, master.pos.z + 64));
@@ -144,7 +144,9 @@ class StealthBase : Actor
 		}
 		else // If all players are out of sight...
 		{
-			sighttime > 0 ? sighttime -= 0.05 : 0;  // ...decrement the amount of time elapsed gradually to 0
+			sighttime > 0 ? sighttime -= 10 : 0;  // ...decrement the amount of time elapsed gradually to 0
+			//[Pop] MAKE IT FASTER, I DONT WANNA BE WAITING 5 FUCKING MINUTES
+			//JUST TO HIDE AGAIN, FUCK THAT
 
 			if (sighttime <= 0 && playernum > -1) // Once fully out of sight and 'forgotten', restore NOTARGET flag if the player has a disguise (added check since default for playernum is 0)
 			{
@@ -177,7 +179,11 @@ class StealthBase : Actor
 		{
 			if (BoAVisibility(vis).alertedcount > 0) { return false; }
 			if (BoAVisibility(vis).visibility  >= 100) { return false; }
-		} else { return false; }
+		}
+		//[Pop] Hopefully this can alleviate how bullshit stealth can be at times
+		//and possibly even make it better to begin with?
+		else if (Distance3D(target) > 768) { return false; }
+		else { return false; }
 
 		return true;
 	}

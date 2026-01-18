@@ -1866,7 +1866,7 @@ class Nazi : Base
 
 		if (target && target.species == species) { target = null; return; }
 
-		if (alertrange) { A_AlertMonsters(alertrange); } // Alert monsters in given range
+		if (alertrange) { A_AlertMonsters(alertrange / 2); } // Alert monsters in given range
 		if (StartSound) { A_Pain(); } // Play pain sound unless passed 'false'
 
 		if (target && user_sneakable && bFriendly) // If we attacked a sneakable actor who wasn't alerted...
@@ -2288,7 +2288,7 @@ class Nazi : Base
 			else if (goal is "Nazi")
 			{
 				Speed = Default.Speed + Random(1, 2); // Walk a little faster
-				if (Distance3D(goal) < 96)
+				if (Distance3D(goal) < 32)
 				{
 					BecomeAlerted(goal.target);
 				}

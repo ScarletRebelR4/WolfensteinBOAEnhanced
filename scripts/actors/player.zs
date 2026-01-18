@@ -132,6 +132,7 @@ class BoAPlayer : PlayerPawn
 		Player.SideMove 1.0, 1.0;
 		Player.ForwardMove 1.0, 1.0;
 		Player.ViewBob 0.44;
+		Player.JumpZ 10;
 		
 		//[Pop] BTW THIS NEEDS TO BE CUT, THIS SHIT IS ARCHAIC OLD DECORATE
 		//BULLSHIT, GET IT THE FUCK OUT OF MY SIGHT AT SOME POINT.
