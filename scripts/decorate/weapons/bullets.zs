@@ -83,6 +83,64 @@ class PPKTracer : LugerTracer
 	Speed 69;
 	BulletTracer.BaseDamage 10;
 	}
+	
+	override int Handle_MissileHit(Actor victim)
+	{
+		double scaled_damage = truedamage;
+		Name dmgType = DamageType;
+
+		double ang = AbsAngle(victim.Angle, AngleTo(target));
+		if (!bNOCRITICALS && (ang < 30 || ang > 150) && Pos.Z > victim.Pos.Z + victim.Height * 0.55)
+		{
+			//Console.Printf("Critical");
+			scaled_damage = scaled_damage * 1.5;
+			dmgtype = "TorsoHitbox";
+			if (Pos.Z > victim.Pos.Z + victim.Height * 0.70)
+			{
+				//Console.Printf("Headshot");
+				dmgtype = "HeadHitbox";
+				//A_StartSound("headshotmarker", CHAN_AUTO, CHAN_UI);
+				scaled_damage = scaled_damage * 3;
+			}
+			else
+			{
+				A_StartSound("torsshotmarker", CHAN_AUTO, CHAN_UI);
+			}
+		}
+		else if (Pos.Z < victim.Pos.Z + victim.Height * 0.35)
+		{
+			//Console.Printf("Legshot");
+			//A_StartSound("apenshotmarker", CHAN_AUTO, CHAN_UI);
+			dmgtype = "LegHitbox";
+			scaled_damage = scaled_damage * 0.65;
+		}
+		else if (!bOMNIDIRECTIONAL && ang > 50 && ang < 130)
+		{
+			//Console.Printf("Armshot");
+			//A_StartSound("apenshotmarker", CHAN_AUTO, CHAN_UI);
+			dmgtype = "ArmHitbox";
+			scaled_damage = scaled_damage * 0.8;
+		}
+		else
+		{
+			//A_StartSound("bodyshotmarker", CHAN_AUTO, CHAN_UI);
+			scaled_damage = scaled_damage * 1;
+		}
+		
+		scaled_damage = victim.GetModifiedDamage(dmgType, scaled_damage, false, self, target);
+		
+		victim.DamageMobJ(self, target, ceil(scaled_damage), dmgType, 0, angle);
+		
+		if( victim.bISMONSTER && !victim.bNOBLOOD ) 
+			victim.SpawnBlood( pos, angle, ceil(scaled_damage) );
+		
+		if (bRIPPER && target.bBOSS && bNOBOSSRIP)
+		{
+			MustExplode = true;
+		}
+		
+		return -1;
+	}
 }
 
 //Muzzle velocity: 1394 ft/s (425 m/s)
@@ -92,6 +150,64 @@ class C96Tracer : LugerTracer
 	{
 	Speed 97;
 	BulletTracer.BaseDamage 17;
+	}
+	
+	override int Handle_MissileHit(Actor victim)
+	{
+		double scaled_damage = truedamage;
+		Name dmgType = DamageType;
+
+		double ang = AbsAngle(victim.Angle, AngleTo(target));
+		if (!bNOCRITICALS && (ang < 30 || ang > 150) && Pos.Z > victim.Pos.Z + victim.Height * 0.55)
+		{
+			//Console.Printf("Critical");
+			scaled_damage = scaled_damage * 2;
+			dmgtype = "TorsoHitbox";
+			if (Pos.Z > victim.Pos.Z + victim.Height * 0.70)
+			{
+				//Console.Printf("Headshot");
+				dmgtype = "HeadHitbox";
+				//A_StartSound("headshotmarker", CHAN_AUTO, CHAN_UI);
+				scaled_damage = scaled_damage * 3;
+			}
+			else
+			{
+				A_StartSound("torsshotmarker", CHAN_AUTO, CHAN_UI);
+			}
+		}
+		else if (Pos.Z < victim.Pos.Z + victim.Height * 0.35)
+		{
+			//Console.Printf("Legshot");
+			//A_StartSound("apenshotmarker", CHAN_AUTO, CHAN_UI);
+			dmgtype = "LegHitbox";
+			scaled_damage = scaled_damage * 1;
+		}
+		else if (!bOMNIDIRECTIONAL && ang > 50 && ang < 130)
+		{
+			//Console.Printf("Armshot");
+			//A_StartSound("apenshotmarker", CHAN_AUTO, CHAN_UI);
+			dmgtype = "ArmHitbox";
+			scaled_damage = scaled_damage * 1.2;
+		}
+		else
+		{
+			//A_StartSound("bodyshotmarker", CHAN_AUTO, CHAN_UI);
+			scaled_damage = scaled_damage * 1.5;
+		}
+		
+		scaled_damage = victim.GetModifiedDamage(dmgType, scaled_damage, false, self, target);
+		
+		victim.DamageMobJ(self, target, ceil(scaled_damage), dmgType, 0, angle);
+		
+		if( victim.bISMONSTER && !victim.bNOBLOOD ) 
+			victim.SpawnBlood( pos, angle, ceil(scaled_damage) );
+		
+		if (bRIPPER && target.bBOSS && bNOBOSSRIP)
+		{
+			MustExplode = true;
+		}
+		
+		return -1;
 	}
 }
 
