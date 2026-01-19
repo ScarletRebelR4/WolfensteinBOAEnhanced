@@ -12,7 +12,7 @@ Class Garand : NaziWeapon
 		Weapon.AmmoType2 "Ammo3006";
 		Weapon.AmmoUse2 1;
 		Weapon.AmmoGive1 0;
-		Weapon.AmmoGive2 20;
+		Weapon.AmmoGive2 8;
 		Weapon.UpSound "weapon/Sniper/raise";
 		Inventory.PickupMessage "You got the M1 Garand! Trust me, when you load this gun up... - Lt. Hyde";
 		Weapon.SelectionOrder 750;
@@ -41,6 +41,7 @@ Class Garand : NaziWeapon
 			C96F TUVWXYZ 1;
 			TNT1 A 0
 			{
+				A_GiveInventory("GarandLoaded", 8);
 				invoker.firstPickup = true;
 			}
 			TNT1 A 0 A_StartSound("Weapons/C96/Slap", CHAN_AUTO, CHANF_OVERLAP, 1.0);

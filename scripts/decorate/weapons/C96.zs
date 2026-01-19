@@ -34,7 +34,7 @@ class C96 : NaziWeapon
 	Weapon.AmmoUse 1;
 	Weapon.AmmoType2 "Ammo763Mauser";
 	Weapon.AmmoUse2 1;
-	Weapon.AmmoGive2 8;
+	Weapon.AmmoGive2 10;
 	Weapon.UpSound "PPKCOK";
 	Weapon.UpSound "weapon/Pistol/raise";
 	Tag "C96";
@@ -62,6 +62,7 @@ class C96 : NaziWeapon
 			C96F TUVWXYZ 1;
 			TNT1 A 0
 			{
+				A_GiveInventory("C96Loaded", 10);
 				invoker.firstPickup = true;
 			}
 			TNT1 A 0 A_StartSound("Weapons/C96/Slap", CHAN_AUTO, CHANF_OVERLAP, 1.0);

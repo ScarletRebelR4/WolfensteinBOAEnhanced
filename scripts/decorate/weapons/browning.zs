@@ -33,7 +33,7 @@ class Browning5 : NaziWeapon
 	Weapon.AmmoType "Browning5Loaded";
 	Weapon.AmmoType2 "Ammo12Gauge";
 	Weapon.AmmoUse2 1;
-	Weapon.AmmoGive2 8;
+	Weapon.AmmoGive2 10;
 	Weapon.UpSound "weapon/shotgun/raise";
 	Scale .5;
 	Inventory.PickupMessage "$BROWNING";
@@ -65,7 +65,7 @@ class Browning5 : NaziWeapon
 			C96F TUVWXYZ 1;
 			TNT1 A 0
 			{
-				A_GiveInventory("Browning5Loaded", 6);
+				A_GiveInventory("Browning5Loaded", 11);
 				invoker.firstPickup = true;
 			}
 			TNT1 A 0 A_StartSound("Weapons/C96/Slap", CHAN_AUTO, CHANF_OVERLAP, 1.0);
