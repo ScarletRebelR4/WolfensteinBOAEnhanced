@@ -3011,8 +3011,8 @@ class Longinus_Hitler : NaziBoss
 		//$Color 4
 		Base.BossIcon "BOSSICO3";
 		Tag "$TAGHITLER";
-		Health 100000;
-		WoundHealth 50000;
+		Health 10000;
+		WoundHealth 5000;
 		Mass 16000;
 		Painchance 16;
 		Radius 64;
@@ -3025,9 +3025,8 @@ class Longinus_Hitler : NaziBoss
 		+NOFEAR
 		+MISSILEMORE //these two added by N00b
 		+MISSILEEVENMORE
-		PainChance 0; // No pain reaction, except for Occult Fire attacks.
-		PainChance "OccultFire", 8; //changed from 24, else you could stun him with repeated alternative attacks --N00b
-		DamageFactor "Rocket", 0.0;
+		PainChance 8; // No pain reaction, except for Occult Fire attacks.
+		PainChance "OccultFire", 24; //changed from 24, else you could stun him with repeated alternative attacks --N00b
 		DamageFactor "OccultFire", 5.0;
 		Obituary "$LHITLER";
 		SeeSound "hitler/sight";
