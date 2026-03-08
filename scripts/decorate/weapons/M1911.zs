@@ -43,113 +43,116 @@ class M191145ACP : NaziWeapon
 	
 	States
 	{
-	Deselect:
-		M45A A 0 A_Lower;
-		M45A A 1 A_Lower;
-		Loop;
-	Select:
-		TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstSelect");
-		M45A A 0 A_Raise;
-		M45A A 1 A_Raise;
-		Loop;
-	FirstSelect:
-		TNT1 AAA 0 A_Raise;
-		TNT1 A 1 A_Raise;
-		Loop;
-	FirstReady:
-		M451 ABCDEFGHI 1;
-		TNT1 A 0 
-		{
-			A_GiveInventory("M191145ACPLoaded", 8);
-			A_StartSound("Weapons/M1911/Charge", CHAN_AUTO);
-			invoker.firstPickup = true;
-		}
-		M451 JKLMNOPQRSTUVWXYZ 1;
-	Ready:
-		TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
-		M45A A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 0, "ReadyEmpty");
-		M45A A 0 A_JumpIfInventory("Ammo45ACP",1,2);
-		M45A A 1 A_WeaponReady;
-		Loop;
-		M45A A 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	ReadyEmpty:
-		M45A I 0 A_JumpIfInventory("Ammo45ACP",1,2);
-		M45A I 1 A_WeaponReady;
-		Loop;
-		M45A I 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	Fire:
-		M45A A 0 A_JumpIfInventory("M191145ACPLoaded",1,1);
-		Goto Dryfire;
-		M45A A 0 A_GunFlash;
-		M45A A 0 A_SetPitch(pitch-(0.2*boa_recoilamount));
-		M45A A 0 A_JumpIf(waterlevel > 0,2);
-		M45A A 0 A_FireProjectile("PistolSmokeSpawner",0,0,0,random(-4,4),0,0);
-		M45A A 0
-		{
-			A_StartSound("Weapons/M1911/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.25);
-			A_StartSound("Weapons/M1911/FireExtra", CHAN_AUTO, CHANF_OVERLAP, 0.6);
-			A_StartSound("Weapons/M1911/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1.0);
-			A_StartSound("Weapons/M1911/FireMech", CHAN_AUTO, CHANF_OVERLAP, 0.8);
-		}
-		M45A A 0 A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
-		M45A A 0 A_AlertMonsters;
-		M45A B 1 BRIGHT A_FireProjectile("LugerTracer");
-		M45A C 1;
-		M45A D 1 A_SetPitch(pitch-(0.2*boa_recoilamount));
-		TNT1 A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 0, "FireEndEmpty");
-		M45A EF 1 A_WeaponReady(WRF_NOBOB);
-		Goto Ready;
-	FireEndEmpty:
-		M45A GH 1;
-		Goto ReadyEmpty;
+		Deselect:
+			TNT1 A 0 A_StartSound("Weapons/C96/Lower", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			M45H ABCDEF 1;
+			TNT1 A 0 A_Lower();
+			Wait;
+		Select:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstSelect");
+			M45A A 0 A_Raise;
+			M45A A 0 A_Raise;
+			Loop;
+		FirstSelect:
+			TNT1 AAA 0 A_Raise;
+			TNT1 A 1 A_Raise;
+			Loop;
+		FirstReady:
+			M451 ABCDEFGHI 1;
+			TNT1 A 0 
+			{
+				A_GiveInventory("M191145ACPLoaded", 8);
+				A_StartSound("Weapons/M1911/Charge", CHAN_AUTO);
+				invoker.firstPickup = true;
+			}
+			M451 JKLMNOPQRSTUVWXYZ 1;
+			Goto Ready1;
+		Ready:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			M45D ABCDEF 1;
+		Ready1:
+			LUGG A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 0, "Ready2");
+			M45G A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Ready2:
+			M45F B 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Fire:
+			PPKA A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 0,"DryFire");
+			M45F A 1 BRIGHT
+			{
+				A_GunFlash();
+				A_AlertMonsters();
+				
+				if(waterlevel > 0.2)
+				{
+					//[Pop] Refactor later with new smoke system
+					A_FireProjectile("PistolSmokeSpawner",0,0,0,random(-4,4),0,0);
+				}
+				A_SpawnItemEx("Casing45ACP",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+				//Take Ammo
+				 
+				A_StartSound("Weapons/M1911/Fire", CHAN_AUTO, CHANF_OVERLAP, 0.25);
+				A_StartSound("Weapons/M1911/FireExtra", CHAN_AUTO, CHANF_OVERLAP, 0.6);
+				A_StartSound("Weapons/M1911/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+				A_StartSound("Weapons/M1911/FireMech", CHAN_AUTO, CHANF_OVERLAP, 0.8);
+				A_FireProjectile("LugerTracer");
+				A_SetPitch(pitch-(0.2*boa_recoilamount));
+			}
+			M45F CB 1;
+			TNT1 A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 0, "FireEndEmpty");
+			M45F CEDFG 1 A_WeaponReady(WRF_NOBOB);
+			Goto Ready1;
+		FireEndEmpty:
+			M45F BBB 1;
+			Goto Ready2;
 		
-	Reload:
-		M45A A 0 A_JumpIf(CountInv("Ammo45ACP") == 0, "Ready");
-		TNT1 A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 8, "Ready");
-		TNT1 A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 0, "Reload2");
-		M452 ABCDEF 1;
-		TNT1 A 0 A_StartSound("Weapons/M1911/MagOut", CHAN_AUTO);
-		M452 GHIJKLLLLLMNO 1;
-		TNT1 A 0 A_StartSound("Weapons/M1911/MagIn", CHAN_AUTO);
-		M452 PQR 1;
-	ReloadLoop:
-		TNT1 A 0 A_TakeInventory("Ammo45ACP",1,TIF_NOTAKEINFINITE);
-		TNT1 A 0 A_GiveInventory("M191145ACPLoaded");
-		TNT1 A 0 A_JumpIfInventory("M191145ACPLoaded",8,"ReloadFinish");
-		TNT1 A 0 A_JumpIfInventory("Ammo45ACP",1,"ReloadLoop");
-	ReloadFinish:
-		M452 STUVWXYZ 1;
-		M453 ABC 1;
-		Goto Ready;
+		Reload:
+			M452 A 0 A_JumpIf(CountInv("Ammo45ACP") == 0, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 8, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("M191145ACPLoaded") == 0, "Reload2");
+			M45A ABCDEFGHIJKLMNOPQRSTUUU 1;
+			TNT1 A 0 A_StartSound("Weapons/M1911/MagOut", CHAN_AUTO);
+			M45A VWXYYYZ 1;
+			M45B ABC 1;
+			TNT1 A 0 A_StartSound("Weapons/M1911/MagIn", CHAN_AUTO);
+			M45B DEFGHI 1;
+		ReloadLoop:
+			TNT1 A 0 A_TakeInventory("Ammo45ACP",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_GiveInventory("M191145ACPLoaded");
+			TNT1 A 0 A_JumpIfInventory("M191145ACPLoaded",8,"ReloadFinish");
+			TNT1 A 0 A_JumpIfInventory("Ammo45ACP",1,"ReloadLoop");
+		ReloadFinish:
+			M45B JKLMNOPQRSTUVW 1;
+			Goto Ready1;
 		
-	Reload2:
-		M454 ABCDE 1;
-		TNT1 A 0 A_StartSound("Weapons/M1911/MagOut", CHAN_AUTO);
-		M454 FGHIJKKKKKLM 1;
-		TNT1 A 0 A_StartSound("Weapons/M1911/MagIn", CHAN_AUTO);
-		M454 NOPQR 1;
-	Reload2Loop:
-		TNT1 A 0 A_TakeInventory("Ammo45ACP",1,TIF_NOTAKEINFINITE);
-		TNT1 A 0 A_GiveInventory("M191145ACPLoaded");
-		TNT1 A 0 A_JumpIfInventory("M191145ACPLoaded",7,"Reload2Finish");
-		TNT1 A 0 A_JumpIfInventory("Ammo45ACP",1,"Reload2Loop");
-	Reload2Finish:
-		M454 STUVW 1;
-		TNT1 A 0 A_StartSound("Weapons/M1911/Charge", CHAN_AUTO);
-		M454 XYZ 1;
-		M455 ABCDEFGHIJK 1;
-		Goto Ready;
-	
-	Flash:
-		TNT1 A 1 A_Light2;
-		TNT1 A 1;
-		TNT1 A 2 A_Light1;
-		Goto LightDone;
-	Spawn:
-		M45P A -1;
-		Stop;
+		Reload2:
+			M452 ABCDEF 1;
+			TNT1 A 0 A_StartSound("Weapons/M1911/MagOut", CHAN_AUTO);
+			M452 GHIJKLLLLLMNO 1;
+			TNT1 A 0 A_StartSound("Weapons/M1911/MagIn", CHAN_AUTO);
+			M452 PQR 1;
+		Reload2Loop:
+			TNT1 A 0 A_TakeInventory("Ammo45ACP",1,TIF_NOTAKEINFINITE);
+			TNT1 A 0 A_GiveInventory("M191145ACPLoaded");
+			TNT1 A 0 A_JumpIfInventory("M191145ACPLoaded",7,"Reload2Finish");
+			TNT1 A 0 A_JumpIfInventory("Ammo45ACP",1,"Reload2Loop");
+		Reload2Finish:
+			M454 STUVW 1;
+			TNT1 A 0 A_StartSound("Weapons/M1911/Charge", CHAN_AUTO);
+			M454 XYZ 1;
+			M455 ABCDEFGHIJK 1;
+			Goto Ready1;
+		
+		Flash:
+			TNT1 A 1 A_Light2;
+			TNT1 A 1;
+			TNT1 A 2 A_Light1;
+			Goto LightDone;
+		Spawn:
+			M45P A -1;
+			Stop;
 	}
 }
 
