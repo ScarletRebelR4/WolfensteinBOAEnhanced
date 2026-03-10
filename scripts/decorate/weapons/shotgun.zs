@@ -42,135 +42,134 @@ class TrenchShotgun : NaziWeapon
 	}
 	States
 	{
-	Select:
-		SGTI A 0 A_Raise;
-		SGTI A 1 A_Raise;
-		Loop;
-	Deselect:
-		SGTI A 0 A_JumpIfReloading(3);
-		SGTI A 0 A_Lower;
-		SGTI A 1 A_Lower;
-		Loop;
-        SGR3 A 2;
-		TNT1 A 0 A_StartSound("SGBAC", CHAN_5);
-		SGR3 B 2;
-		SGR3 C 2;
-		SGR3 D 2;
-		TNT1 A 0 A_StartSound("SGFOW", CHAN_6);
-		SGR3 E 2;
-		SGR3 F 2;
-		SGR3 G 2;
-		SGR1 H 2;
-		SGR1 G 2;
-		SGR1 F 2;
-		SGR1 E 2;
-		SGR1 D 2;
-		SGR1 C 2;
-		SGR1 B 2;
-		SGR1 A 2;
-		SGTI A 1 A_Reloading(0);
-		Loop;
-	Ready:
-		SGTI A 0 A_JumpIfInventory("TrenchShotgunLoaded",0,2);
-		SGTI A 0 A_JumpIfInventory("Ammo12Gauge",1,2);
-		SGTI A 1 A_WeaponReady;
-		Loop;
-		SGTI A 1 A_WeaponReady(WRF_ALLOWRELOAD);
-		Loop;
-	Fire:
-		SGTI A 0 A_JumpIfReloading("ReloadFinish");
-		SGTI A 0 A_JumpIfInventory("TrenchShotgunLoaded",1,1);
-		Goto Dryfire;
-		SGTI A 0 A_TakeInventory("TrenchShotgunLoaded",1,TIF_NOTAKEINFINITE);
-		SGTI A 0 A_StartSound("SGFIR", CHAN_WEAPON);
-		SGTI A 0 A_AlertMonsters;
-		SGTI B 1;
-		SGTI AAAAAAAAAA 0 A_FireProjectile("ShotgunTracer",frandom(-2.0,2.0),0,0,0,0,frandom(-1.5,1.5));
-		SGTF A 1 BRIGHT A_GunFlash;
-		SGTI A 0 A_JumpIf(waterlevel > 0,2);
-		SGTI A 0 A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
-		SGTF B 1 BRIGHT A_SetPitch(pitch-(4.0*boa_recoilamount));
-		SGTF C 1 Offset(0,40) A_SetPitch(pitch-(2.0*boa_recoilamount));
-		SGTF D 1 Offset(0,36) A_SetPitch(pitch-(1.0*boa_recoilamount));
-		SGTF E 1 Offset(0,34) A_SetPitch(pitch+(1.0*boa_recoilamount));
-		SGTI B 1 A_SetPitch(pitch+(0.5*boa_recoilamount));
-		SGTI B 1 A_WeaponReady(WRF_NOFIRE);
-        SGPM A 1;
-		SGPM B 1;
-		SGPM C 1;
-		SGPM D 1;
-		SGPM E 2;
-		SGPM F 2;
-		SGPM G 2;
-		TNT1 A 0 A_StartSound("SGBAC", CHAN_5);
-		SGPM H 2;
-		TNT1 A 0 A_SpawnItemEx("ShotgunCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
-        SGPM I 2;
-		SGPM J 2;
-		TNT1 A 0 A_StartSound("SGFOW", CHAN_6);
-		SGPM K 2;
-		SGPM L 2;
-		SGPM M 1;
-		SGPM N 1;
-		SGPM O 1;
-		SGPM P 1;
-		SGPM Q 2 A_WeaponReady(WRF_NOBOB);
-		SGPM R 2 A_WeaponReady(WRF_NOBOB);
-		SGPM S 2 A_WeaponReady(WRF_NOBOB);
-		TNT1 A 0 A_CheckReload;
-		Goto Ready;
-	Reload:
-		SGTI A 1 A_Reloading;
-        SGR1 A 2;
-		SGR1 B 2;
-		SGR1 C 2;
-		SGR1 D 2;
-		SGR1 E 2;
-		SGR1 F 2;
-		SGR1 G 2;
-		SGR1 H 2;
-	ReloadLoop:
-		SGTI A 0 A_TakeInventory("Ammo12Gauge",1,TIF_NOTAKEINFINITE);
-		SGTI A 0 A_GiveInventory("TrenchShotgunLoaded");
-		SGR2 A 2;
-		SGR2 B 2;
-		SGR2 C 2;
-		TNT1 A 0 A_StartSound("SGIN", CHAN_5);
-		SGR2 D 2;
-		SGR2 E 2;
-		SGR2 F 2;
-		SGR2 G 2;
-		SGR2 H 2 A_WeaponReady(WRF_NOBOB|WRF_NOSECONDARY);
-		SGTI A 0 A_JumpIfInventory("TrenchShotgunLoaded",0,"ReloadFinish");
-		TNT1 A 0 A_JumpIfInventory("Ammo12Gauge",1,"ReloadLoop");
-	ReloadFinish:
-        SGR3 A 2;
-		TNT1 A 0 A_StartSound("SGBAC", CHAN_5);
-		SGR3 B 2;
-		SGR3 C 2;
-		SGR3 D 2;
-		TNT1 A 0 A_StartSound("SGFOW", CHAN_6);
-		SGR3 E 2;
-		SGR3 F 2;
-		SGR3 G 2;
-		SGR1 H 2;
-		SGR1 G 2;
-		SGR1 F 2;
-		SGR1 E 2;
-		SGR1 D 2;
-		SGR1 C 2;
-		SGR1 B 2;
-		SGR1 A 2;
-		SGTI A 1 A_Reloading(0);
-		Goto Ready;
-	Flash:
-		TNT1 A 1 A_Light2;
-		TNT1 A 1;
-		TNT1 A 2 A_Light1;
-		Goto LightDone;
-	Spawn:
-		SHOT A -1;
-		Stop;
+		Deselect:
+			TNT1 A 0 A_StartSound("Weapons/C96/Lower", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			TRCS ABCDEF 1;
+			TNT1 A 0 A_Lower();
+			Wait;
+		Select:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstSelect");
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstSelect:
+			TNT1 A 0 A_Raise();
+			Wait;
+		FirstReady: //First Time Select
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96I ABCDE 1;
+			C96I E 4;
+			C96F TUVWXYZ 1;
+			TNT1 A 0
+			{
+				A_GiveInventory("C96Loaded", 10);
+				invoker.firstPickup = true;
+			}
+			TNT1 A 0 A_StartSound("Weapons/C96/Slap", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G A 1;
+			TNT1 A 0 A_StartSound("Weapons/C96/BoltClose", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			C96G BCDEFGHIJKLMN 1;
+			Goto Ready1;
+		Ready:
+			TNT1 A 0 A_JumpIf(!invoker.firstPickup, "FirstReady");
+			TNT1 A 0 A_StartSound("Weapons/C96/Raise", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+			TRCS FEDCBA 1;
+		Ready1:
+			LUGG A 0 A_JumpIf(CountInv("C96Loaded") == 0, "Ready2");
+			TRCA A 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		Ready2:
+			TRCF G 1 A_WeaponReady(WRF_ALLOWRELOAD);
+			Loop;
+		SlamFire:
+			TNT1 A 0 A_StartSound("SGBAC", CHAN_5);
+			TRCB ABC 1;
+			TRCB D 2 A_SpawnItemEx("ShotgunCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+			TNT1 A 0 A_StartSound("SGFOW", CHAN_6);
+			TRCB EFG 1;
+		Fire:
+			PPKA A 0 A_JumpIf(CountInv("TrenchShotgunLoaded") == 0,"DryFire");
+			TRCF A 1 BRIGHT
+			{
+				A_GunFlash();
+				A_AlertMonsters();
+				
+				if(waterlevel > 0.2)
+				{
+					//[Pop] Refactor later with new smoke system
+					 A_FireProjectile("ShotSmokeSpawner",0,0,0,random(-4,4),0,0);
+				}
+				//A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+				A_TakeInventory("TrenchShotgunloaded", 1);
+				
+				A_StartSound("SGFIR", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+				//A_StartSound("Weapons/C96/FireExtra", CHAN_AUTO, CHANF_OVERLAP, 0.8);
+				//A_StartSound("Weapons/C96/FireMech", CHAN_AUTO, CHANF_OVERLAP, 1.0);
+				//A_StartSound("Weapons/C96/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.7);
+				
+				for(int i=0; i<9; i++)
+				{
+					A_FireProjectile("ShotgunTracer",frandom(-2.0,2.0),0,0,0,0,frandom(-1.5,1.5));
+				}
+				
+				A_SetPitch(pitch-(5.5*boa_recoilamount));
+			}
+			TRCF BCDEFG 1;
+			TNT1 A 0 A_JumpIf(CountInv("TrenchShotgunLoaded") == 0,"FireEnd");
+			TRCF G 1 A_ReFire("SlamFire");
+			Goto Pump;
+		FireEnd: //Last shot empty
+			TRCF GGG 1;
+			Goto Ready2;
+		
+		Pump:
+			TRCC ABCDEF 1;
+			TNT1 A 0 A_StartSound("SGBAC", CHAN_5);
+			TRCC GHHH 1;
+			TNT1 A 0 A_SpawnItemEx("ShotgunCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+			TRCC IJ 1;
+			TNT1 A 0 A_StartSound("SGFOW", CHAN_6);
+			TRCC KLMNOPQRS 1;
+			Goto Ready1;
+		
+		Reload:
+			TNT1 A 0 A_JumpIf(CountInv("Ammo12Gauge") == 0, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("TrenchShotgunLoaded") == 6, "Ready1");
+			TNT1 A 0 A_JumpIf(CountInv("TrenchShotgunLoaded") == 0, "Reload2"); //Chamber load
+		
+			TRCE PONMLKJIH 1;
+		ReloadLoop:
+			TRCE H 3;
+			TRCE ABC 1;
+			SGTI A 0 A_TakeInventory("Ammo12Gauge",1,TIF_NOTAKEINFINITE);
+			SGTI A 0 A_GiveInventory("TrenchShotgunLoaded");
+			TNT1 A 0 A_StartSound("SGIN", CHAN_5);
+			TRCE DDDEFGH 1;
+			SGTI A 0 A_JumpIfInventory("TrenchShotgunLoaded",6,"ReloadFinish");
+			TNT1 A 0 A_JumpIfInventory("Ammo12Gauge",1,"ReloadLoop");
+		ReloadFinish:
+			TRCE HIJKLMNOP 1;
+			Goto Ready1;
+			
+		Reload2:
+			TRCD ABCDEF 1;
+			TNT1 A 0 A_StartSound("SGBAC", CHAN_5);
+			TRCD GHIJ 1;
+			TNT1 A 0 A_SpawnItemEx("ShotgunCasing",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
+			TRCD KKKLM 1;
+			TNT1 A 0 A_StartSound("SGIN", CHAN_5);
+			TRCD NOPQ 1;
+			TNT1 A 0 A_StartSound("SGFOW", CHAN_6);
+			TRCD RSTUUUUU 1;
+			Goto ReloadLoop;
+		
+		Flash:
+			TNT1 A 1 A_Light2;
+			TNT1 A 1;
+			TNT1 A 2 A_Light1;
+			Goto LightDone;
+		Spawn:
+			TRCP A -1;
+			Stop;
 	}
 }
 
@@ -180,7 +179,7 @@ class TrenchShotgunLoaded : Ammo
 	{
 	Tag "12 Gauge";
 	+INVENTORY.IGNORESKILL
-	Inventory.MaxAmount 8;
+	Inventory.MaxAmount 6;
 	Inventory.Icon "BROW01";
 	}
 }
