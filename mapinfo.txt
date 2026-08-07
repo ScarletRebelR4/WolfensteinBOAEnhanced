@@ -683,13 +683,10 @@ skill Nazis4
 
 skill Nazis5
 {
-	DamageFactor = 2.0
 	Aggressiveness = 0.75
 	SpawnFilter = Hard
 	ACSReturn = 4
 	Key = 5
-	DisableCheats
-	FastMonsters
 	Name = "$BOASKILL5" // If you don't know this...
 	replaceactor = "AstroDroneBall", "HardAstroDroneBall"
 	replaceactor = "AstroRobotSeekerBall", "HardAstroRobotSeekerBall"

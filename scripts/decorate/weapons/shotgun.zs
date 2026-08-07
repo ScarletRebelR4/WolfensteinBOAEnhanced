@@ -101,7 +101,7 @@ class TrenchShotgun : NaziWeapon
 				//A_SpawnItemEx("Casing9mm",12,-20,32,8,random(-2,2),random(0,4),random(-55,-80),SXF_NOCHECKPOSITION);
 				A_TakeInventory("TrenchShotgunloaded", 1);
 				
-				A_StartSound("SGFIR", CHAN_AUTO, CHANF_OVERLAP, 0.5);
+				A_StartSound("SGFIR", CHAN_AUTO, CHANF_OVERLAP);
 				//A_StartSound("Weapons/C96/FireExtra", CHAN_AUTO, CHANF_OVERLAP, 0.8);
 				//A_StartSound("Weapons/C96/FireMech", CHAN_AUTO, CHANF_OVERLAP, 1.0);
 				//A_StartSound("Weapons/C96/FireAdd", CHAN_AUTO, CHANF_OVERLAP, 0.7);
